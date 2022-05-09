@@ -6,13 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/logo_icon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="img/logoico.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="css/general-style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css%22%3E">
+    <script src="./js/script.js"></script>
     <title>Helios Corp.</title>
 </head>
 
@@ -65,23 +63,29 @@
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        <div class="block">
+        <div class="block ">
             <!-- Dividimos en columnas -->
-            <div class="columns">
+            <div class="columns is-mobile ">
                 <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-2"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                 <div class="column is-8 ">
-                <div class="columns container">
+                    <div class="columns container">
                         <div class="column is-1.5"></div>
-                        <div class="column is-3 has-text-centered card">
-                            <a href="#"> <img src="img/clientes.png" alt=""></a>
+                        <div class="column is-3 has-text-centered titulo-imagen">
+                            <a href="./pages/clientes.php"> <img class="img-button" src="img/menu/clientes2.jpg" alt="">
+                                <div class="titulo-centrado ">Clientes</div>
+                            </a>
                         </div>
-                        <div class="column is-3 has-text-centered card">
-                            <a href="#"> <img src="img/pedidos.png" alt=""></a>
+                        <div class="column is-3 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
+                                <div class="titulo-centrado">Pedidos</div>
+                            </a>
                         </div>
-                        <div class="column is-3 has-text-centered card">
-                        <a href="#"> <img src="img/almacen.png" alt=""></a>
+                        <div class="column is-3 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
+                                <div class="titulo-centrado">Almacén</div>
+                            </a>
                         </div>
                         <div class="column is-1.5"></div>
                     </div>
@@ -93,21 +97,27 @@
             <!-- SEGUNDO BLOQUE PARA OTROS 3 BOTONES PRINCIPALES -->
 
             <!-- Dividimos en columnas -->
-            <div class="columns">
+            <div class="columns is-mobile">
                 <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-2"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
+                <div class="column is-8">
                     <div class="columns">
                         <div class="column is-1.5"></div>
-                        <div class="column is-3 has-text-centered card">
-                            <a href="#"> <img src="img/fichaje.png" alt=""></a>
+                        <div class="column is-3 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/fichaje2.jpg" alt="">
+                                <div class="titulo-centrado">Fichaje</div>
+                            </a>
                         </div>
-                        <div class="column is-3 has-text-centered card">
-                            <a href="#"> <img src="img/convenio.png" alt=""></a>
+                        <div class="column is-3 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
+                                <div class="titulo-centrado">Convenio</div>
+                            </a>
                         </div>
-                        <div class="column is-3 has-text-centered card">
-                        <a href="#"> <img src="img/noticias.png" alt=""></a>
+                        <div class="column is-3 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
+                                <div class="titulo-centrado">Noticias</div>
+                            </a>
                         </div>
                         <div class="column is-1.5"></div>
                     </div>
@@ -122,7 +132,7 @@
     <!-- FIN DE LA MAIN SECTION -->
 
     <!-- FOOTER -->
-    <footer class="">
+    <footer class="footer">
         <div class="container logo-nav-container">
             <a href="#">
                 <div class="icon-text navbar-item">
