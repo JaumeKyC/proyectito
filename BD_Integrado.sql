@@ -3,35 +3,105 @@ create database integrado;
 use integrado;
 
 CREATE TABLE clientes (
-ID varchar(10) NOT NULL PRIMARY KEY,
-Nombre varchar(30) NOT NULL,
+ID integer NOT NULL PRIMARY KEY unique,
+Nombre varchar(100) NOT NULL,
+NombreContacto varchar(30) DEFAULT NULL,
+ApellidoContacto varchar(30) DEFAULT NULL,
+Email varchar (50)  NOT NULL,
+Telefono varchar(20) NOT NULL,
 DireccionCalle varchar(50) NOT NULL,
 DireccionNumero varchar(50) DEFAULT NULL,
 Ciudad varchar(50) DEFAULT NULL,
-Comunidad varchar(10) NOT NULL,
-Pais varchar(10) NOT NULL,
-Telefono varchar(20) NOT NULL
+Comunidad varchar(50) NOT NULL,
+Pais varchar(25) NOT NULL,
+CodPostal varchar(25) NOT NULL
 );
+
+INSERT INTO Clientes VALUES
+	(1,'DGPRODUCTIONS GARDEN','Daniel G','GoldFish','correogenerico@gmail.com','676567654','False Street','52 2 A','Paiporta','Valencia','España','46200'),
+	(2,'Empresa de Prueba','Paco ','Pipa','correogenerico@gmail.com','676566542','NoStreet','242 A','Neverwhere','Wonderland','Universe','00000'),
+	(3,"Eu Augue Ltd","Hashim","Forbes",'correogenerico@gmail.com',"1-352-771-7823","618-9345 Lobortis Ave","MXK02L","Kano","Campania","Indonesia","7801"),
+	(4,"Suscipit Est Corporation","Jasmine","Molina",'correogenerico@gmail.com',"1-709-747-7971","9114 Ornare, Rd.","EIY59E","Velden am Wörther See","Huádōng","Canada","30701"),
+	(5,"Nisi Industries","Guy","Blackwell",'correogenerico@gmail.com',"281-8812","913-1844 Congue St.","UYM49V","Kobbegem","North Gyeongsang","Spain","6336"),
+	(6,"Donec Luctus LLC","Micah","Brock",'correogenerico@gmail.com',"432-2667","1700 Nunc Street","JTJ56R","Buguma","Limón","Colombia","G2E 8H5"),
+	(7,"Ligula Consulting","Bevis","Cochran",'correogenerico@gmail.com',"1-383-491-2213","Ap #721-5379 Elementum Ave","ILX20A","Pioneer","Gävleborgs län","Mexico","11578"),
+	(8,"Euismod Enim Corp.","Samuel","Navarro",'correogenerico@gmail.com',"745-7247","Ap #441-8585 Donec Road","NJR51G","Jhelum","Upper Austria","Netherlands","2302"),
+	(9,"Placerat Cras Industries","Dean","Marks",'correogenerico@gmail.com',"1-119-531-3651","Ap #398-946 Dapibus St.","KXQ75G","Kitsman","Alberta","Canada","06088"),
+	(10,"Parturient Montes Nascetur Incorporated","Tad","Mcclain",'correogenerico@gmail.com',"713-7254","6422 Augue. Avenue","LQB13Y","Jecheon","Puntarenas","Chile","5691-9908"),
+	(11,"Morbi Tristique Inc.","Fredericka","Suarez",'correogenerico@gmail.com',"1-381-363-7715","Ap #806-4815 Etiam Avenue","JZM58W","Belfast","National Capital Region","France","1632"),
+	(12,"Duis Mi Ltd","Renee","Norton",'correogenerico@gmail.com',"466-5586","Ap #493-9067 Et Rd.","NBQ17N","Bischofshofen","Aragón","Australia","9114"),
+	(13,"Aenean Eget Ltd","Duncan","Little",'correogenerico@gmail.com',"338-6138","P.O. Box 127, 4006 Euismod Rd.","VUH89X","Belfort","Victoria","Indonesia","8650"),
+	(14,"Vulputate Incorporated","Wylie","Quinn",'correogenerico@gmail.com',"241-5342","805-2362 Lobortis Ave","BSY62G","Cumnock","Munster","Colombia","338729"),
+	(15,"Nec Ligula Consectetuer Limited","Kay","Tucker",'correogenerico@gmail.com',"237-4464","P.O. Box 440, 2761 Velit St.","FQO25K","Hijuelas","Jalisco","Turkey","633311"),
+	(16,"In Molestie Tortor Corp.","Stacy","Morris",'correogenerico@gmail.com',"308-0976","9719 Morbi Road","SVC87X","Sungai Penuh","Sachsen","South Africa","116584"),
+	(17,"In Hendrerit Consectetuer LLP","Slade","Williamson",'correogenerico@gmail.com',"899-8544","Ap #325-522 Nec Rd.","QLH28P","Bath","Baden Württemberg","Colombia","16-628"),
+	(18,"Diam Eu Dolor Company","TaShya","Carrillo",'correogenerico@gmail.com',"1-578-456-1392","591-3191 Et Rd.","MDT13B","Ipswich","Gyeonggi","Norway","02416"),
+	(19,"Risus Nulla Eget Corp.","Jennifer","Mcbride",'correogenerico@gmail.com',"523-2868","P.O. Box 743, 1292 Nulla Rd.","BQK00H","Liverpool","South Sulawesi","Norway","3495"),
+	(20,"Donec Egestas Corp.","Hyacinth","Carney",'correogenerico@gmail.com',"1-870-585-8548","P.O. Box 924, 946 Fusce Rd.","HJK91I","Leiden","Tarapacá","New Zealand","432124"),
+	(21,"Nunc Quisque Foundation","Lucius","Wynn",'correogenerico@gmail.com',"1-755-882-2070","Ap #886-2448 Eget Street","ZTT53J","Cartagena","Leinster","Italy","36951"),
+	(22,"Risus Nunc Incorporated","Ignatius","Porter",'correogenerico@gmail.com',"388-1833","163-5247 Senectus Rd.","DIH32D","Łódź","Hải Phòng","South Korea","7327"),
+	(23,"Urna Foundation","Driscoll","Goff",'correogenerico@gmail.com',"784-2565","349-3437 Vestibulum Ave","FLM43K","Odda","North-East Region","United Kingdom","26342"),
+	(24,"Amet Dapibus Id Institute","Uriah","Gillespie",'correogenerico@gmail.com',"322-0082","232-9404 Mi St.","EYL54F","Mmabatho","Trà Vinh","Nigeria","833556"),
+	(25,"Venenatis Limited","Haviva","Casey",'correogenerico@gmail.com',"680-5413","245-2608 Vitae Avenue","GVY18C","Ararat","Schleswig-Holstein","Germany","36-98"),
+	(26,"Mauris Rhoncus Id LLP","Leah","Nichols",'correogenerico@gmail.com',"525-2761","Ap #306-3114 Sed, St.","URM73V","Iquique","Burgenland","Peru","932392"),
+	(27,"Lacinia Sed Congue Consulting","Serena","Ryan",'correogenerico@gmail.com',"738-8893","P.O. Box 383, 4085 Fringilla Avenue","WAP56L","Hoogeveen","Irkutsk Oblast","Chile","15-359"),
+	(28,"Scelerisque Neque Nullam Associates","Gillian","Rosa",'correogenerico@gmail.com',"353-4945","432-6642 Sed Street","PCL56S","Pachuca","Lombardia","Austria","80M 6E6"),
+	(29,"Cursus Non Egestas Corporation","Winter","Salazar",'correogenerico@gmail.com',"585-0003","P.O. Box 427, 9902 Luctus Avenue","UGT18D","Mercedes","Huádōng","Vietnam","538853"),
+	(30,"Neque Venenatis Associates","Meghan","Mccormick",'correogenerico@gmail.com',"1-438-198-7365","Ap #871-6413 A Rd.","FZU86E","Portobuffolè","Bihar","Chile","6145"),
+	(31,"Vestibulum Associates","Gloria","Mueller",'correogenerico@gmail.com',"315-6725","P.O. Box 221, 1419 Dui St.","OUO82R","Arica","East Java","Indonesia","254171"),
+	(32,"Quam Vel LLP","Jin","Burks",'correogenerico@gmail.com',"225-6657","Ap #949-4168 Non St.","INS61V","Olinda","Troms og Finnmark","Ukraine","6636"),
+	(33,"Nec Orci Consulting","Preston","Valencia",'correogenerico@gmail.com',"1-575-523-3194","862-5430 Hendrerit Rd.","KKG16W","Sete Lagoas","Hessen","Sweden","35965"),
+	(34,"Et Inc.","Tara","Aguirre",'correogenerico@gmail.com',"1-447-246-5333","233-7756 Lobortis Ave","BUB71N","Culiacán","Cusco","Sweden","50783"),
+	(35,"Vitae Sodales PC","Kelly","Hester",'correogenerico@gmail.com',"947-6331","Ap #383-6866 Etiam Rd.","FWL48R","Hildesheim","North Island","Pakistan","238278"),
+	(36,"Nunc Incorporated","Mason","Kent",'correogenerico@gmail.com',"1-916-821-2702","P.O. Box 946, 6577 Tempus St.","SGG87I","Emarèse","Tasmania","Ireland","68588"),
+	(37,"Arcu Et Institute","Cole","Bridges",'correogenerico@gmail.com',"220-8834","625-9900 Aliquam Street","NOG44M","Laoag","Irkutsk Oblast","Germany","12-144"),
+	(38,"Mi Ac Mattis Incorporated","Chester","Nixon",'correogenerico@gmail.com',"314-6129","661-3829 Non Ave","LJK28C","San Luis Río Colorado","Innlandet","Belgium","47884"),
+	(39,"Felis Orci Limited","Charde","Barnes",'correogenerico@gmail.com',"1-545-366-2651","Ap #223-9101 Eu Av.","GQM93N","Banda Aceh","West Region","South Africa","0260"),
+	(40,"Vestibulum Massa Incorporated","Kitra","Woods",'correogenerico@gmail.com',"672-2629","772 Orci. St.","YDV92Y","Tibet","Victoria","Sweden","47817"),
+	(41,"Sagittis PC","Cynthia","Faulkner",'correogenerico@gmail.com',"1-448-831-8330","Ap #517-4041 Mauris Ave","JYG67X","Surabaya","Euskadi","China","6562"),
+	(42,"Ipsum Curabitur Inc.","Carla","Hurst",'correogenerico@gmail.com',"1-751-873-0534","947-6015 Facilisis Rd.","RHI26J","Bayeux","New South Wales","Indonesia","511637"),
+	(43,"Magna Sed LLP","Rowan","Johnson",'correogenerico@gmail.com',"848-6661","P.O. Box 672, 4131 Volutpat. Rd.","KNY64J","Kleinmachnow","Västra Götalands län","France","363311"),
+	(44,"Ultrices Duis Volutpat PC","Desirae","Mcfadden",'correogenerico@gmail.com',"388-5817","Ap #773-4507 Et, Rd.","CVE34B","Dutse","Belgorod Oblast","Colombia","17887"),
+	(45,"Imperdiet Ullamcorper LLP","Victor","Hays",'correogenerico@gmail.com',"1-549-843-1117","Ap #160-3027 Turpis St.","LIO57J","Felixstowe","Gyeonggi","South Africa","22862"),
+	(46,"Nunc Quisque Foundation","Joshua","Hubbard",'correogenerico@gmail.com',"623-1204","8498 Posuere St.","OPS31V","General Lagos","Azad Kashmir","Spain","4261"),
+	(47,"Dui Fusce Corporation","Murphy","Melendez",'correogenerico@gmail.com',"654-7678","Ap #503-2862 Orci Street","JRT21V","Huancayo","Møre og Romsdal","Italy","86318"),
+	(48,"A Sollicitudin PC","Katelyn","Trevino",'correogenerico@gmail.com',"1-686-950-7886","563-183 Ornare, Street","CUX82Q","Graneros","Coahuila","United Kingdom","5488-6426"),
+	(49,"Arcu Vestibulum LLC","Velma","Ratliff",'correogenerico@gmail.com',"1-648-308-8587","P.O. Box 430, 9751 Eleifend St.","PGE93Y","Bayawan","Morayshire","Canada","7257"),
+	(50,"At Arcu Incorporated","Lareina","Walker",'correogenerico@gmail.com',"1-416-817-7333","1998 Nec, Ave","TYP79X","Dillingen","Jambi","Sweden","551055");
+
 CREATE TABLE pedidos (
-ID_Pedido varchar(10) NOT NULL PRIMARY KEY,
-ID_Cliente varchar(10) NOT NULL,
+ID_Pedido integer NOT NULL PRIMARY KEY,
+ID_Cliente integer NOT NULL,
 Fecha_Pedido DATE NOT NULL,
+Fecha_Esperada DATE NOT NULL,
 Fecha_Entrega DATE NOT NULL,
+Estado varchar(15) NOT NULL,
 Importe numeric(15,2) NOT NULL, 
-CONSTRAINT pedidosclientes_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
+CONSTRAINT pedidosCliente_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
 );
+
+INSERT INTO Pedidos VALUES (1,1,'2006-01-17','2006-01-19','2006-01-19','Entregado',1200);
 
 CREATE TABLE productos (
-ID_Producto varchar(10) NOT NULL PRIMARY KEY,
-Descripción varchar(200),
-Cantidad integer DEFAULT NULL,
-Precio numeric(15,2) DEFAULT NULL
+ID_Producto varchar(15) NOT NULL PRIMARY KEY,
+Nombre varchar(70) NOT NULL,
+Proveedor varchar(50) DEFAULT NULL,
+Descripción varchar(1000),
+CantidadEnStock integer NOT NULL,
+PrecioVenta numeric(15,2) DEFAULT NULL,
+PrecioProveedor numeric(15,2) DEFAULT NULL
 );
 
-CREATE TABLE productosPedido(
-ID_Pedido varchar(10) NOT NULL,
-ID_Producto varchar(10) NOT NULL,
+INSERT INTO Productos VALUES ('11679','Sierra de Poda 400MM','HiperGarden Tools','Gracias a la poda se consigue manipular un poco la naturaleza, dándole la forma que más nos guste. Este trabajo básico de jardinería también facilita que las plantas crezcan de un modo más equilibrado, y que las flores y los frutos vuelvan cada año con regularidad. Lo mejor es dar forma cuando los ejemplares son jóvenes, de modo que exijan pocos cuidados cuando sean adultos. Además de saber cuándo y cómo hay que podar, tener unas herramientas adecuadas para esta labor es también de vital importancia.',15,14,11);
+
+CREATE TABLE detallePedido(
+ID_Pedido integer NOT NULL,
+ID_Producto varchar(15) NOT NULL,
+Cantidad integer NOT NULL,
+PrecioUnidad numeric(15,2) NOT NULL,
+PRIMARY KEY (ID_Pedido,ID_Producto),
 CONSTRAINT productosPedido_fk FOREIGN KEY (ID_Pedido) REFERENCES pedidos (ID_Pedido),
 CONSTRAINT productosPedido_fk2 FOREIGN KEY (ID_Producto) REFERENCES productos (ID_Producto)
 );
 
+INSERT INTO detallePedido VALUES (1,'11679',10,70);
