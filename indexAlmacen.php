@@ -63,7 +63,7 @@
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        <!-- <div class="block "> -->
+       <!--  <div class="block "> -->
             <!-- Dividimos en columnas -->
             <div class="columns is-mobile ">
                 <!-- Columnas vacías para dar margen a la izquierda -->
@@ -73,18 +73,18 @@
                     <div class="columns container">
                         <div class="column is-1.5"></div>
                         <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="indexAlmacen.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
-                                <div class="titulo-centrado ">Almacén</div>
+                            <a href="./pages/clientes.php"> <img class="img-button" src="img/menu/clientes2.jpg" alt="">
+                                <div class="titulo-centrado ">Clientes</div>
                             </a>
                         </div>
                         <div class="column is-3 has-text-centered titulo-imagen">
                             <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
-                                <div class="titulo-centrado">Gestión</div>
+                                <div class="titulo-centrado">Pedidos</div>
                             </a>
                         </div>
                         <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="otros.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
-                                <div class="titulo-centrado">Otros</div>
+                            <a href="#"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
+                                <div class="titulo-centrado">Productos</div>
                             </a>
                         </div>
                         <div class="column is-1.5"></div>
@@ -93,10 +93,6 @@
                 <!-- Columnas vacías para dar margen a la derecha -->
                 <div class="column is-2"></div>
             </div>
-
-            <!-- SEGUNDO BLOQUE PARA OTROS 3 BOTONES PRINCIPALES -->
-
-            
         <!-- </div> -->
         <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>

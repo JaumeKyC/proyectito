@@ -60,62 +60,48 @@
 
     <!-- MAIN SECTION -->
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
-        <div class="block"></div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        <!-- <div class="block "> -->
-            <!-- Dividimos en columnas -->
-            <div class="columns is-mobile ">
-                <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-2"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
-                    <div class="columns container">
-                        <div class="column is-1.5"></div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="indexAlmacen.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
-                                <div class="titulo-centrado ">Almacén</div>
-                            </a>
-                        </div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
-                                <div class="titulo-centrado">Gestión</div>
-                            </a>
-                        </div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="otros.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
-                                <div class="titulo-centrado">Otros</div>
-                            </a>
-                        </div>
-                        <div class="column is-1.5"></div>
+        <!-- Dividimos en columnas -->
+        <div class="columns is-mobile">
+            <!-- Columnas vacías para dar margen a la izquierda -->
+            <div class="column is-2"></div>
+            <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+            <div class="column is-8">
+                <div class="columns">
+                    <div class="column is-1.5"></div>
+                    <div class="column is-3 has-text-centered titulo-imagen">
+                        <a href="#"> <img class="img-button" src="img/menu/fichaje2.jpg" alt="">
+                            <div class="titulo-centrado">Fichaje</div>
+                        </a>
                     </div>
+                    <div class="column is-3 has-text-centered titulo-imagen">
+                        <a href="#"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
+                            <div class="titulo-centrado">Convenio</div>
+                        </a>
+                    </div>
+                    <div class="column is-3 has-text-centered titulo-imagen">
+                        <a href="#"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
+                            <div class="titulo-centrado">Noticias</div>
+                        </a>
+                    </div>
+                    <div class="column is-1.5"></div>
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-2"></div>
             </div>
-
-            <!-- SEGUNDO BLOQUE PARA OTROS 3 BOTONES PRINCIPALES -->
-
-            
-        <!-- </div> -->
-        <!-- Otro bloque para dar espacio con el Footer -->
-        <div class="block"></div>
-    </main>
-    <!-- FIN DE LA MAIN SECTION -->
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container logo-nav-container">
-            <a href="#">
-                <div class="icon-text navbar-item">
-                    <span class="icon is-large">
-                        <img src="img/flecha-hacia-atras.png" alt="">
-                    </span>
-                </div>
-            </a>
+            <!-- Columnas vacías para dar margen a la derecha -->
+            <div class="column is-2"></div>
         </div>
-    </footer>
-    <!-- FIN DEL FOOTER -->
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container logo-nav-container">
+                <a href="#">
+                    <div class="icon-text navbar-item">
+                        <span class="icon is-large">
+                            <img src="img/flecha-hacia-atras.png" alt="">
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </footer>
+        <!-- FIN DEL FOOTER -->
 </body>
 
 </html>
