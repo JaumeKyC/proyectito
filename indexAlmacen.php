@@ -78,12 +78,12 @@
                             </a>
                         </div>
                         <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
+                            <a href="./pages/pedidos.php"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
                                 <div class="titulo-centrado">Pedidos</div>
                             </a>
                         </div>
                         <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
+                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
                                 <div class="titulo-centrado">Productos</div>
                             </a>
                         </div>

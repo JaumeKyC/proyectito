@@ -1,7 +1,7 @@
-<?php   /* require_once 'consultaClientes.php'; */
+<?php
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
-/* var_dump($helios->getAllClientes()); */
+/* var_dump($helios->getAllProductos()); */ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,26 +86,21 @@ $helios = new HeliosCorp();
                                 <!-- class="table is-striped is-narrow is-hoverable has-text-centered is-centered" -->
                                 <thead>
                                     <tr>
-                                        <th class="">ID</th>
-                                        <th class="">Empresa</th>
-                                        <th class="">Nom. de Contacto</th>
-                                        <th class="">Ape. del Contacto</th>
-                                        <th class="">Email</th>
-                                        <th class="">Teléfono</th>
-                                        <th class="">Calle</th>
-                                        <th class="">Num.</th>
-                                        <th class="">Ciudad</th>
-                                        <th class="">Comunidad</th>
-                                        <th class="">País</th>
-                                        <th class="">Cod. Postal</th>
-                                        <th class="" colspan="2">Acciones</th>
+                                        <th class="">ID Producto</th>
+                                        <th class="">Nombre</th>
+                                        <th class="">Proveedor</th>
+                                        <!-- <th class="">Descripción</th> -->
+                                        <th class="">CantidadStock</th>
+                                        <th class="">PrecioVenta</th>
+                                        <th class="">PrecioProveedor</th>
+                                        <th class="" colspan="3">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                 </tfoot>
                                 <tbody>
                                     <?php        
-                                        echo $helios->drawClientesList();          
+                                        echo $helios->drawProductosList();          
                                     ?>
                                 </tbody>
                             </table>

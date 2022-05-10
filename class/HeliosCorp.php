@@ -11,24 +11,28 @@ class HeliosCorp extends Connection
     public function getAllClientes()
     {
         try {
-            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
             $this->bbdd->beginTransaction();
-
-            //Creamos la consulta y la almacenamos en una variable
             $stmt = $this->bbdd->prepare("SELECT * FROM clientes");
-
-            //Ejecutamos la consulta
             $stmt->execute();
             $clientes = [];
-
-            //Mientras hayan resultados en la consulta, itererá y row contendrá los datos de cada uno de los registros.
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {   //Creamos un objeto Employee con los datos de cada registro
-                $objeto = new Clientes($row['ID'], $row['Nombre'], $row['NombreContacto'], $row['ApellidoContacto'], $row['Email'], $row['Telefono'], $row['DireccionCalle'], $row['DireccionNumero'], $row['Ciudad'], $row['Comunidad'], $row['Pais'], $row['CodPostal']);
-                //Pusheamos el objeto al array de clientes;
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $objeto = new Clientes(
+                    $row['ID'],
+                    $row['Nombre'],
+                    $row['NombreContacto'],
+                    $row['ApellidoContacto'],
+                    $row['Email'],
+                    $row['Telefono'],
+                    $row['DireccionCalle'],
+                    $row['DireccionNumero'],
+                    $row['Ciudad'],
+                    $row['Comunidad'],
+                    $row['Pais'],
+                    $row['CodPostal']
+                );
                 array_push($clientes, $objeto);
             }
             $this->bbdd->commit();
-
             return $clientes;
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
@@ -38,7 +42,7 @@ class HeliosCorp extends Connection
     public function drawClientesList()
     {
         $clientes = $this->getAllClientes();
-        $output= "";
+        $output = "";
 
         foreach ($clientes as $clientes) {
             $output .= "<tr><td>" . $clientes->getId() . "</td>";
@@ -60,4 +64,98 @@ class HeliosCorp extends Connection
         return $output;
     }
 
+    public function getAllPedidos()
+    {
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos");
+            $stmt->execute();
+            $pedidos = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $objeto = new Pedidos(
+                    $row['ID_Pedido'],
+                    $row['ID_Cliente'],
+                    $row['Fecha_Pedido'],
+                    $row['Fecha_Esperada'],
+                    $row['Fecha_Entrega'],
+                    $row['Estado'],
+                    $row['Importe']
+                );
+                array_push($pedidos, $objeto);
+            }
+            $this->bbdd->commit();
+            return $pedidos;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        }
+    }
+
+    public function drawPedidosList()
+    {
+        
+        $pedidos = $this->getAllPedidos();
+        $output = "";
+
+        foreach ($pedidos as $pedidos) {
+            $output .= "<tr><td>" . $pedidos->getIdPedido() . "</td>";
+            $output .= "<td>" . $pedidos->getIdCliente() . "</td>";
+            $output .= "<td>" . $pedidos->getFechaPedido() . "</td>";
+            $output .= "<td>" . $pedidos->getFechaEsperada() . "</td>";
+            $output .= "<td>" . $pedidos->getFechaEntrega() . "</td>";
+            $output .= "<td>" . $pedidos->getEstado() . "</td>";
+            $output .= "<td>" . $pedidos->getImporte() . "</td>";
+            $output .= "<td> <a href='info.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/info.png' width='25'></a> </td>";
+            $output .= "<td> <a href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a href='delete.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "</tr>";
+        }
+        return $output;
+    }
+
+    public function getAllProductos()
+    {
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT * FROM productos");
+            $stmt->execute();
+            $productos = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $objeto = new Productos(
+                    $row['ID_Producto'],
+                    $row['Nombre'],
+                    $row['Proveedor'],
+                    $row['Descripción'],
+                    $row['CantidadEnStock'],
+                    $row['PrecioVenta'],
+                    $row['PrecioProveedor']
+                );
+                array_push($productos, $objeto);
+            }
+            $this->bbdd->commit();
+            return $productos;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        }
+    }
+
+    public function drawProductosList()
+    {
+        
+        $productos = $this->getAllProductos();
+        $output = "";
+
+        foreach ($productos as $productos) {
+            $output .= "<tr><td>" . $productos->getIdProducto() . "</td>";
+            $output .= "<td>" . $productos->getNombre() . "</td>";
+            $output .= "<td>" . $productos->getProveedor() . "</td>";
+            $output .= "<td>" . $productos->getCantidadStock() . "</td>";
+            $output .= "<td>" . $productos->getPrecioVenta() . "</td>";
+            $output .= "<td>" . $productos->getPrecioProveedor() . "</td>";
+            $output .= "<td> <a href='info.php?id=" . $productos->getIdProducto() . "'><img src='../img/info.png' width='25'></a> </td>";
+            $output .= "<td> <a href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a href='delete.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "</tr>";
+        }
+        return $output;
+    }
 }
