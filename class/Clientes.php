@@ -2,46 +2,36 @@
 
 class Clientes extends Connection
 {
+    protected $id;
+    protected $nombre;
+    protected $nombreContacto;
+    protected $apellidoContacto;
+    protected $email;
+    protected $telefono;
+    protected $direccionCalle;
+    protected $direccionNumero;
+    protected $ciudad;
+    protected $comunidad;
+    protected $pais;
+    protected $codPostal;
 
-    public function __construct()
+    public function __construct($id, $nombre, $nombreContacto, $apellidoContacto, $email, $telefono, $direccionCalle, $direccionNumero, $ciudad, $comunidad, $pais, $codPostal )
     {
+        $this->id = $id;
+        $this->nombre = $nombre;
+        $this->nombreContacto = $nombreContacto;
+        $this->apellidoContacto = $apellidoContacto;
+        $this->email = $email;
+        $this->telefono = $telefono;
+        $this->direccionCalle = $direccionCalle;
+        $this->direccionNumero = $direccionNumero;
+        $this->ciudad = $ciudad;
+        $this->comunidad = $comunidad;
+        $this->pais = $pais;
+        $this->codPostal = $codPostal;
+
+
         $this->connect();
-    }
-
-    public function consultaClientes()
-    {
-        try {
-            $this->bbdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $this->bbdd->beginTransaction();
-
-            $consulta =   $this->bbdd->query("SELECT * FROM clientes");
-
-            while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) //mientras hayan resultados, row contendrá los datos de cada registro
-            {
-                echo "<tr><td>" . $row["ID"] . "</td>
-                 <td>" . $row["Nombre"] . "</td> 
-                 <td>" . $row["NombreContacto"] . "</td> 
-                 <td>" . $row["ApellidoContacto"] . "</td>
-                 <td>" . $row["Email"] . "</td> 
-                 <td>" . $row["Telefono"] . "</td> 
-                 <td>" . $row["DireccionCalle"] . "</td> 
-                 <td>" . $row["DireccionNumero"] . "</td> 
-                 <td>" . $row["Ciudad"] . "</td> 
-                 <td>" . $row["Comunidad"] . "</td>
-                 <td>" . $row["Pais"] . "</td> 
-                 <td>" . $row["CodPostal"] . "</td>
-                 <td> <a href='edit.php?id=" . $row["ID"] . "'><img src='../img/write.png' width='25'></a> </td>
-                 <td> <a href='delete.php?id=" . $row["ID"] . "'><img src='../img/borrar.png' width='25'></a> </td></tr>";
-            }
-
-            $this->bbdd->commit();
-        } catch (PDOException $exception) {
-            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
-        } finally {
-            //Cerramos la conexión
-            $this->bbdd = null;
-        }
     }
 
     public function nuevoCliente($cliente) //cliente será $_POST
@@ -75,5 +65,101 @@ class Clientes extends Connection
             //Cerramos la conexión
             $this->bbdd = null;
         }
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the value of nombre
+     */ 
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Get the value of nombreContacto
+     */ 
+    public function getNombreContacto()
+    {
+        return $this->nombreContacto;
+    }
+
+    /**
+     * Get the value of apellidoContacto
+     */ 
+    public function getApellidoContacto()
+    {
+        return $this->apellidoContacto;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Get the value of telefono
+     */ 
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Get the value of direccionCalle
+     */ 
+    public function getDireccionCalle()
+    {
+        return $this->direccionCalle;
+    }
+
+    /**
+     * Get the value of direccionNumero
+     */ 
+    public function getDireccionNumero()
+    {
+        return $this->direccionNumero;
+    }
+
+    /**
+     * Get the value of ciudad
+     */ 
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * Get the value of comunidad
+     */ 
+    public function getComunidad()
+    {
+        return $this->comunidad;
+    }
+
+    /**
+     * Get the value of pais
+     */ 
+    public function getPais()
+    {
+        return $this->pais;
+    }
+
+    /**
+     * Get the value of codPostal
+     */ 
+    public function getCodPostal()
+    {
+        return $this->codPostal;
     }
 }
