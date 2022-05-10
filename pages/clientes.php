@@ -1,5 +1,7 @@
 <?php   /* require_once 'consultaClientes.php'; */
 require_once 'autoloader.php';
+$helios = new HeliosCorp();
+/* var_dump($helios->getAllClientes()); */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,9 +104,8 @@ require_once 'autoloader.php';
                                 <tfoot>
                                 </tfoot>
                                 <tbody>
-                                    <?php
-                                    $clientes = new Clientes();
-                                    $clientes->consultaClientes();
+                                    <?php        
+                                        echo $helios->drawClientesList();          
                                     ?>
                                 </tbody>
                             </table>
