@@ -1,24 +1,21 @@
 <?php
 
-class Clientes
+class Clientes extends Connection
 {
+
+    public function __construct()
+    {
+        $this->connect();
+    }
 
     public function consultaClientes()
     {
-        $user = "root";
-        $pass = "contraseña";
-        $server = "localhost";
-        $db = "integrado";
-        $port = "3306";
-
-
         try {
-            $bbdd = new PDO("mysql:host=$server; port=$port; dbname=$db", "$user", "$pass");
-            $bbdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->bbdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $bbdd->beginTransaction();
+            $this->bbdd->beginTransaction();
 
-            $consulta =  $bbdd->query("SELECT * FROM clientes");
+            $consulta =   $this->bbdd->query("SELECT * FROM clientes");
 
             while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) //mientras hayan resultados, row contendrá los datos de cada registro
             {
@@ -38,31 +35,23 @@ class Clientes
                  <td> <a href='delete.php?id=" . $row["ID"] . "'><img src='../img/borrar.png' width='25'></a> </td></tr>";
             }
 
-            $bbdd->commit();
+            $this->bbdd->commit();
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         } finally {
             //Cerramos la conexión
-            $bbdd = null;
+            $this->bbdd = null;
         }
     }
 
     public function nuevoCliente($cliente) //cliente será $_POST
     {
 
-        $user = "root";
-        $pass = "contraseña";
-        $server = "localhost";
-        $db = "integrado";
-        $port = "3306";
-
         try {
-            $bbdd = new PDO("mysql:host=$server; port=$port; dbname=$db", "$user", "$pass");
-            $bbdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $bbdd->beginTransaction();
+            $this->bbdd->beginTransaction();
 
-            $stmt = $bbdd->prepare("INSERT INTO Clientes VALUES (:ID, :Empresa, :NombreContacto, :ApellidoContacto, :Email, :Telefono, :DireccionCalle, :DireccionNumero, :Ciudad, :Comunidad, :Pais, :CodPostal)");
+            $stmt = $this->bbdd->prepare("INSERT INTO Clientes VALUES (:ID, :Empresa, :NombreContacto, :ApellidoContacto, :Email, :Telefono, :DireccionCalle, :DireccionNumero, :Ciudad, :Comunidad, :Pais, :CodPostal)");
 
             $stmt->bindParam(':ID', $cliente["ID"], PDO::PARAM_INT);
             $stmt->bindParam(':Nombre', $cliente["Empresa"], PDO::PARAM_STR);
@@ -79,12 +68,12 @@ class Clientes
 
             $stmt->execute(); //Ejecuta
 
-            $bbdd->commit();
+            $this->bbdd->commit();
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         } finally {
             //Cerramos la conexión
-            $bbdd = null;
+            $this->bbdd = null;
         }
     }
 }
