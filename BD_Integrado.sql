@@ -74,13 +74,27 @@ ID_Pedido integer NOT NULL PRIMARY KEY,
 ID_Cliente integer NOT NULL,
 Fecha_Pedido DATE NOT NULL,
 Fecha_Esperada DATE NOT NULL,
-Fecha_Entrega DATE NOT NULL,
+Fecha_Entrega DATE,
 Estado varchar(15) NOT NULL,
 Importe numeric(15,2) NOT NULL, 
 CONSTRAINT pedidosCliente_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
 );
 
-INSERT INTO Pedidos VALUES (1,1,'2006-01-17','2006-01-19','2006-01-19','Entregado',1200);
+INSERT INTO Pedidos VALUES 
+(101,4,'2021-01-17','2021-01-19','2021-01-19','Entregado',1200),
+(102,12,'2021-04-14','2021-04-16','2021-04-15','Entregado',1200),
+(103,33,'2021-06-20','2021-06-23','2021-01-23','Entregado',1200),
+(104,14,'2021-06-21','2021-01-23','2021-01-23','Entregado',1200),
+(105,8,'2021-08-02','2021-08-04','2021-08-04','Entregado',1200),
+(106,3,'2021-09-08','2021-09-11','2021-09-11','Entregado',1200),
+(107,2,'2021-11-14','2021-11-16','2021-11-15','Entregado',1200),
+(108,5,'2022-01-26','2022-01-28','2022-01-28','Entregado',1200),
+(109,12,'2022-05-12','2022-05-14','','En Reparto',1200),
+(110,6,'2022-05-13','2022-05-15','','En Reparto',1200),
+(111,19,'2022-05-13','2022-05-16','','En Reparto',1200),
+(112,44,'2022-05-16','2022-05-18','','Pendiente',1200),
+(113,50,'2022-05-16','2022-05-19','','Pendiente',1200),
+(114,23,'2022-05-20','2022-05-21','','Pendiente',1200);
 
 CREATE TABLE productos (
 ID_Producto varchar(15) NOT NULL PRIMARY KEY,
@@ -92,8 +106,23 @@ PrecioVenta numeric(15,2) DEFAULT NULL,
 PrecioProveedor numeric(15,2) DEFAULT NULL
 );
 
-INSERT INTO Productos VALUES ('11679','Sierra de Poda 400MM','HiperGarden Tools','Gracias a la poda se consigue manipular un poco la naturaleza, dándole la forma que más nos guste. Este trabajo básico de jardinería también facilita que las plantas crezcan de un modo más equilibrado, y que las flores y los frutos vuelvan cada año con regularidad. Lo mejor es dar forma cuando los ejemplares son jóvenes, de modo que exijan pocos cuidados cuando sean adultos. Además de saber cuándo y cómo hay que podar, tener unas herramientas adecuadas para esta labor es también de vital importancia.',15,14,11);
-
+INSERT INTO Productos VALUES 
+	('1','Plato de ducha Legacy 160x70 cm blanco','Leroy Merlin','Plato de ducha Roca rectangular de la serie Legacy, fabricado en España, en resina con acabado antideslizante color blanco texturizado',15,257.96,200),
+	('2','Sierra de Poda 300MM','Leroy Merlin','Gracias a la poda se consigue manipular un poco la naturaleza, dándole la forma que más nos guste. Este trabajo básico de jardinería también facilita que las plantas crezcan de un modo más equilibrado, y que las flores y los frutos vuelvan cada año con regularidad. Lo mejor es dar forma cuando los ejemplares son jóvenes, de modo que exijan pocos cuidados cuando sean adultos. Además de saber cuándo y cómo hay que podar, tener unas herramientas adecuadas para esta labor es también de vital importancia.',13,14,11),
+    ('3','Pintura interior Bienestar BRUGUER mate 4L beige playa','Leroy Merlin','Pintura acrílica Bruguer Bienestar en color beige playa con acabado mate, perfecta para decorar las paredes de tu hogar y crear así un ambiente a tu gusto',33,29,15),
+	('4','Pack 10 guantes de látex Impact Talla M','Leroy Merlin','Pack de 10 guantes extrafinos de látex de un solo uso, que proporcionan protección en pequeños trabajos de limpieza o pintura',1000,1.29,0.15),
+	('5','Pack 10 guantes de látex Impact Talla XL','Leroy Merlin','Pack de 10 guantes extrafinos de látex de un solo uso, que proporcionan protección en pequeños trabajos de limpieza o pintura',999,1.50,0.20),
+	('6','Crocs Crocband- Zapatillas Unisex Adulto','TextilSL','Zapatillas de montaña exlusivas para Frank Cuesta',255,23,13),
+	('7','Aspirador Vertical con cable 2 en 1','MaisonSA','Diseño personalizable 2 en 1; aspiradora con cable y motor ecológico',45,55,41),
+	('8','Australian Gold Intensifier Dry Acelerador del Bronceado, 237 Ml','AleHop','De árbol de té australiano, extracto de banana, nuez negra, aloe vera, pantenol y vitamina e.',320,18,5),
+	('9','Remington Plancha de Pelo Profesional Keratin Therapy Pro','AleHop','producto 1: Placas de Cerámica Avanzada - Plancha para el pelo con revestimiento de cerámica avanzada con queratina. Placas flotantes y extralargas de 100 mm',78,63,21),
+    ('10','Ventana PVC blanca oscilobatiente con persiana de 120X135 cm','MaisonSA','Ventana de PVC en color blanco con persiana, fabricada en España, con 2 hojas y apertura oscilobatiente',150,250,81),
+	('11','Kit tapajuntas de PVC blanco de 70 mm para ventana de 100x115 cm','MaisonSA','Diseño personalizable 2 en 1; aspiradora con cable y motor ecológico',45,55,41),
+	('12','Tapajuntas de PVC blanco de 70 mm con cámara','MaisonSA','Se fija con adhesivo o mediante clip con tirafondos. Medidas: 3 m de longitud.',400,8,3),
+    ('13','Toldo Zefir brazo extensible motorizado con cofre gris tela gris','MaisonSA','Toldo de brazo extensible con semicofre serie Zefir de apertura motorizada con mando a distancia.',45,550,410),
+    ('14','Puerta garaje seccional Primo motorizada blanco','MaisonSA','Puerta de garaje seccional motorizada con 3 velocidades de apertura fabricada en acero de color blanco con un acabado rugoso',40,890,481),
+    ('15','Ventana PVC ARTENS blanca oscilobatiente con persiana y guía','Artens','Ventana de PVC en color blanco con persiana, fabricada en España, con 2 hojas y apertura oscilobatiente',13,320,120);
+    
 CREATE TABLE detallePedido(
 ID_Pedido integer NOT NULL,
 ID_Producto varchar(15) NOT NULL,
@@ -102,6 +131,27 @@ PrecioUnidad numeric(15,2) NOT NULL,
 PRIMARY KEY (ID_Pedido,ID_Producto),
 CONSTRAINT productosPedido_fk FOREIGN KEY (ID_Pedido) REFERENCES pedidos (ID_Pedido),
 CONSTRAINT productosPedido_fk2 FOREIGN KEY (ID_Producto) REFERENCES productos (ID_Producto)
+
 );
 
-INSERT INTO detallePedido VALUES (1,'11679',10,70);
+INSERT INTO detallePedido VALUES 
+('101','8','2','18'),
+('101','2','2','14'),
+('101','7','1','55'),
+('102','14','5','890'),
+('103','3','2','29'),
+('104','7','7','55'),
+('105','7','1','55'),
+('106','1','2','257.96'),
+('107','8','6','18'),
+('108','13','3','550'),
+('108','9','7','63'),
+('109','10','9','250'),
+('110','10','1','250'),
+('110','6','2','23'),
+('110','15','2','320'),
+('111','15','5','320'),
+('112','8','1','18'),
+('113','4','4','1.29'),
+('113','11','2','55'),
+('114','7','3','55');
