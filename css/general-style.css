@@ -1,5 +1,7 @@
-body{
+/* GLOBAL */
+html, body, .navbar-end, .logo-nav-container, .footer{
     font-family: roboto;
+    background-color: rgb(250, 250, 250);
 }
 
 .logo-nav-container {
@@ -7,15 +9,74 @@ body{
     justify-content: space-between;
     align-items: center; /* Alinea nav y logo horizontalmente */
 }
-
-div.rounded-div {
-    /* cambia estos dos valores para definir el tamaño de tu círculo */
-    height: 200px ;
-    width: 200px;
-    /* los siguientes valores son independientes del tamaño del círculo */
-    background-repeat: no-repeat;
-    background-position: 50%;
-    border-radius: 20%;
-    background-size: 200% auto;
+.footer{
+padding: 0;
 }
 
+
+/* MENU PAGE */
+.img-button{
+    border-radius: 15%;
+    filter: brightness(70%);
+/*     -webkit-box-shadow: 8px 8px 20px -8px #00296B;  */
+    box-shadow: 8px 8px 20px -8px #00296B;
+
+}
+
+.titulo-imagen{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    
+}
+.titulo-centrado{
+    font-family: Roboto;
+    color: white;
+    opacity: 100%;
+    font-size: 2.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* TABLAS */
+
+.table-container{
+    overflow: scroll;
+    overflow-x:inherit;
+    max-height: 500px;
+}
+
+table.datatable thead th{
+    position: sticky; top: 0;
+}
+
+table.datatable thead th, table.datatable tbody td {
+    text-align: center; 
+    vertical-align: middle;
+/*     border: 1px solid lightgrey; */
+    text-align: center;
+    padding:    0px 10px 0px 10px;
+    }
+
+.table th:not([align]) {
+    text-align:center;
+    }
+
+th {
+    /* text-shadow: 3px 3px 3px #000000; */
+    background-color: #e8eaec;  
+    text-align: none;
+}
+
+td{
+    font-size: small;
+}
+
+/* FORMULARIO */
+.formulario{
+    font-size: small;
+    border: 1px solid lightgray;
+    border-radius: 15%;
+}
