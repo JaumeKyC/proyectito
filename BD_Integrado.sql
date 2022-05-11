@@ -70,11 +70,11 @@ INSERT INTO Clientes VALUES
 	(50,"At Arcu Incorporated","Lareina","Walker",'correogenerico@gmail.com',"1-416-817-7333","1998 Nec, Ave","TYP79X","Dillingen","Jambi","Sweden","551055");
 
 CREATE TABLE pedidos (
-ID_Pedido integer NOT NULL PRIMARY KEY,
+ID_Pedido integer NOT NULL PRIMARY KEY unique,
 ID_Cliente integer NOT NULL,
 Fecha_Pedido DATE NOT NULL,
 Fecha_Esperada DATE NOT NULL,
-Fecha_Entrega DATE,
+Fecha_Entrega DATE DEFAULT NULL,
 Estado varchar(15) NOT NULL,
 Importe numeric(15,2) NOT NULL, 
 CONSTRAINT pedidosCliente_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
@@ -88,13 +88,23 @@ INSERT INTO Pedidos VALUES
 (105,8,'2021-08-02','2021-08-04','2021-08-04','Entregado',1200),
 (106,3,'2021-09-08','2021-09-11','2021-09-11','Entregado',1200),
 (107,2,'2021-11-14','2021-11-16','2021-11-15','Entregado',1200),
-(108,5,'2022-01-26','2022-01-28','2022-01-28','Entregado',1200)/*,
-(109,12,'2022-05-12','2022-05-14','','En Reparto',1200),
-(110,6,'2022-05-13','2022-05-15','','En Reparto',1200),
-(111,19,'2022-05-13','2022-05-16','','En Reparto',1200),
-(112,44,'2022-05-16','2022-05-18','','Pendiente',1200),
-(113,50,'2022-05-16','2022-05-19','','Pendiente',1200),
-(114,23,'2022-05-20','2022-05-21','','Pendiente',1200)*/;
+(108,5,'2022-01-26','2022-01-28','2022-01-28','Entregado',1200),
+(109,4,'2021-01-17','2021-01-19','2021-01-19','Entregado',1200),
+(110,50,'2022-05-16','2022-05-19',null ,'Pendiente',1200),
+(111,50,'2022-05-16','2022-05-19',null ,'Pendiente',1200),
+(112,12,'2021-04-14','2021-04-16','2021-04-15','Entregado',1200),
+(113,33,'2021-06-20','2021-06-23','2021-01-22','Entregado',1200),
+(114,14,'2021-06-21','2021-01-23','2021-03-25','Entregado',1200),
+(115,8,'2021-02-02','2021-08-04','2021-06-04','Entregado',1200),
+(116,3,'2021-02-08','2021-09-11','2021-09-11','Entregado',1200),
+(117,2,'2021-11-14','2021-11-16','2021-11-15','Entregado',1200),
+(118,5,'2022-01-26','2022-01-28','2022-02-28','Entregado',1200),
+(119,12,'2022-05-12','2022-05-14',null ,'En Reparto',1200),
+(120,6,'2022-05-13','2022-05-15',null ,'En Reparto',1200),
+(121,19,'2022-05-13','2022-05-16',null ,'En Reparto',1200),
+(122,44,'2022-05-16','2022-05-18',null ,'Pendiente',1200),
+(123,50,'2022-05-16','2022-05-19',null ,'Pendiente',1200),
+(124,23,'2022-05-20','2022-05-21',null ,'Pendiente',1200);
 
 CREATE TABLE productos (
 ID_Producto varchar(15) NOT NULL PRIMARY KEY,
@@ -145,7 +155,7 @@ INSERT INTO detallePedido VALUES
 ('106','1','2','257.96'),
 ('107','8','6','18'),
 ('108','13','3','550'),
-('108','9','7','63')/*,
+('108','9','7','63'),
  ('109','10','9','250'),
 ('110','10','1','250'),
 ('110','6','2','23'),
@@ -154,4 +164,4 @@ INSERT INTO detallePedido VALUES
 ('112','8','1','18'),
 ('113','4','4','1.29'),
 ('113','11','2','55'),
-('114','7','3','55') */;
+('114','7','3','55');

@@ -68,7 +68,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos");
+            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos ORDER BY Fecha_Pedido DESC");
             $stmt->execute();
             $pedidos = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
