@@ -78,12 +78,12 @@
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
+                            <a href="./pages/pedidos.php"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
                                 <div class="titulo-centrado">Pedidos</div>
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
+                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
                                 <div class="titulo-centrado">Productos</div>
                             </a>
                         </div>
@@ -102,7 +102,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container logo-nav-container">
-            <a href="#">
+            <a href="index.php">
                 <div class="icon-text navbar-item">
                     <span class="icon is-large">
                         <img src="img/flecha-hacia-atras.png" alt="">
