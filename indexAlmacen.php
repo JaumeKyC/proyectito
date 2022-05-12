@@ -65,7 +65,7 @@
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
        <!--  <div class="block "> -->
             <!-- Dividimos en columnas -->
-            <div class=" margen1 columns is-mobile" style="margin-top: 70px">
+            <div class=" margen1 columns is-mobile">
                 <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-1"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->

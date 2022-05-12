@@ -61,38 +61,38 @@
     <!-- MAIN SECTION -->
     <main>
         <!-- Dividimos en columnas -->
-        <div class="columns is-mobile">
-            <!-- Columnas vacías para dar margen a la izquierda -->
-            <div class="column is-2"></div>
-            <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-            <div class="column is-8">
-                <div class="columns">
-                    <div class="column is-1.5"></div>
-                    <div class="column is-3 has-text-centered titulo-imagen">
-                        <a href="#"> <img class="img-button" src="img/menu/fichaje2.jpg" alt="">
-                            <div class="titulo-centrado">Fichaje</div>
-                        </a>
+        <div class=" margen1 columns is-mobile">
+                <!-- Columnas vacías para dar margen a la izquierda -->
+                <div class="column is-1"></div>
+                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                <div class="column is-10 ">
+                    <div class="columns">
+                        
+                        <div class="column is-4 has-text-centered titulo-imagen">
+                            <a href="./pages/clientes.php"> <img class="img-button" src="img/menu/fichaje2.jpg" alt="">
+                                <div class="titulo-centrado ">Fichaje</div>
+                            </a>
+                        </div>
+                        <div class="column is-4 has-text-centered titulo-imagen">
+                            <a href="./pages/pedidos.php"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
+                                <div class="titulo-centrado">Convenio</div>
+                            </a>
+                        </div>
+                        <div class="column is-4 has-text-centered titulo-imagen">
+                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
+                                <div class="titulo-centrado">Noticias</div>
+                            </a>
+                        </div>
+                       
                     </div>
-                    <div class="column is-3 has-text-centered titulo-imagen">
-                        <a href="#"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
-                            <div class="titulo-centrado">Convenio</div>
-                        </a>
-                    </div>
-                    <div class="column is-3 has-text-centered titulo-imagen">
-                        <a href="#"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
-                            <div class="titulo-centrado">Noticias</div>
-                        </a>
-                    </div>
-                    <div class="column is-1.5"></div>
                 </div>
+                <!-- Columnas vacías para dar margen a la derecha -->
+                <div class="column is-1"></div>
             </div>
-            <!-- Columnas vacías para dar margen a la derecha -->
-            <div class="column is-2"></div>
-        </div>
         <!-- FOOTER -->
         <footer class="footer">
             <div class="container logo-nav-container">
-                <a href="#">
+                <a href="index.php">
                     <div class="icon-text navbar-item">
                         <span class="icon is-large">
                             <img src="img/flecha-hacia-atras.png" alt="">
