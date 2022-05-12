@@ -70,7 +70,7 @@
                 <div class="column is-1"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                 <div class="column is-10 ">
-                    <div class="columns container">
+                    <div class="columns">
                         
                         <div class="column is-4 has-text-centered titulo-imagen">
                             <a href="./pages/clientes.php"> <img class="img-button" src="img/menu/clientes2.jpg" alt="">
