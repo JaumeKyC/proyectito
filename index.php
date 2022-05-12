@@ -79,7 +79,7 @@
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
+                            <a href="#"> <img class="img-button" src="img/gestionINI.jpg" alt="">
                                 <div class="titulo-centrado">Gestión</div>
                             </a>
                         </div>
