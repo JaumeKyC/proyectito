@@ -65,33 +65,33 @@
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
        <!--  <div class="block "> -->
             <!-- Dividimos en columnas -->
-            <div class="columns is-mobile ">
+            <div class=" margen1 columns is-mobile" style="margin-top: 70px">
                 <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-2"></div>
+                <div class="column is-1"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
+                <div class="column is-10 ">
                     <div class="columns container">
-                        <div class="column is-1.5"></div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
+                        
+                        <div class="column is-4 has-text-centered titulo-imagen">
                             <a href="./pages/clientes.php"> <img class="img-button" src="img/menu/clientes2.jpg" alt="">
                                 <div class="titulo-centrado ">Clientes</div>
                             </a>
                         </div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="./pages/pedidos.php"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
+                        <div class="column is-4 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
                                 <div class="titulo-centrado">Pedidos</div>
                             </a>
                         </div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
-                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
+                        <div class="column is-4 has-text-centered titulo-imagen">
+                            <a href="#"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
                                 <div class="titulo-centrado">Productos</div>
                             </a>
                         </div>
-                        <div class="column is-1.5"></div>
+                       
                     </div>
                 </div>
                 <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-2"></div>
+                <div class="column is-1"></div>
             </div>
         <!-- </div> -->
         <!-- Otro bloque para dar espacio con el Footer -->

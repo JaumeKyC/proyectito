@@ -63,35 +63,36 @@
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        <!-- <div class="block "> -->
+        
             <!-- Dividimos en columnas -->
-            <div class="columns is-mobile ">
+            <div class=" margen1 columns is-mobile" style="margin-top: 70px"> <!-- Agregar style="margin top:70px" -->
+                
                 <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-2"></div>
+                <div class="column is-1"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
-                    <div class="columns container">
-                        <div class="column is-1.5"></div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
+                <div class="column is-10">
+                    <div class="columns">
+                        
+                        <div class="column is-4 has-text-centered titulo-imagen">
                             <a href="indexAlmacen.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
                                 <div class="titulo-centrado ">Almacén</div>
                             </a>
                         </div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
+                        <div class="column is-4 has-text-centered titulo-imagen">
                             <a href="#"> <img class="img-button" src="img/menu/pedidos2.jpg" alt="">
                                 <div class="titulo-centrado">Gestión</div>
                             </a>
                         </div>
-                        <div class="column is-3 has-text-centered titulo-imagen">
+                        <div class="column is-4 has-text-centered titulo-imagen">
                             <a href="otros.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
                                 <div class="titulo-centrado">Otros</div>
                             </a>
                         </div>
-                        <div class="column is-1.5"></div>
+                        
                     </div>
                 </div>
                 <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-2"></div>
+            <div class="column is-1"></div>
             </div>
 
             <!-- SEGUNDO BLOQUE PARA OTROS 3 BOTONES PRINCIPALES -->
