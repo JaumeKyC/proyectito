@@ -74,7 +74,7 @@
                     <div class="columns">
                         
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="indexAlmacen.php"> <img class="img-button" src="img/almacenINI.jpg" alt="">
+                            <a href="indexAlmacen.php"> <img class="img-button" src="img/menu/almacenINI.jpg" alt="">
                                 <div class="titulo-centrado ">Almacén</div>
                             </a>
                         </div>
@@ -84,7 +84,7 @@
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="otros.php"> <img class="img-button" src="img/otros.jpg" alt="">
+                            <a href="otros.php"> <img class="img-button" src="img/menu/otros.jpg" alt="">
                                 <div class="titulo-centrado">Otros</div>
                             </a>
                         </div>

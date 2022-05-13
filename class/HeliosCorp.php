@@ -4,10 +4,10 @@ class HeliosCorp extends Connection
 {
     public function __construct()
     {
-
         $this->connect();
     }
 
+    //CLIENTES
     public function getAllClientes()
     {
         try {
@@ -58,12 +58,25 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $clientes->getPais() . "</td>";
             $output .= "<td>" . $clientes->getCodPostal() . "</td>";
             $output .= "<td> <a href='edit.php?id=" . $clientes->getId() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a href='delete.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
     }
 
+    public function deleteClientes($id)
+    {
+        try {
+            $stmtDelete = $this->bbdd->prepare("DELETE FROM clientes WHERE id = :id");
+            $stmtDelete->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmtDelete->execute();
+            return $stmtDelete->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la consulta: ' . $e->getMessage();
+        }
+    }
+
+    //PEDIDOS
     public function getAllPedidos()
     {
         try {
@@ -92,7 +105,7 @@ class HeliosCorp extends Connection
 
     public function drawPedidosList()
     {
-        
+
         $pedidos = $this->getAllPedidos();
         $output = "";
 
@@ -106,12 +119,13 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getImporte() . "</td>";
             $output .= "<td> <a href='info.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a href='delete.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
     }
 
+    //PRODUCTOS
     public function getAllProductos()
     {
         try {
@@ -140,7 +154,7 @@ class HeliosCorp extends Connection
 
     public function drawProductosList()
     {
-        
+
         $productos = $this->getAllProductos();
         $output = "";
 
@@ -153,9 +167,14 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $productos->getPrecioProveedor() . "</td>";
             $output .= "<td> <a href='info.php?id=" . $productos->getIdProducto() . "'><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a href='delete.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a href='deleteProductos.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
+    }
+
+    //EXTRA
+    function alert($msg) {
+        echo "<script type='text/javascript'>alert('$msg');</script>";
     }
 }
