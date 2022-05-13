@@ -17,7 +17,7 @@ Pais varchar(25) NOT NULL,
 CodPostal varchar(25) NOT NULL
 );
 
-INSERT INTO Clientes VALUES
+INSERT INTO clientes VALUES
 	(1,'DGPRODUCTIONS GARDEN','Daniel G','GoldFish','correogenerico@gmail.com','676567654','False Street','52 2 A','Paiporta','Valencia','España','46200'),
 	(2,'Empresa de Prueba','Paco ','Pipa','correogenerico@gmail.com','676566542','NoStreet','242 A','Neverwhere','Wonderland','Universe','00000'),
 	(3,"Eu Augue Ltd","Hashim","Forbes",'correogenerico@gmail.com',"1-352-771-7823","618-9345 Lobortis Ave","MXK02L","Kano","Campania","Indonesia","7801"),
@@ -80,7 +80,7 @@ Importe numeric(15,2) NOT NULL,
 CONSTRAINT pedidosCliente_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
 );
 
-INSERT INTO Pedidos VALUES 
+INSERT INTO pedidos VALUES 
 (101,4,'2021-01-17','2021-01-19','2021-01-19','Entregado',1200),
 (102,12,'2021-04-14','2021-04-16','2021-04-15','Entregado',1200),
 (103,33,'2021-06-20','2021-06-23','2021-01-23','Entregado',1200),
@@ -116,7 +116,7 @@ PrecioVenta numeric(15,2) DEFAULT NULL,
 PrecioProveedor numeric(15,2) DEFAULT NULL
 );
 
-INSERT INTO Productos VALUES 
+INSERT INTO productos VALUES 
 	('1','Plato de ducha Legacy 160x70 cm blanco','Leroy Merlin','Plato de ducha Roca rectangular de la serie Legacy, fabricado en España, en resina con acabado antideslizante color blanco texturizado',15,257.96,200),
 	('2','Sierra de Poda 300MM','Leroy Merlin','Gracias a la poda se consigue manipular un poco la naturaleza, dándole la forma que más nos guste. Este trabajo básico de jardinería también facilita que las plantas crezcan de un modo más equilibrado, y que las flores y los frutos vuelvan cada año con regularidad. Lo mejor es dar forma cuando los ejemplares son jóvenes, de modo que exijan pocos cuidados cuando sean adultos. Además de saber cuándo y cómo hay que podar, tener unas herramientas adecuadas para esta labor es también de vital importancia.',13,14,11),
     ('3','Pintura interior Bienestar BRUGUER mate 4L beige playa','Leroy Merlin','Pintura acrílica Bruguer Bienestar en color beige playa con acabado mate, perfecta para decorar las paredes de tu hogar y crear así un ambiente a tu gusto',33,29,15),

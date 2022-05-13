@@ -2,6 +2,9 @@
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
 /* var_dump($helios->getAllClientes()); */
+/* if ($_GET["success"] = true) {
+    $helios->alert("Cliente borrado con éxito");
+} */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,8 +107,8 @@ $helios = new HeliosCorp();
                                 <tfoot>
                                 </tfoot>
                                 <tbody>
-                                    <?php        
-                                        echo $helios->drawClientesList();          
+                                    <?php
+                                    echo $helios->drawClientesList();
                                     ?>
                                 </tbody>
                             </table>
