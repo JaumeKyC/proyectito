@@ -83,7 +83,7 @@
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/almacen2.jpg" alt="">
+                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/productos2.jpg" alt="">
                                 <div class="titulo-centrado">Productos</div>
                             </a>
                         </div>

@@ -74,17 +74,17 @@
                     <div class="columns">
                         
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="indexAlmacen.php"> <img class="img-button" src="img/almacenINI.jpg" alt="">
+                            <a href="indexAlmacen.php"> <img class="img-button" src="img/menu/almacen2ini.jpg" alt="">
                                 <div class="titulo-centrado ">Almacén</div>
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/gestionINI.jpg" alt="">
+                            <a href="#"> <img class="img-button" src="img/menu/gestionini.jpg" alt="">
                                 <div class="titulo-centrado">Gestión</div>
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="otros.php"> <img class="img-button" src="img/otros.jpg" alt="">
+                            <a href="otros.php"> <img class="img-button" src="img/menu/otros.jpg" alt="">
                                 <div class="titulo-centrado">Otros</div>
                             </a>
                         </div>
