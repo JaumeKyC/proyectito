@@ -8,7 +8,7 @@ class HeliosCorp extends Connection
     }
 
     //CLIENTES
-    public function getAllClientes()
+    public function getAllClientes() //Devuelve un array de objetos con todos los clientes
     {
         try {
             $this->bbdd->beginTransaction();
@@ -39,7 +39,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawClientesList()
+    public function drawClientesList() //Crea la tabla a partir del array de objetos clientes
     {
         $clientes = $this->getAllClientes();
         $output = "";
@@ -57,6 +57,7 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $clientes->getComunidad() . "</td>";
             $output .= "<td>" . $clientes->getPais() . "</td>";
             $output .= "<td>" . $clientes->getCodPostal() . "</td>";
+            $output .= "<td> <a href='infoCliente.php?id=" . $clientes->getId() . "'><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a href='edit.php?id=" . $clientes->getId() . "'><img src='../img/write.png' width='25'></a> </td>";
             $output .= "<td> <a href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
@@ -64,7 +65,44 @@ class HeliosCorp extends Connection
         return $output;
     }
 
-    public function deleteClientes($id)
+    public function getCliente($id) //Devuelve la info de un solo cliente al pasarle el ID
+    {
+        try {
+            $stmtClient = $this->bbdd->prepare("SELECT * FROM clientes WHERE id = :id");
+            $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
+            if ($stmtClient->execute() && $stmtClient->rowCount() > 0) {
+                $cliente = $stmtClient->fetch(PDO::FETCH_ASSOC);
+                return new Clientes(
+                    $cliente['ID'],
+                    $cliente['Nombre'],
+                    $cliente['NombreContacto'],
+                    $cliente['ApellidoContacto'],
+                    $cliente['Email'],
+                    $cliente['Telefono'],
+                    $cliente['DireccionCalle'],
+                    $cliente['DireccionNumero'],
+                    $cliente['Ciudad'],
+                    $cliente['Comunidad'],
+                    $cliente['Pais'],
+                    $cliente['CodPostal']
+                );
+            }
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la consulta: ' . $e->getMessage();
+        }
+        return new Clientes(null, null, null, null, null, null,null, null, null, null, null, null);
+    }
+
+    public function drawClienteInfo($id) //Crea la tabla de información del cliente
+    {
+        $cliente = $this->getCliente($id);
+        $output = "";
+        $output .= "<tr><th>Id</th><td>" . $cliente->getId() . "</td></tr>";
+
+        return $output;
+    }
+
+    public function deleteClientes($id) //Elimina el cliente
     {
         try {
             $stmtDelete = $this->bbdd->prepare("DELETE FROM clientes WHERE id = :id");
@@ -77,7 +115,7 @@ class HeliosCorp extends Connection
     }
 
     //PEDIDOS
-    public function getAllPedidos()
+    public function getAllPedidos() //Devuelve un array de objetos con todos los pedidos
     {
         try {
             $this->bbdd->beginTransaction();
@@ -103,7 +141,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawPedidosList()
+    public function drawPedidosList() //Crea la tabla a partir del array de objetos pedido
     {
 
         $pedidos = $this->getAllPedidos();
@@ -126,7 +164,7 @@ class HeliosCorp extends Connection
     }
 
     //NEW PEDIDO
-    public function getStock($id_producto)
+    public function getStock($id_producto) //Devuelve el stock de un producto al pasarle el ID
     {
         try {
             $this->bbdd->beginTransaction();
@@ -140,11 +178,11 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawCantidadOptions(){
-        
+    public function drawCantidadOptions() //Crea el desplegable con la cantidad leyendo la base de datos
+    {
     }
 
-    public function drawProductosOptions()
+    public function drawProductosOptions() //Crea el desplegable con los productos de la base de datos
     {
         try {
             $this->bbdd->beginTransaction();
@@ -163,7 +201,8 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawClientesOptions(){
+    public function drawClientesOptions() //Crea el desplegable con los clientes de la base de datos
+    {
         try {
             $this->bbdd->beginTransaction();
             $stmt = $this->bbdd->prepare("SELECT * FROM clientes");
@@ -182,7 +221,7 @@ class HeliosCorp extends Connection
     }
 
     //PRODUCTOS
-    public function getAllProductos()
+    public function getAllProductos() //Devuelve un array de objetos con todos los productos
     {
         try {
             $this->bbdd->beginTransaction();
@@ -208,7 +247,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawProductosList()
+    public function drawProductosList() //Crea la tabla a partir del array de objetos productos
     {
 
         $productos = $this->getAllProductos();

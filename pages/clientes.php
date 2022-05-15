@@ -101,7 +101,7 @@ $helios = new HeliosCorp();
                                         <th class="">Comunidad</th>
                                         <th class="">País</th>
                                         <th class="">Cod. Postal</th>
-                                        <th class="" colspan="2">Acciones</th>
+                                        <th class="" colspan="3">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
