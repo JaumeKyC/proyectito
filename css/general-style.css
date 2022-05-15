@@ -10,9 +10,8 @@ html, body, .navbar-end, .logo-nav-container, .footer{
     align-items: center; /* Alinea nav y logo horizontalmente */
 }
 .footer{
-padding: 0;
+padding-bottom: 0;
 }
-
 
 /* MENU PAGE */
 .img-button{
@@ -85,4 +84,20 @@ td{
 .margen1{
     margin-top: 70px!important;
 }
+
+
+/* SALIDAS */
+.flechaAtras{
+    width: 50px;
+    height: 50px;
+   
+
+}
+
+.logout{
+    width: 65px;
+    height: 50px;
+   
+}
+
 
