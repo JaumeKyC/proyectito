@@ -125,6 +125,62 @@ class HeliosCorp extends Connection
         return $output;
     }
 
+    //NEW PEDIDO
+    public function getStock($id_producto)
+    {
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT CantidadEnStock AS stock FROM productos  WHERE ID_Producto=$id_producto");
+            $stmt->execute();
+            $stock = $stmt->fetch(PDO::FETCH_ASSOC)["stock"];
+            $this->bbdd->commit();
+            return $stock;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        }
+    }
+
+    public function drawCantidadOptions(){
+        
+    }
+
+    public function drawProductosOptions()
+    {
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT * FROM productos");
+            $stmt->execute();
+            $output = "";
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $output .= "<option value='" . $row['ID_Producto'] . "'>" . $row['Nombre'] . "</option>";
+            }
+
+            $this->bbdd->commit();
+            return $output;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        }
+    }
+
+    public function drawClientesOptions(){
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT * FROM clientes");
+            $stmt->execute();
+            $output = "";
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $output .= "<option value='" . $row['ID'] . "'>" . $row['Nombre'] . "</option>";
+            }
+
+            $this->bbdd->commit();
+            return $output;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        }
+    }
+
     //PRODUCTOS
     public function getAllProductos()
     {
@@ -174,7 +230,8 @@ class HeliosCorp extends Connection
     }
 
     //EXTRA
-    function alert($msg) {
+    function alert($msg)
+    {
         echo "<script type='text/javascript'>alert('$msg');</script>";
     }
 }
