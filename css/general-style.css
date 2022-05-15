@@ -13,6 +13,12 @@ html, body, .navbar-end, .logo-nav-container, .footer{
 padding-bottom: 0;
 }
 
+/* Este footer se usara para los archivos .php que tengan tablas (Clientes,Productos,Pedidos por el momento) */
+.footer2{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
 /* MENU PAGE */
 .img-button{
     border-radius: 15%;

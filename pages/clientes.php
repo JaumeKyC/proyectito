@@ -133,17 +133,17 @@ $helios = new HeliosCorp();
     <!-- FIN DE LA MAIN SECTION -->
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer2">
 
 
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
-                <div class="icon-text navbar-item">
+                <!-- <div class="icon-text navbar-item"> -->
                     <span class="icon is-large">
                         <img src="../img/flecha-hacia-atras.png" alt="">
                     </span>
 
-                </div>
+                <!-- </div> -->
             </a>
             <span>
                 <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
