@@ -103,11 +103,11 @@
     <footer class="footer">
         <div class="container logo-nav-container">
             <a href="index.php">
-                <div class="icon-text navbar-item">
+               <!--  <div class="icon-text navbar-item"> -->
                     <span class="icon is-large">
-                        <img src="img/flecha-hacia-atras.png" alt="">
+                        <img src="img/flecha-hacia-atras.png" alt="" class="flechaAtras">
                     </span>
-                </div>
+                <!-- </div> -->
             </a>
         </div>
     </footer>

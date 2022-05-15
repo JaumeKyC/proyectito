@@ -95,7 +95,7 @@
                 <a href="#">
                     <div class="icon-text navbar-item">
                         <span class="icon is-large">
-                            <img src="../img/flecha-hacia-atras.png" alt="">
+                            <img src="../img/flecha-hacia-atras.png" alt="" class="flechaAtras">
                         </span>
                     </div>
                 </a>
