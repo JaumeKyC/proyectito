@@ -1,11 +1,7 @@
-<?php   /* require_once 'consultaClientes.php'; */
-require_once 'autoloader.php';
+<?php require_once 'autoloader.php';
 $helios = new HeliosCorp();
-/* var_dump($helios->getAllClientes()); */
-/* if ($_GET["success"] = true) {
-    $helios->alert("Cliente borrado con éxito");
-} */
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +9,7 @@ $helios = new HeliosCorp();
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
     <link rel="icon" href="../img/logoico.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,77 +70,48 @@ $helios = new HeliosCorp();
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
             <!-- Dividimos en columnas -->
-            <div class="columns is-mobile">
+            <div class="columns">
                 <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-1"></div>
+                <div class="column is-2"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-10 ">
+                <div class="column is-8 ">
                     <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
 
                     <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <div class="block">
+                    <div class="">
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                        <!-- FORMULARIO -->
                         <div class="table-container">
-                            <table class="datatable table is-hoverable is-centered table is-fullwidth">
-                                <!-- class="table is-striped is-narrow is-hoverable has-text-centered is-centered" -->
-                                <thead>
-                                    <tr>
-                                        <th class="">ID</th>
-                                        <th class="">Empresa</th>
-                                        <th class="">Email</th>
-                                        <th class="">Teléfono</th>
-                                        <th class="">País</th>
-                                        <th class="" colspan="3">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                </tfoot>
-                                <tbody>
-                                    <?php
-                                    echo $helios->drawClientesList();
-                                    ?>
-                                </tbody>
+                            <table class=" table is-fullwidth has-text-centered is-hoverable is-bordered is-stripped">
+                            <?= $helios->drawClienteInfo($_GET["id"]);?>
                             </table>
                         </div>
-
+                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                     </div>
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
                 </div>
 
                 <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-1"></div>
+                <div class="column is-2"></div>
             </div>
         </div>
-
-        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
-
-        <!-- Otro bloque para dar espacio con el Footer -->
-        <div class="block"></div>
+        <!-- FIN DE LA MAIN SECTION -->
     </main>
-    <!-- FIN DE LA MAIN SECTION -->
-
     <!-- FOOTER -->
-    <footer class="footer2">
-
-
+    <footer class="">
         <div class="container logo-nav-container">
-            <a href="../indexAlmacen.php">
-                <!-- <div class="icon-text navbar-item"> -->
+            <a href="./clientes.php">
+                <div class="icon-text navbar-item">
                     <span class="icon is-large">
                         <img src="../img/flecha-hacia-atras.png" alt="">
                     </span>
-
-                <!-- </div> -->
+                </div>
             </a>
-            <span>
-                <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
-                <a href="#"><input class="button is-light" type="submit" value="Filtrar"></a>
-            </span>
-
+        </div>
     </footer>
     <!-- FIN DEL FOOTER -->
 </body>
+<?php
+
+?>
 
 </html>

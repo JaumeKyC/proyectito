@@ -47,16 +47,9 @@ class HeliosCorp extends Connection
         foreach ($clientes as $clientes) {
             $output .= "<tr><td>" . $clientes->getId() . "</td>";
             $output .= "<td>" . $clientes->getNombre() . "</td>";
-            $output .= "<td>" . $clientes->getNombreContacto() . "</td>";
-            $output .= "<td>" . $clientes->getApellidoContacto() . "</td>";
             $output .= "<td>" . $clientes->getEmail() . "</td>";
             $output .= "<td>" . $clientes->getTelefono() . "</td>";
-            $output .= "<td>" . $clientes->getDireccionCalle() . "</td>";
-            $output .= "<td>" . $clientes->getDireccionNumero() . "</td>";
-            $output .= "<td>" . $clientes->getCiudad() . "</td>";
-            $output .= "<td>" . $clientes->getComunidad() . "</td>";
             $output .= "<td>" . $clientes->getPais() . "</td>";
-            $output .= "<td>" . $clientes->getCodPostal() . "</td>";
             $output .= "<td> <a href='infoCliente.php?id=" . $clientes->getId() . "'><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a href='edit.php?id=" . $clientes->getId() . "'><img src='../img/write.png' width='25'></a> </td>";
             $output .= "<td> <a href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
@@ -97,8 +90,11 @@ class HeliosCorp extends Connection
     {
         $cliente = $this->getCliente($id);
         $output = "";
-        $output .= "<tr><th>Id</th><td>" . $cliente->getId() . "</td></tr>";
-
+        $output .= "<thead><tr><th colspan='8'>Detalles de " . $cliente->getNombre() . "</th></tr></thead>";
+        $output .= "<tbody><tr><th colspan='2'>Nombre del Contacto</th><th colspan='2'>Apellido del Conctacto</th><th colspan='2'>Teléfono</th><th colspan='2'>Email</th></tr>";
+        $output .= "<tr><td colspan='2'>" . $cliente->getNombreContacto() . "</td><td colspan='2'>" . $cliente->getApellidoContacto() . "</td><td colspan='2'>" . $cliente->getTelefono() . "</td><td colspan='2'>" . $cliente->getEmail() . "</td></tr>";
+        $output .= "<tr><th colspan='2''>Calle</th><th>Número</th><th>Ciudad</th><th>Comunidad</th><th>País</th><th>Código Postal</th></tr>";
+        $output .= "<tr><td colspan='2'>" . $cliente->getDireccionCalle() . "</td><td>" . $cliente->getDireccionNumero() . "</td><td>" . $cliente->getCiudad() . "</td><td>" . $cliente->getComunidad() . "</td><td>" . $cliente->getPais() . "</td><td>" . $cliente->getCodPostal() . "</td></tr></tbody>";
         return $output;
     }
 
