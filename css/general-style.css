@@ -101,6 +101,11 @@ td{
     margin-top: 10px!important;
 }
 
+/* MARGEN HEADER LOGIN */
+.margenlogin{
+    margin-top: 120px!important;
+}
+
 .margenPedido1{
     margin: 50px ;
     margin-top: 80px!important;
