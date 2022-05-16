@@ -1,7 +1,7 @@
 {
-    "servername" : "127.0.0.1",
-    "username" : "root",
-    "password" : "contraseña",
-    "db" : "integrado",
+    "servername" : "helioscorp.ddns.net",
+    "username" : "heli_root",
+    "password" : "123456",
+    "db" : "heli_integrado",
     "itemsPag" : 5
 }
