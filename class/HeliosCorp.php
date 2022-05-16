@@ -90,7 +90,7 @@ class HeliosCorp extends Connection
     {
         $cliente = $this->getCliente($id);
         $output = "";
-        $output .= "<thead><tr><th colspan='8'>Detalles de " . $cliente->getNombre() . "</th></tr></thead>";
+        $output .= "<thead><tr><th colspan='8' style='font-size:25px;'>" . $cliente->getNombre() . "</th></tr></thead>";
         $output .= "<tbody><tr><th colspan='2'>Nombre del Contacto</th><th colspan='2'>Apellido del Conctacto</th><th colspan='2'>Teléfono</th><th colspan='2'>Email</th></tr>";
         $output .= "<tr><td colspan='2'>" . $cliente->getNombreContacto() . "</td><td colspan='2'>" . $cliente->getApellidoContacto() . "</td><td colspan='2'>" . $cliente->getTelefono() . "</td><td colspan='2'>" . $cliente->getEmail() . "</td></tr>";
         $output .= "<tr><th colspan='2''>Calle</th><th>Número</th><th>Ciudad</th><th>Comunidad</th><th>País</th><th>Código Postal</th></tr>";

@@ -82,7 +82,7 @@ $helios = new HeliosCorp();
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
                         <div class="table-container">
-                            <table class=" table is-fullwidth has-text-centered is-hoverable is-bordered is-stripped">
+                            <table class=" table is-fullwidth has-text-centered is-hoverable is-stripped">
                             <?= $helios->drawClienteInfo($_GET["id"]);?>
                             </table>
                         </div>
