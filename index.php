@@ -108,13 +108,13 @@
     <footer class="footer">
         <div class="container logo-nav-container">
             <a href="#">
-                <div class="icon-text navbar-item">
+                <!-- <div class="icon-text navbar-item"> -->
                     <span class="icon is-large">
-                        <img src="img/flecha-hacia-atras.png" alt="">
+                        <img src="img/logout.png" alt="" class="logout">
                     </span>
-                </div>
+                <!-- </div> -->
             </a>
-        </div>
+       </div>
     </footer>
     <!-- FIN DEL FOOTER -->
 </body>

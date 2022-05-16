@@ -91,17 +91,10 @@ $helios = new HeliosCorp();
                                     <tr>
                                         <th class="">ID</th>
                                         <th class="">Empresa</th>
-                                        <th class="">Nom. de Contacto</th>
-                                        <th class="">Ape. del Contacto</th>
                                         <th class="">Email</th>
                                         <th class="">Teléfono</th>
-                                        <th class="">Calle</th>
-                                        <th class="">Num.</th>
-                                        <th class="">Ciudad</th>
-                                        <th class="">Comunidad</th>
                                         <th class="">País</th>
-                                        <th class="">Cod. Postal</th>
-                                        <th class="" colspan="2">Acciones</th>
+                                        <th class="" colspan="3">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -133,17 +126,17 @@ $helios = new HeliosCorp();
     <!-- FIN DE LA MAIN SECTION -->
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer2">
 
 
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
-                <div class="icon-text navbar-item">
+                <!-- <div class="icon-text navbar-item"> -->
                     <span class="icon is-large">
                         <img src="../img/flecha-hacia-atras.png" alt="">
                     </span>
 
-                </div>
+                <!-- </div> -->
             </a>
             <span>
                 <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
