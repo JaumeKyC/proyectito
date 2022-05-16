@@ -1,3 +1,2 @@
 config/
-./config/db.json
-./config/dbLocal.json
+config/db.json
