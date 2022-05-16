@@ -110,6 +110,7 @@ class HeliosCorp extends Connection
         }
     }
 
+
     //PEDIDOS
     public function getAllPedidos() //Devuelve un array de objetos con todos los pedidos
     {
