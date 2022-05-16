@@ -10,7 +10,7 @@ html, body, .navbar-end, .logo-nav-container, .footer{
     align-items: center; /* Alinea nav y logo horizontalmente */
 }
 .footer{
-padding-bottom: 0;
+padding-bottom: 0!important;
 }
 
 /* Este footer se usara para los archivos .php que tengan tablas (Clientes,Productos,Pedidos por el momento) */
