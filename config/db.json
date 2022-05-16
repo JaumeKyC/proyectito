@@ -1,7 +1,7 @@
 {
-
     "servername" : "localhost",
-    "username" : "heli_root",
-    "password" : "123456",
-    "db" : "heli_integrado"
+    "username" : "root",
+    "password" : "",
+    "db" : "integrado",
+    "itemsPag" : 5
 }
