@@ -2,9 +2,13 @@
 
 class HeliosCorp extends Connection
 {
+    private $pag;
+    private $filter;
     public function __construct()
     {
         $this->connect();
+        $this->setCurrentPage();
+        $this->setCurrentFilter();
     }
 
     //CLIENTES
@@ -268,5 +272,39 @@ class HeliosCorp extends Connection
     function alert($msg)
     {
         echo "<script type='text/javascript'>alert('$msg');</script>";
+    }
+
+
+    /* FILTRADO */
+    private function setCurrentPage($defaultPage = null)
+    {
+        if(session_status() !== PHP_SESSION_ACTIVE)session_start();
+        if(!is_null($defaultPage)){
+            $this->pag = $defaultPage;
+        }elseif (isset($_GET["pag"])){
+            $this->pag = $_GET["pag"];
+        }elseif (isset($_SESSION["pag"])){
+            $this->pag = $_SESSION["pag"];
+        }else{
+            $this->pag = 1;
+        }
+        $_SESSION["pag"] = $this->pag;
+    }
+
+    private function setCurrentFilter(){
+        if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+        if (isset($_POST["cliente"])) {
+            $this->filter = $_POST["cliente"];
+            $this->setCurrentPage(1);
+        } elseif (isset($_SESSION["cliente"])) {
+            $this->filter = $_SESSION["cliente"];
+        } else {
+            $this->filter = "%%";
+        }
+        $_SESSION["cliente"] = $this->filter;
+    }
+    public function getFilter()
+    {
+        return $this->filter;
     }
 }
