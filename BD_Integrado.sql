@@ -168,9 +168,9 @@ INSERT INTO detallePedido VALUES
 
 
 CREATE TABLE login(
-nombre varchar(20) Primary key,
-usuario varchar(20) NOT NULL,
-contraseña varchar(20) NOT NULL,
+name varchar(20) Primary key,
+user varchar(20) NOT NULL,
+password varchar(20) NOT NULL,
 id integer Not Null,
 isAdmin bool not null);
 
