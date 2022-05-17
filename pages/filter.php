@@ -20,7 +20,7 @@ $cliente->getAllClientes();
     <title>Filtrar</title>
 </head>
 <body>
-    <form action="pages/clientes.php" method="POST">
+    <form action="clientes.php" method="POST">
         Busca la empresa &nbsp <input type="text" name="cliente" value="<?= $cliente->getFilter() ?>">
         &nbsp<input type="submit" value="Search"><br><br>
     </form>
