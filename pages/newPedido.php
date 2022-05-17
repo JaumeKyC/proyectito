@@ -1,5 +1,9 @@
-<?php require_once 'autoloader.php';
-$helios = new HeliosCorp(); ?>
+<?php 
+session_start();
+if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
+require_once 'autoloader.php';
+$helios = new HeliosCorp(); 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +41,7 @@ $helios = new HeliosCorp(); ?>
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span>Usuario</span>
+                                <span><?= $_SESSION["user"]?></span>
                             </div>
                         </a>
                         <a href="#">

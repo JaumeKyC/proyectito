@@ -34,7 +34,7 @@
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span>Usuario</span>
+                                <span><?= $_SESSION["user"]?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -45,7 +45,7 @@
                                 <span>Mensajes</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="logout.php">
                             <div class="icon-text navbar-item">
                                 <span class="icon is-large">
                                     <img src="../img/cerrar.png" alt="">

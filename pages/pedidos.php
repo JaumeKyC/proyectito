@@ -1,7 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
-/* var_dump($helios->getAllPedidos()); */ 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span>Usuario</span>
+                                <span><?= $_SESSION["user"]?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -50,7 +52,7 @@ $helios = new HeliosCorp();
                                 <span>Mensajes</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="logout.php">
                             <div class="icon-text navbar-item">
                                 <span class="icon is-large">
                                     <img src="../img/cerrar.png" alt="">

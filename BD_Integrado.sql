@@ -165,3 +165,18 @@ INSERT INTO detallePedido VALUES
 ('113','4','4','1.29'),
 ('113','11','2','55'),
 ('114','7','3','55');
+
+
+CREATE TABLE login(
+nombre varchar(20) Primary key,
+usuario varchar(20) NOT NULL,
+contraseña varchar(20) NOT NULL,
+id integer Not Null,
+isAdmin bool not null);
+
+Insert into login values
+("admin", "admin", "1234", "1", 1),
+("usuario", "usuario", "1234", "2", 0),
+("paco", "paco", "1234", "3", 0),
+("pepe", "pepe", "1234", "4", 0)
+;
