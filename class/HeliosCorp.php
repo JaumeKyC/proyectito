@@ -2,12 +2,10 @@
 
 class HeliosCorp extends Connection
 {
-    private $pag;
     private $filter;
     public function __construct()
     {
         $this->connect();
-        $this->setCurrentPage();
         $this->setCurrentFilter();
     }
 
@@ -16,7 +14,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT * FROM clientes");
+            $stmt = $this->bbdd->prepare("SELECT * FROM clientes WHERE Nombre LIKE '%" . $this->filter . "%'");
             $stmt->execute();
             $clientes = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -43,10 +41,14 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawClientesList() //Crea la tabla a partir del array de objetos clientes
+    public function drawClientesList($admin) //Crea la tabla a partir del array de objetos clientes
     {
         $clientes = $this->getAllClientes();
         $output = "";
+        $disabled = "";
+        if($admin == 0) {
+            $disabled = "disabled";
+        }
 
         foreach ($clientes as $clientes) {
             $output .= "<tr><td>" . $clientes->getId() . "</td>";
@@ -55,8 +57,8 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $clientes->getTelefono() . "</td>";
             $output .= "<td>" . $clientes->getPais() . "</td>";
             $output .= "<td> <a href='infoCliente.php?id=" . $clientes->getId() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a href='edit.php?id=" . $clientes->getId() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class=".$disabled." href='edit.php?id=" . $clientes->getId() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class=".$disabled." href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -87,7 +89,7 @@ class HeliosCorp extends Connection
         } catch (Exception | PDOException $e) {
             echo 'Falló la consulta: ' . $e->getMessage();
         }
-        return new Clientes(null, null, null, null, null, null,null, null, null, null, null, null);
+        return new Clientes(null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     public function drawClienteInfo($id) //Crea la tabla de información del cliente
@@ -141,11 +143,16 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawPedidosList() //Crea la tabla a partir del array de objetos pedido
+    public function drawPedidosList($admin) //Crea la tabla a partir del array de objetos pedido
     {
 
         $pedidos = $this->getAllPedidos();
         $output = "";
+
+        $disabled = "";
+        if($admin == 0) {
+            $disabled = "disabled";
+        }
 
         foreach ($pedidos as $pedidos) {
             $output .= "<tr><td>" . $pedidos->getIdPedido() . "</td>";
@@ -156,8 +163,8 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getEstado() . "</td>";
             $output .= "<td>" . $pedidos->getImporte() . "</td>";
             $output .= "<td> <a href='info.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class=".$disabled." href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class=".$disabled." href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -247,11 +254,16 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawProductosList() //Crea la tabla a partir del array de objetos productos
+    public function drawProductosList($admin) //Crea la tabla a partir del array de objetos productos
     {
 
         $productos = $this->getAllProductos();
         $output = "";
+        
+        $disabled = "";
+        if($admin == 0) {
+            $disabled = "disabled";
+        }
 
         foreach ($productos as $productos) {
             $output .= "<tr><td>" . $productos->getIdProducto() . "</td>";
@@ -261,8 +273,8 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $productos->getPrecioVenta() . "</td>";
             $output .= "<td>" . $productos->getPrecioProveedor() . "</td>";
             $output .= "<td> <a href='info.php?id=" . $productos->getIdProducto() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a href='deleteProductos.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class=".$disabled." href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class=".$disabled." href='deleteProductos.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -276,32 +288,16 @@ class HeliosCorp extends Connection
 
 
     /* FILTRADO */
-    private function setCurrentPage($defaultPage = null)
-    {
-        if(session_status() !== PHP_SESSION_ACTIVE)session_start();
-        if(!is_null($defaultPage)){
-            $this->pag = $defaultPage;
-        }elseif (isset($_GET["pag"])){
-            $this->pag = $_GET["pag"];
-        }elseif (isset($_SESSION["pag"])){
-            $this->pag = $_SESSION["pag"];
-        }else{
-            $this->pag = 1;
-        }
-        $_SESSION["pag"] = $this->pag;
-    }
 
-    private function setCurrentFilter(){
+
+    private function setCurrentFilter()
+    {
         if (session_status() !== PHP_SESSION_ACTIVE) session_start();
         if (isset($_POST["cliente"])) {
             $this->filter = $_POST["cliente"];
-            $this->setCurrentPage(1);
-        } elseif (isset($_SESSION["cliente"])) {
-            $this->filter = $_SESSION["cliente"];
         } else {
             $this->filter = "%%";
         }
-        $_SESSION["cliente"] = $this->filter;
     }
     public function getFilter()
     {

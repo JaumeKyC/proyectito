@@ -102,7 +102,7 @@ $helios = new HeliosCorp();
                                 </tfoot>
                                 <tbody>
                                     <?php        
-                                        echo $helios->drawProductosList();          
+                                        echo $helios->drawProductosList($_SESSION["isAdmin"]);          
                                     ?>
                                 </tbody>
                             </table>

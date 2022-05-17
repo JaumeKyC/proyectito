@@ -99,7 +99,7 @@ $helios = new HeliosCorp();
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    echo $helios->drawClientesList();
+                                    echo $helios->drawClientesList($_SESSION["isAdmin"]);
                                     ?>
                                 </tbody>
                             </table>

@@ -84,11 +84,11 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="#"> <img class="img-button" src="img/menu/gestionini.jpg" alt="">
+                            <a class="<?php if($_SESSION["isAdmin"] == 0){echo "disabled";} ?>" href="#"> <img class="img-button" src="img/menu/gestionini.jpg" alt="">
                                 <div class="titulo-centrado">Gestión</div>
                             </a>
                         </div>
-                        <div class="column is-4 has-text-centered titulo-imagen">
+                        <div class="column is-4 has-text-centered titulo-imagen" >
                             <a href="otros.php"> <img class="img-button" src="img/menu/otros.jpg" alt="">
                                 <div class="titulo-centrado">Otros</div>
                             </a>
