@@ -140,7 +140,7 @@ $helios = new HeliosCorp();
             </a>
             <span>
                 <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
-                <a href="#"><input class="button is-light" type="submit" value="Filtrar"></a>
+                <a href="filter.php"><input class="button is-light" type="submit" value="Filtrar"></a>
             </span>
 
     </footer>
