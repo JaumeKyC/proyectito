@@ -1,6 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ../index.php?error=Insert User and Password");
+}
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
 
@@ -41,7 +43,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -69,7 +71,7 @@ $helios = new HeliosCorp();
 
     <main>
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
-        < <div class="columns">
+        <div class="columns">
             <div class="column is-8"></div>
             <div class="column is-2">
                 <form method="post" action="#">
@@ -118,8 +120,8 @@ $helios = new HeliosCorp();
                                 <tfoot>
                                 </tfoot>
                                 <tbody>
-                                    <?php        
-                                        echo $helios->drawPedidosList($_SESSION["isAdmin"]);          
+                                    <?php
+                                    echo $helios->drawPedidosList($_SESSION["isAdmin"]);
                                     ?>
                                 </tbody>
                             </table>
@@ -150,15 +152,14 @@ $helios = new HeliosCorp();
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
                 <!-- <div class="icon-text navbar-item"> -->
-                    <span class="icon is-large">
-                        <img src="../img/flecha-hacia-atras.png" alt="">
-                    </span>
+                <span class="icon is-large">
+                    <img src="../img/flecha-hacia-atras.png" alt="">
+                </span>
 
                 <!-- </div> -->
             </a>
             <span>
                 <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
-                <a href="#"><input class="button is-light" type="submit" value="Filtrar"></a>
             </span>
 
     </footer>

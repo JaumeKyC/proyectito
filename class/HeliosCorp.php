@@ -170,6 +170,19 @@ class HeliosCorp extends Connection
         return $output;
     }
 
+    public function deletePedidos($id) //Elimina el cliente
+    {
+        try {
+            $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedidos = :id");
+            $stmtDelete->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmtDelete->execute();
+            return $stmtDelete->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la consulta: ' . $e->getMessage();
+        }
+    }
+
+
     //NEW PEDIDO
     public function getStock($id_producto) //Devuelve el stock de un producto al pasarle el ID
     {
