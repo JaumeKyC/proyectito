@@ -12,7 +12,7 @@ class Security extends Connection
     public function validate($post)
     {
         try {
-            $sql = $this->bbdd->prepare("SELECT * FROM login WHERE usuario='" . $post["user"] . "' AND contraseña='" . $post["password"] . "'");
+            $sql = $this->bbdd->prepare("SELECT * FROM login WHERE user='" . $post["user"] . "' AND password='" . $post["password"] . "'");
             $sql->execute();
 
             return $sql->rowCount() == 0 ? null : $sql->fetch(PDO::FETCH_ASSOC);
@@ -23,15 +23,16 @@ class Security extends Connection
 
     public function logIn($post)
     {
-        if ($this->validate($post) > 0) {
+        $user = $this->validate($post);
+        if ($user !== null) {
             if (session_status() !== PHP_SESSION_ACTIVE) {
                 session_start();
             }
-            if (isset($post["user"])) {
-                $_SESSION["user"] = $post["user"];
-            } else if (isset($_SESSION["user"])) {
+            if (isset($user)) {
+                $_SESSION = $user;
+            } else if (isset($_SESSION)) {
                 session_unset();
-                $_SESSION["user"] = $post["user"];
+                $_SESSION = $user;
             }
             header("Location: ../indexMenu.php");
         } else {

@@ -40,7 +40,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span><?= $_SESSION["user"]?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
                             </div>
                         </a>
                         <a href="#">
