@@ -69,7 +69,24 @@ $helios = new HeliosCorp();
 
     <main>
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
-        <div class="block"></div>
+        < <div class="columns">
+            <div class="column is-8"></div>
+            <div class="column is-2">
+                <form method="post" action="#">
+                    <div class=" field">
+                        <div class="control ">
+                            <input class="input is-link  is-small " name="filter" type="text" placeholder="Filtrar por cliente">
+                        </div>
+                    </div>
+            </div>
+            <div class="column is-1">
+                <div class="control ">
+                    <button href="#" type="submit" method="POST" class="button is-link is-outlined is-small">Aceptar</button>
+                </div>
+            </div>
+            </form>
+            <div class="column is-1"></div>
+        </div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
             <!-- Dividimos en columnas -->

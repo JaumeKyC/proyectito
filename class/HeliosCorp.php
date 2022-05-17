@@ -121,7 +121,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos ORDER BY Fecha_Pedido DESC");
+            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos WHERE ID_Cliente LIKE '%" . $this->filter . "%' ORDER BY Fecha_Pedido DESC");
             $stmt->execute();
             $pedidos = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -232,7 +232,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT * FROM productos");
+            $stmt = $this->bbdd->prepare("SELECT * FROM productos WHERE Nombre LIKE '%" . $this->filter . "%'");
             $stmt->execute();
             $productos = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -293,8 +293,8 @@ class HeliosCorp extends Connection
     private function setCurrentFilter()
     {
         if (session_status() !== PHP_SESSION_ACTIVE) session_start();
-        if (isset($_POST["cliente"])) {
-            $this->filter = $_POST["cliente"];
+        if (isset($_POST["filter"])) {
+            $this->filter = $_POST["filter"];
         } else {
             $this->filter = "%%";
         }

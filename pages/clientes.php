@@ -1,8 +1,11 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ../index.php?error=Insert User and Password");
+}
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +43,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -68,7 +71,25 @@ $helios = new HeliosCorp();
 
     <main>
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
-        <div class="block"></div>
+        <div class="columns">
+            <div class="column is-8"></div>
+            <div class="column is-2">
+                <form method="post" action="#">
+                    <div class=" field">
+                        <div class="control ">
+                            <input class="input is-link  is-small " name="filter" type="text" placeholder="Filtrar por empresa">
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="column is-1">
+                <div class="control ">
+                    <button href="#" type="submit" method="POST" class="button is-link is-outlined is-small">Aceptar</button>
+                </div>
+            </div>
+            </form>
+            <div class="column is-1"></div>
+        </div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
             <!-- Dividimos en columnas -->
@@ -130,15 +151,15 @@ $helios = new HeliosCorp();
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
                 <!-- <div class="icon-text navbar-item"> -->
-                    <span class="icon is-large">
-                        <img src="../img/flecha-hacia-atras.png" alt="">
-                    </span>
+                <span class="icon is-large">
+                    <img src="../img/flecha-hacia-atras.png" alt="">
+                </span>
 
                 <!-- </div> -->
             </a>
             <span>
                 <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
-                <a href="filter.php"><input class="button is-light" type="submit" value="Filtrar"></a>
+
             </span>
 
     </footer>
