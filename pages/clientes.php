@@ -5,7 +5,8 @@ if (!isset($_SESSION["user"])) {
 }
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
-
+if(count($_POST)> 1){
+var_dump($_POST);}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -137,7 +138,112 @@ $helios = new HeliosCorp();
         </div>
 
         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+        <div class="block" id="clientitos">
+            <!-- Dividimos en columnas -->
+            <div id="pop-up">
+            <div class="columns">
+                <!-- Columnas vacías para dar margen a la izquierda -->
+          
+                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                <div class="column is-12 ">
+                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
 
+                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+                    <div class="">
+                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                        <!-- FORMULARIO -->
+                        <form id="insertForm" method="POST">
+                            <div class="columns">
+                                <div class="column is-1"></div>
+
+                                <div class="column is-5">
+
+                                    <label class="label">ID</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="id">
+                                    </div>
+
+                                    <label class="label">Empresa</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="nombre">
+                                    </div>
+
+                                    <label class="label">Nombre del Contacto</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="nombreContacto">
+                                    </div>
+
+                                    <label class="label">Apellidos del Contacto</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="apellidoContacto">
+                                    </div>
+
+                                    <label class="label">Teléfono</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="telefono">
+                                    </div>
+
+                                    <label class="label">Calle</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="direccionCalle">
+                                    </div>
+                                </div>
+                                <div class="column is-5">
+                                    <label class="label">Número</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="direccionNumero">
+                                    </div>
+
+                                    <label class="label">Ciudad</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="ciudad">
+                                    </div>
+
+                                    <label class="label">Comunidad</label>
+                                    <div class="control">
+                                    <input class="input" type="text" placeholder="Text input" required name="Comunidad">
+                                    </div>
+
+                                    <label class="label">País</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required value="España" name="pais">
+                                    </div>
+
+                                    <label class="label">Cod. Postal</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Text input" required name="codPostal">
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Email</label>
+                                        <div class="control">
+                                            <input class="input" type="email" placeholder="Email input" required value="" name="email">
+                                        </div>
+                                    </div>
+
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button href="new.php" type="submit" method="POST" class="button is-link">Aceptar</button>
+                                        </div>
+                                        <div class="control">
+                                            <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="column is-1 "></div>
+                            </div>
+                        </form>
+                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                    </div>
+                </div>
+
+                <!-- Columnas vacías para dar margen a la derecha -->
+                
+            </div>
+            </div>
+        </div>
 
         <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>
@@ -158,7 +264,7 @@ $helios = new HeliosCorp();
                 <!-- </div> -->
             </a>
             <span>
-                <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
+                <input id="pop-up-cliente" class="button is-link is-right" type="button" value="Nuevo">
 
             </span>
 

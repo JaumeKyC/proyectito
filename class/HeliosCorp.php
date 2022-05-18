@@ -10,6 +10,43 @@ class HeliosCorp extends Connection
     }
 
     //CLIENTES
+    public function newClient($data)
+    {
+        try {
+            $id = $data["id"];
+            $nombre = $data["nombre"];
+            $nombreContacto = $data["nombreContacto"];
+            $apellidoContacto = $data["apellidoContacto"];
+            $email = $data["email"];
+            $telefono = $data["telefono"];
+            $direccionCalle = $data["direccionCalle"];
+            $direccionNumero = $data["direccionNumero"];
+            $ciudad = $data["ciudad"];
+            $comunidad = $data["comunidad"];
+            $pais = $data["pais"];
+            $codPostal = $data["codPostal"];
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO clientes VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmtInsert->bindParam(1, $id, PDO::PARAM_STR);
+            $stmtInsert->bindParam(2, $nombre, PDO::PARAM_STR);
+            $stmtInsert->bindParam(3, $nombreContacto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(4, $apellidoContacto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(5, $email, PDO::PARAM_BOOL);
+            $stmtInsert->bindParam(6, $telefono, PDO::PARAM_STR);
+            $stmtInsert->bindParam(7, $direccionCalle, PDO::PARAM_STR);
+            $stmtInsert->bindParam(8, $direccionNumero, PDO::PARAM_STR);
+            $stmtInsert->bindParam(9, $ciudad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(10, $comunidad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(11, $pais, PDO::PARAM_BOOL);
+            $stmtInsert->bindParam(12, $codPostal, PDO::PARAM_STR);
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
+        }
+    }
     public function getAllClientes() //Devuelve un array de objetos con todos los clientes
     {
         try {
