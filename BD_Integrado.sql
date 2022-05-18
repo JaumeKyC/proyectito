@@ -175,8 +175,8 @@ id integer Not Null,
 isAdmin bool not null);
 
 Insert into login values
-("admin", "admin", "1234", "1", 1),
-("usuario", "usuario", "1234", "2", 0),
-("paco", "paco", "1234", "3", 0),
-("pepe", "pepe", "1234", "4", 0)
+("admin", "admin", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "1", 1),
+("usuario", "usuario", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "2", 0),
+("paco", "paco", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "3", 0),
+("pepe", "pepe", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "4", 0)
 ;
