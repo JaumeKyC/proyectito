@@ -170,7 +170,7 @@ INSERT INTO detallePedido VALUES
 CREATE TABLE login(
 name varchar(20) Primary key,
 user varchar(20) NOT NULL,
-password varchar(20) NOT NULL,
+password varchar(60) NOT NULL,
 id integer Not Null,
 isAdmin bool not null);
 
