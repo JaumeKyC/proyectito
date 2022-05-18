@@ -71,7 +71,7 @@ $helios = new HeliosCorp();
 
     <main>
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
-        <div class="columns">
+        <div class="columns espaciadoSearcher">
             <div class="column is-8"></div>
             <div class="column is-2">
                 <form method="post" action="#">
