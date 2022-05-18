@@ -12,10 +12,14 @@ class Security extends Connection
     public function validate($post)
     {
         try {
-            $sql = $this->bbdd->prepare("SELECT * FROM login WHERE user='" . $post["user"] . "' AND password='" . $post["password"] . "'");
+            $sql = $this->bbdd->prepare("SELECT * FROM login WHERE user='" . $post["user"] . "'");
             $sql->execute();
-
-            return $sql->rowCount() == 0 ? null : $sql->fetch(PDO::FETCH_ASSOC);
+            $sql->debugDumpParams();
+            //var_dump($sql->fetch(PDO::FETCH_ASSOC));
+            
+            $user = $sql->fetch(PDO::FETCH_ASSOC);
+            //die(password_verify($post["password"], $user["password"]).$sql->rowCount());
+            return ($sql->rowCount() > 0 && (password_verify($post["password"], $user["password"])))? $user : null ;
         } catch (Exception | PDOException $e) {
             echo 'Falló la consulta: ' . $e->getMessage();
         }
