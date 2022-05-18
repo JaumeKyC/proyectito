@@ -23,7 +23,7 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
     <!-- HEADER -->
     <header class="">
         <div class="container logo-nav-container">
-            <a href="index.php">
+            <a href="indexMenu.php">
                 <!-- LOGO -->
                 <img class="main_logo" src="img/logo5.png" alt="main_logo">
             </a>
