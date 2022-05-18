@@ -10,6 +10,43 @@ class HeliosCorp extends Connection
     }
 
     //CLIENTES
+    public function newClient($data)
+    {
+        try {
+            $id = $data["id"];
+            $nombre = $data["nombre"];
+            $nombreContacto = $data["nombreContacto"];
+            $apellidoContacto = $data["apellidoContacto"];
+            $email = $data["email"];
+            $telefono = $data["telefono"];
+            $direccionCalle = $data["direccionCalle"];
+            $direccionNumero = $data["direccionNumero"];
+            $ciudad = $data["ciudad"];
+            $comunidad = $data["comunidad"];
+            $pais = $data["pais"];
+            $codPostal = $data["codPostal"];
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO clientes VALUES (:id,:nombre,:nombreContacto,:apellidoContacto,:email,:telefono,:direccionCalle,:direccionNumero,:ciudad,:comunidad,:pais,:codPostal)");
+            $stmtInsert->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':nombreContacto', $nombreContacto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':apellidoContacto', $apellidoContacto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':direccionCalle', $direccionCalle, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':direccionNumero', $direccionNumero, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':ciudad', $ciudad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':comunidad', $comunidad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':pais', $pais, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':codPostal', $codPostal, PDO::PARAM_STR);
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
+        }
+    }
     public function getAllClientes() //Devuelve un array de objetos con todos los clientes
     {
         try {
@@ -48,6 +85,8 @@ class HeliosCorp extends Connection
         $disabled = "";
         if($admin == 0) {
             $disabled = "disabled";
+        }else{
+            $disabled = "nada";
         }
 
         foreach ($clientes as $clientes) {
@@ -152,6 +191,8 @@ class HeliosCorp extends Connection
         $disabled = "";
         if($admin == 0) {
             $disabled = "disabled";
+        }else{
+            $disabled = "nada";
         }
 
         foreach ($pedidos as $pedidos) {
@@ -276,6 +317,8 @@ class HeliosCorp extends Connection
         $disabled = "";
         if($admin == 0) {
             $disabled = "disabled";
+        }else{
+            $disabled = "nada";
         }
 
         foreach ($productos as $productos) {
