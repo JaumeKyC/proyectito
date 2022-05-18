@@ -4,15 +4,6 @@ function main() {
     pressedButton();
     newClientForm();
 
-/*     let form = document.getElementById("insertForm");
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const xhttp = new XMLHttpRequest();
-        xhttp.addEventListener("readystatechange", function(){})
-        xhttp.open("POST", "new.php", true);
-        xhttp.send(form);
-    }); */
 }
 function pressedButton() {
     let img = document.getElementsByClassName("img-button");
