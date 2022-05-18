@@ -26,19 +26,19 @@ class HeliosCorp extends Connection
             $pais = $data["pais"];
             $codPostal = $data["codPostal"];
 
-            $stmtInsert = $this->bbdd->prepare("INSERT INTO clientes VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
-            $stmtInsert->bindParam(1, $id, PDO::PARAM_STR);
-            $stmtInsert->bindParam(2, $nombre, PDO::PARAM_STR);
-            $stmtInsert->bindParam(3, $nombreContacto, PDO::PARAM_STR);
-            $stmtInsert->bindParam(4, $apellidoContacto, PDO::PARAM_STR);
-            $stmtInsert->bindParam(5, $email, PDO::PARAM_BOOL);
-            $stmtInsert->bindParam(6, $telefono, PDO::PARAM_STR);
-            $stmtInsert->bindParam(7, $direccionCalle, PDO::PARAM_STR);
-            $stmtInsert->bindParam(8, $direccionNumero, PDO::PARAM_STR);
-            $stmtInsert->bindParam(9, $ciudad, PDO::PARAM_STR);
-            $stmtInsert->bindParam(10, $comunidad, PDO::PARAM_STR);
-            $stmtInsert->bindParam(11, $pais, PDO::PARAM_BOOL);
-            $stmtInsert->bindParam(12, $codPostal, PDO::PARAM_STR);
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO clientes VALUES (:id,:nombre,:nombreContacto,:apellidoContacto,:email,:telefono,:direccionCalle,:direccionNumero,:ciudad,:comunidad,:pais,:codPostal)");
+            $stmtInsert->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':nombreContacto', $nombreContacto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':apellidoContacto', $apellidoContacto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':direccionCalle', $direccionCalle, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':direccionNumero', $direccionNumero, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':ciudad', $ciudad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':comunidad', $comunidad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':pais', $pais, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':codPostal', $codPostal, PDO::PARAM_STR);
 
             $stmtInsert->execute();
             return $stmtInsert->rowCount();
@@ -85,6 +85,8 @@ class HeliosCorp extends Connection
         $disabled = "";
         if($admin == 0) {
             $disabled = "disabled";
+        }else{
+            $disabled = "nada";
         }
 
         foreach ($clientes as $clientes) {
@@ -189,6 +191,8 @@ class HeliosCorp extends Connection
         $disabled = "";
         if($admin == 0) {
             $disabled = "disabled";
+        }else{
+            $disabled = "nada";
         }
 
         foreach ($pedidos as $pedidos) {
@@ -313,6 +317,8 @@ class HeliosCorp extends Connection
         $disabled = "";
         if($admin == 0) {
             $disabled = "disabled";
+        }else{
+            $disabled = "nada";
         }
 
         foreach ($productos as $productos) {

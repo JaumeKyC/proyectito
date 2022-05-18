@@ -152,7 +152,7 @@ var_dump($_POST);}
                     <div class="">
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
-                        <form id="insertForm" method="POST">
+                        <form action="new.php" id="insertForm" method="POST">
                             <div class="columns">
                                 <div class="column is-1"></div>
 
@@ -201,7 +201,7 @@ var_dump($_POST);}
 
                                     <label class="label">Comunidad</label>
                                     <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="Comunidad">
+                                    <input class="input" type="text" placeholder="Text input" required name="comunidad">
                                     </div>
 
                                     <label class="label">País</label>
@@ -223,7 +223,7 @@ var_dump($_POST);}
 
                                     <div class="field is-grouped">
                                         <div class="control">
-                                            <button href="new.php" type="submit" method="POST" class="button is-link">Aceptar</button>
+                                            <button type="submit" method="POST" class="button is-link">Aceptar</button>
                                         </div>
                                         <div class="control">
                                             <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
