@@ -5,8 +5,9 @@ if (!isset($_SESSION["user"])) {
 }
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
-if(count($_POST)> 1){
-var_dump($_POST);}
+if (count($_POST) > 1) {
+    var_dump($_POST);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +82,7 @@ var_dump($_POST);}
                             <input class="input is-link  is-small " name="filter" type="text" placeholder="Filtrar por empresa">
                         </div>
                     </div>
-                
+
             </div>
             <div class="column is-1">
                 <div class="control ">
@@ -141,107 +142,251 @@ var_dump($_POST);}
         <div class="block" id="clientitos">
             <!-- Dividimos en columnas -->
             <div id="pop-up">
-            <div class="columns">
-                <!-- Columnas vacías para dar margen a la izquierda -->
-          
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-12 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+                <div class="columns">
+                    <!-- Columnas vacías para dar margen a la izquierda -->
 
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <div class="">
+                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                    <div class="column is-12 ">
+                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+
+                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+                        <div class="">
+                            <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                            <!-- FORMULARIO -->
+                            <form action="new.php" id="insertForm" method="POST">
+                                <div class="columns">
+                                    <div class="column is-1"></div>
+
+                                    <div class="column is-5">
+
+                                        <label class="label">ID</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="id" value="<?= $helios->maxIDCliente() ?>" readonly>
+                                        </div>
+
+                                        <label class="label">Empresa</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="nombre">
+                                        </div>
+
+                                        <label class="label">Nombre del Contacto</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="nombreContacto">
+                                        </div>
+
+                                        <label class="label">Apellidos del Contacto</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="apellidoContacto">
+                                        </div>
+
+                                        <label class="label">Teléfono</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="telefono">
+                                        </div>
+
+                                        <label class="label">Calle</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="direccionCalle">
+                                        </div>
+                                    </div>
+                                    <div class="column is-5">
+                                        <label class="label">Número</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="direccionNumero">
+                                        </div>
+
+                                        <label class="label">Ciudad</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="ciudad">
+                                        </div>
+
+                                        <label class="label">Comunidad</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="comunidad">
+                                        </div>
+
+                                        <label class="label">País</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required value="España" name="pais">
+                                        </div>
+
+                                        <label class="label">Cod. Postal</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="codPostal">
+                                        </div>
+
+                                        <div class="field">
+                                            <label class="label">Email</label>
+                                            <div class="control">
+                                                <input class="input" type="email" placeholder="Email input" required value="" name="email">
+                                            </div>
+                                        </div>
+
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                            </div>
+                                            <div class="control">
+                                                <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="column is-1 "></div>
+                                </div>
+                            </form>
+                            <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                        </div>
+                    </div>
+
+                    <!-- Columnas vacías para dar margen a la derecha -->
+
+                </div>
+            </div>
+        </div>
+        <div class="block" id="detallitos">
+            <!-- Dividimos en columnas -->
+            <div id="pop-up">
+                <div class="columns">
+                    <!-- Columnas vacías para dar margen a la izquierda -->
+
+                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                    <div class="column is-12 ">
+                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+
+                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
-                        <form action="new.php" id="insertForm" method="POST">
-                            <div class="columns">
-                                <div class="column is-1"></div>
-
-                                <div class="column is-5">
-
-                                    <label class="label">ID</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="id">
-                                    </div>
-
-                                    <label class="label">Empresa</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="nombre">
-                                    </div>
-
-                                    <label class="label">Nombre del Contacto</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="nombreContacto">
-                                    </div>
-
-                                    <label class="label">Apellidos del Contacto</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="apellidoContacto">
-                                    </div>
-
-                                    <label class="label">Teléfono</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="telefono">
-                                    </div>
-
-                                    <label class="label">Calle</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="direccionCalle">
-                                    </div>
-                                </div>
-                                <div class="column is-5">
-                                    <label class="label">Número</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="direccionNumero">
-                                    </div>
-
-                                    <label class="label">Ciudad</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="ciudad">
-                                    </div>
-
-                                    <label class="label">Comunidad</label>
-                                    <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="comunidad">
-                                    </div>
-
-                                    <label class="label">País</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required value="España" name="pais">
-                                    </div>
-
-                                    <label class="label">Cod. Postal</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="Text input" required name="codPostal">
-                                    </div>
-
-                                    <div class="field">
-                                        <label class="label">Email</label>
-                                        <div class="control">
-                                            <input class="input" type="email" placeholder="Email input" required value="" name="email">
-                                        </div>
-                                    </div>
-
-                                    <div class="field is-grouped">
-                                        <div class="control">
-                                            <button type="submit" method="POST" class="button is-link">Aceptar</button>
-                                        </div>
-                                        <div class="control">
-                                            <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="column is-1 "></div>
+                        <div class="">
+                            <table id="infoCliente" class=" table has-text-centered is-bordered is-stripped is-narrow">
+                                <!-- Aquí JS creará la tabla de info -->
+                            </table>
+                        </div>
+                        <div class="block"></div>
+                        <div class="columns">
+                            <div class="control column is-9"></div>
+                            <div class="control column is-2">
+                                <button id="cancelar-pop-up-info" type="button" class="button is-link is-light ">Salir</button>
                             </div>
-                        </form>
+                            <div class="control column is-1"></div>
+                        </div>
                         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-                    </div>
-                </div>
 
-                <!-- Columnas vacías para dar margen a la derecha -->
-                
+                    </div>
+
+                    <!-- Columnas vacías para dar margen a la derecha -->
+
+                </div>
             </div>
+        </div>
+        <div class="block" id="editaditos">
+            <!-- Dividimos en columnas -->
+            <div id="pop-up">
+                <div class="columns">
+                    <!-- Columnas vacías para dar margen a la izquierda -->
+
+                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                    <div class="column is-12 ">
+                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+
+                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+                        <div class="">
+                            <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                            <!-- FORMULARIO -->
+                            <form action="editClient.php" id="insertForm" method="POST">
+                                <div class="columns">
+                                    <div class="column is-1"></div>
+
+                                    <div class="column is-5">
+
+                                        <label class="label">ID</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="id" value="" readonly>
+                                        </div>
+
+                                        <label class="label">Empresa</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="nombre" value="">
+                                        </div>
+
+                                        <label class="label ">Nombre del Contacto</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="nombreContacto" value="">
+                                        </div>
+
+                                        <label class="label">Apellidos del Contacto</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="apellidoContacto" value="">
+                                        </div>
+
+                                        <label class="label ">Email</label>
+                                        <div class="control">
+                                            <input class="input input2" type="email" placeholder="Email input" required value="" name="email" value="">
+                                        </div>
+
+                                        <label class="label">Teléfono</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="telefono" value="">
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-5">
+                                        <label class="label">Calle</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="direccionCalle" value="">
+                                        </div>
+
+                                        <label class="label">Número</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="direccionNumero" value="">
+                                        </div>
+
+                                        <label class="label">Ciudad</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="ciudad" value="">
+                                        </div>
+
+                                        <label class="label">Comunidad</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required name="comunidad" value="">
+                                        </div>
+
+                                        <label class="label">País</label>
+                                        <div class="control">
+                                            <input class="input input2" type="text" placeholder="Text input" required value="España" name="pais" value="">
+                                        </div>
+                                        <div class="field">
+                                            <label class="label">Cod. Postal</label>
+                                            <div class="control">
+                                                <input class="input input2" type="text" placeholder="Text input" required name="codPostal" value="">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                            </div>
+                                            <div class="control">
+                                                <button id="cancelar2-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="column is-1 "></div>
+                                </div>
+                            </form>
+                            <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                        </div>
+                    </div>
+
+                    <!-- Columnas vacías para dar margen a la derecha -->
+
+                </div>
             </div>
         </div>
 

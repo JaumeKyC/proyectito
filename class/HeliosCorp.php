@@ -42,7 +42,6 @@ class HeliosCorp extends Connection
 
             $stmtInsert->execute();
             return $stmtInsert->rowCount();
-
         } catch (Exception | PDOException $e) {
             echo 'Falló la inserción: ' . $e->getMessage();
         }
@@ -83,9 +82,9 @@ class HeliosCorp extends Connection
         $clientes = $this->getAllClientes();
         $output = "";
         $disabled = "";
-        if($admin == 0) {
+        if ($admin == 0) {
             $disabled = "disabled";
-        }else{
+        } else {
             $disabled = "nada";
         }
 
@@ -95,9 +94,9 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $clientes->getEmail() . "</td>";
             $output .= "<td>" . $clientes->getTelefono() . "</td>";
             $output .= "<td>" . $clientes->getPais() . "</td>";
-            $output .= "<td> <a href='infoCliente.php?id=" . $clientes->getId() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a class=".$disabled." href='edit.php?id=" . $clientes->getId() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=".$disabled." href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-cliente-info' id=" . $clientes->getId() . "><img src='../img/info.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-cliente-edit " . $disabled . "' id=" . $clientes->getId() . "><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class=" . $disabled . " href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -109,21 +108,7 @@ class HeliosCorp extends Connection
             $stmtClient = $this->bbdd->prepare("SELECT * FROM clientes WHERE id = :id");
             $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
             if ($stmtClient->execute() && $stmtClient->rowCount() > 0) {
-                $cliente = $stmtClient->fetch(PDO::FETCH_ASSOC);
-                return new Clientes(
-                    $cliente['ID'],
-                    $cliente['Nombre'],
-                    $cliente['NombreContacto'],
-                    $cliente['ApellidoContacto'],
-                    $cliente['Email'],
-                    $cliente['Telefono'],
-                    $cliente['DireccionCalle'],
-                    $cliente['DireccionNumero'],
-                    $cliente['Ciudad'],
-                    $cliente['Comunidad'],
-                    $cliente['Pais'],
-                    $cliente['CodPostal']
-                );
+                return $stmtClient->fetch(PDO::FETCH_ASSOC);
             }
         } catch (Exception | PDOException $e) {
             echo 'Falló la consulta: ' . $e->getMessage();
@@ -152,6 +137,42 @@ class HeliosCorp extends Connection
             return $stmtDelete->rowCount();
         } catch (Exception | PDOException $e) {
             echo 'Falló la consulta: ' . $e->getMessage();
+        }
+    }
+
+    public function editClient($data){
+        try {
+            $id = $data["id"];
+            $nombre = $data["nombre"];
+            $nombreContacto = $data["nombreContacto"];
+            $apellidoContacto = $data["apellidoContacto"];
+            $email = $data["email"];
+            $telefono = $data["telefono"];
+            $direccionCalle = $data["direccionCalle"];
+            $direccionNumero = $data["direccionNumero"];
+            $ciudad = $data["ciudad"];
+            $comunidad = $data["comunidad"];
+            $pais = $data["pais"];
+            $codPostal = $data["codPostal"];
+
+            $stmtUpdate = $this->bbdd->prepare("UPDATE clientes  Set Nombre=:nombre, NombreContacto=:nombreContacto, ApellidoContacto=:apellidoContacto, Email=:email, Telefono=:telefono, DireccionCalle=:direccionCalle, DireccionNumero=:direccionNumero, Ciudad=:ciudad, Comunidad=:comunidad, Pais=:pais, CodPostal=:codPostal where ID =:id");
+            $stmtUpdate->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtUpdate->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':nombreContacto', $nombreContacto, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':apellidoContacto', $apellidoContacto, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':direccionCalle', $direccionCalle, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':direccionNumero', $direccionNumero, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':ciudad', $ciudad, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':comunidad', $comunidad, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':pais', $pais, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':codPostal', $codPostal, PDO::PARAM_STR);
+
+            $stmtUpdate->execute();
+            return $stmtUpdate->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
 
@@ -189,9 +210,9 @@ class HeliosCorp extends Connection
         $output = "";
 
         $disabled = "";
-        if($admin == 0) {
+        if ($admin == 0) {
             $disabled = "disabled";
-        }else{
+        } else {
             $disabled = "nada";
         }
 
@@ -204,8 +225,8 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getEstado() . "</td>";
             $output .= "<td>" . $pedidos->getImporte() . "</td>";
             $output .= "<td> <a href='info.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a class=".$disabled." href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=".$disabled." href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class=" . $disabled . " href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class=" . $disabled . " href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -313,11 +334,11 @@ class HeliosCorp extends Connection
 
         $productos = $this->getAllProductos();
         $output = "";
-        
+
         $disabled = "";
-        if($admin == 0) {
+        if ($admin == 0) {
             $disabled = "disabled";
-        }else{
+        } else {
             $disabled = "nada";
         }
 
@@ -329,18 +350,34 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $productos->getPrecioVenta() . "</td>";
             $output .= "<td>" . $productos->getPrecioProveedor() . "</td>";
             $output .= "<td> <a href='info.php?id=" . $productos->getIdProducto() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a class=".$disabled." href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=".$disabled." href='deleteProductos.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class=" . $disabled . " href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class=" . $disabled . " href='deleteProductos.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
     }
 
     //EXTRA
-    function alert($msg)
+    public function alert($msg)
     {
         echo "<script type='text/javascript'>alert('$msg');</script>";
     }
+
+    public function maxIDCliente()
+    {
+        try {
+            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+            $this->bbdd->beginTransaction();
+            $sqlMaxNum = "SELECT max(ID)+1 AS maxIdCliente FROM clientes";
+            $resultado = $this->bbdd->query($sqlMaxNum);
+            $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdCliente"];
+            $this->bbdd->commit();
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        } return $numero;
+    }
+
+
 
 
     /* FILTRADO */
