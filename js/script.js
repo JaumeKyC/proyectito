@@ -47,7 +47,7 @@ function newClientForm() {
 
 function clientInfo() {
     let infoButtons = document.getElementsByClassName("pop-up-cliente-info");
-    for (let index = 0; index <= infoButtons.length; index++) {
+    for (let index = 0; index < infoButtons.length; index++) {
         /* infoButtons[index].href=clienteInfoAction(id); */
         infoButtons[index].addEventListener("click", function (e) {
             e.preventDefault(); //Quitamos comportamiento por defecto
@@ -91,11 +91,12 @@ function clienteInfoAction(id) {
 }
 function clientEdit() {
     let editButtons = document.getElementsByClassName("pop-up-cliente-edit");
-    for (let index = 0; index <= editButtons.length; index++) {
+    for (let index = 0; index < editButtons.length; index++) {
+         /* console.log(editButtons[index]); */
         editButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); //Quitamos comportamiento por defecto
-            /* alert(editButtons[index].id); */
-            clienteEditAction(editButtons[index].id);
+            e.preventDefault(); 
+            clienteEditAction(editButtons[index].id); 
+           
         });
     }
 }
@@ -122,11 +123,5 @@ function drawClientEdit(data) {
         clientData[index].value = data[field];
         index++;
     }
-
-/*     for (let index = 0; index <= clientData.length; index++) {
-        clientData[index].value = data[field]; */
-
-        clientData[index].value = data[index];
-        console.log(data);
     }
 

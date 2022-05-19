@@ -389,6 +389,44 @@ if (count($_POST) > 1) {
                 </div>
             </div>
         </div>
+        <div class="block" id="borraditos">
+            <!-- Dividimos en columnas -->
+            <div id="pop-up">
+                <div class="columns">
+                    <!-- Columnas vacías para dar margen a la izquierda -->
+
+                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                    <div class="column is-12 ">
+                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+
+                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+
+                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                        <!-- FORMULARIO -->
+                        <form action="deleteClientes.php" id="" method="POST">
+                            <div class="block"> Estás apunto de borrar el cliente.</div>
+                            <div class="columns">
+                                <div class="control column is-9"></div>
+                                <div class="control column is-2">
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                        </div>
+                                        <div class="control">
+                                            <button id="cancelar-pop-up-delete" type="button" class="button is-link is-light">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control column is-1"></div>
+                            </div>
+                        </form>
+                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                    </div>
+                </div>
+                <!-- Columnas vacías para dar margen a la derecha -->
+            </div>
+        </div>
+        </div>
 
         <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>
