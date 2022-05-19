@@ -96,7 +96,7 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $clientes->getPais() . "</td>";
             $output .= "<td> <a class='pop-up-cliente-info' id=" . $clientes->getId() . "><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a class='pop-up-cliente-edit " . $disabled . "' id=" . $clientes->getId() . "><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=" . $disabled . " href='deleteClientes.php?id=" . $clientes->getId() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-cliente-delete " . $disabled . "' id=" . $clientes->getId() . "><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;

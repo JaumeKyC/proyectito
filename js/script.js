@@ -5,6 +5,7 @@ function main() {
     newClientForm();
     clientEdit();
     clientInfo();
+    clientDelete();
 
 }
 function pressedButton() {
@@ -42,6 +43,9 @@ function newClientForm() {
     });
     document.getElementById("cancelar2-pop-up").addEventListener("click", function () {
         document.getElementById("editaditos").style.display = "none";
+    });
+    document.getElementById("cancelar-pop-up-delete").addEventListener("click", function () {
+        document.getElementById("borraditos").style.display = "none";
     });
 }
 
@@ -92,11 +96,11 @@ function clienteInfoAction(id) {
 function clientEdit() {
     let editButtons = document.getElementsByClassName("pop-up-cliente-edit");
     for (let index = 0; index < editButtons.length; index++) {
-         /* console.log(editButtons[index]); */
+        /* console.log(editButtons[index]); */
         editButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); 
-            clienteEditAction(editButtons[index].id); 
-           
+            e.preventDefault();
+            clienteEditAction(editButtons[index].id);
+
         });
     }
 }
@@ -123,5 +127,27 @@ function drawClientEdit(data) {
         clientData[index].value = data[field];
         index++;
     }
+}
+
+function clientDelete() {
+    let deleteButtons = document.getElementsByClassName("pop-up-cliente-delete");
+    for (let index = 0; index < deleteButtons.length; index++) {
+        /* infoButtons[index].href=clienteInfoAction(id); */
+        deleteButtons[index].addEventListener("click", function (e) {
+            e.preventDefault(); //Quitamos comportamiento por defecto
+            /* alert(infoButtons[index].id); */
+            clienteDeleteAction(deleteButtons[index].id);
+        });
     }
+}
+function clienteDeleteAction(id) {
+
+    document.getElementById("borraditos").style.display = "grid";
+    let formulario = document.getElementById("deleteClientes");
+        formulario.action = 'deleteClientes.php?id='+id+'';
+
+
+
+}
+
 

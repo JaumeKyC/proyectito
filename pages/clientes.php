@@ -403,11 +403,12 @@ if (count($_POST) > 1) {
 
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
-                        <form action="deleteClientes.php" id="" method="POST">
-                            <div class="block"> Estás apunto de borrar el cliente.</div>
+                        <form action="" id="deleteClientes" method="POST">
+                            <div class="block">Estás apunto de borrar el cliente.</div>
                             <div class="columns">
-                                <div class="control column is-9"></div>
-                                <div class="control column is-2">
+                                <div class="column is-1"></div>
+                                <div class="column is-10">
+
                                     <div class="field is-grouped">
                                         <div class="control">
                                             <button type="submit" method="POST" class="button is-link">Aceptar</button>
@@ -417,7 +418,7 @@ if (count($_POST) > 1) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="control column is-1"></div>
+                                <div class="column is-1"></div>
                             </div>
                         </form>
                         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
