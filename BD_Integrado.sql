@@ -76,7 +76,7 @@ Fecha_Pedido DATE NOT NULL,
 Fecha_Esperada DATE NOT NULL,
 Fecha_Entrega DATE DEFAULT NULL,
 Estado varchar(15) NOT NULL,
-Importe numeric(15,2) NOT NULL, 
+Importe numeric(15,2), 
 CONSTRAINT pedidosCliente_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
 );
 

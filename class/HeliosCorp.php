@@ -140,7 +140,8 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function editClient($data){
+    public function editClient($data)
+    {
         try {
             $id = $data["id"];
             $nombre = $data["nombre"];
@@ -301,6 +302,57 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
+    
+    public function getInsertDetalle(){
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("INSERT INTO detallepedido VALUES ID_Pedido, ID_Producto, Cantidad, PrecioUnidad");
+            $stmt->execute();
+
+            
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+
+    }
+
+    public function getPedidosProducto($id) //Te devuelve los productos de un pedido
+    {
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad FROM detallepedido INNER JOIN productos ON detallepedido.ID_Producto = productos.ID_Producto WHERE detallepedido.ID_Pedido = $id");
+            $stmt->execute();
+            $output = "";
+            $output .= "<ul>";
+            while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                
+                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre'] . "</li> <br>";
+              
+            }
+            $output .= "</ul>";
+            $this->bbdd->commit();
+            return $output;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+    }
+
+    
+
+    public function getImporteTotal($id){
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT Importe FROM pedidos WHERE ID_Pedido = $id");
+            $stmt->execute();
+            $output = "";
+            $importe = $stmt->fetch();
+            $this->bbdd->commit();
+            $output .= "<p> TOTAL: " .$importe[0]." € </p> <br>";
+            return $output;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+    }
 
     //PRODUCTOS
     public function getAllProductos() //Devuelve un array de objetos con todos los productos
@@ -373,10 +425,25 @@ class HeliosCorp extends Connection
             $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdCliente"];
             $this->bbdd->commit();
         } catch (PDOException $exception) {
-            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
-        } return $numero;
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+        return $numero;
     }
 
+    public function maxIDPedido()
+    {
+        try {
+            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+            $this->bbdd->beginTransaction();
+            $sqlMaxNum = "SELECT max(ID_pedido)+1 AS maxIdPedido FROM pedidos";
+            $resultado = $this->bbdd->query($sqlMaxNum);
+            $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdPedido"];
+            $this->bbdd->commit();
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+        return $numero;
+    }
 
 
 

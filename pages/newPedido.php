@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
 require_once 'autoloader.php';
 $helios = new HeliosCorp(); 
+
 ?>
 
 <!DOCTYPE html>
@@ -92,34 +93,54 @@ $helios = new HeliosCorp();
                                         <div class="column is-7">
                                             <div class="columns">
                                                 <div class="column is-7 margenPedido1">
-                                                    <label class="label">Cliente</label>
-                                                    <div class="control">
-                                                        <div class="select">
-                                                            <select required name="Cliente">
-                                                                <?= $helios->drawClientesOptions() ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="block"></div>
-                                                    <label class="label">Producto</label>
-                                                    <div class="control">
-                                                        <div class="select">
-                                                            <select required name="Producto">
-                                                                <?= $helios->drawProductosOptions() ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="block"></div>
-                                                    <div class="breadcrumb is-right">
-                                                        <div class="control ">
-                                                            <button href="#" type="submit" method="POST" class="button is-link ">Añadir</button>
-                                                        </div>
-                                                    </div>
+                                                <label class="label">ID</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input" required name="id" value="<?=/* $_POST["ID_Pedido"] */ 1 ?>" readonly>
+                                </div>
+
+                                <label class="label">Cliente</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input" required name="Empresa" value="<?=/*$_POST["ID"]*/ "Lacasitos"?>" readonly>
+                                </div>
+                                
+                                <div class="block"></div>
+                                <label class="label">Producto</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select required name="Producto">
+                                            <?= $helios->drawProductosOptions() ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="block"></div>
+                                <label class="label">Cantidad</label>
+                                <div class="control">
+                                    <input class="input" type="number" placeholder="Text input" required name="id" value="">
+                                </div>
+                                <div class="block"></div>
+
+                                <div class="field is-grouped">
+                                    
+                                    <div class="control">
+                                        <button href="#" type="submit" method="POST" class="button is-link">Agregar</button>
+                                    </div>
+                                    
+                                    <div class="control">
+                                        <button href="./clientes.php" type="button" class="button is-link is-light">Cancelar</button>
+                                    </div>
+                                </div>
                                                 </div>
                                                 <div class="column is-5"></div>
                                             </div>
                                         </div>
-                                        <div class="column is-5 card"></div>
+                                        <div class="column is-5 card">
+                                        <div class="content">
+                                        <?=$helios->getPedidosProducto(101)?>
+                                        <?=$helios->getImporteTotal(101)?>
+
+
+                                        </div>
+                                        </div>
                                         <div class="column is-1"></div>
                                     </div>
                                 </div>
