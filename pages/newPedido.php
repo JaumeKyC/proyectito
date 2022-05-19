@@ -1,8 +1,10 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ../index.php?error=Insert User and Password");
+}
 require_once 'autoloader.php';
-$helios = new HeliosCorp(); 
+$helios = new HeliosCorp();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ $helios = new HeliosCorp();
     <!-- HEADER -->
     <header class="">
         <div class="container logo-nav-container">
-            <a href="../indexMenu.php">
+            <a href="../index.php">
                 <!-- LOGO -->
                 <img class="main_logo" src="../img/logo5.png" alt="main_logo">
             </a>
@@ -41,7 +43,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -73,67 +75,59 @@ $helios = new HeliosCorp();
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
             <!-- Dividimos en columnas -->
+
             <div class="columns">
                 <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-2"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+                <div class="column is-8">
+                
 
+                <h1 class="h1NewPedido">CREAR NUEVO CLIENTE</h1>
+                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
                     <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <div class="">
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                        <!-- FORMULARIO -->
-                        <form action="" method="POST">
-                            <div class="columns">
-                                <!-- <div class="column is-1"></div> -->
-                                <div class="column is-11 card ">
-                                    <div class="columns">
-                                        <div class="column is-7">
-                                            <div class="columns">
-                                                <div class="column is-7 margenPedido1">
-                                                    <label class="label">Cliente</label>
-                                                    <div class="control">
-                                                        <div class="select">
-                                                            <select required name="Cliente">
-                                                                <?= $helios->drawClientesOptions() ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="block"></div>
-                                                    <label class="label">Producto</label>
-                                                    <div class="control">
-                                                        <div class="select">
-                                                            <select required name="Producto">
-                                                                <?= $helios->drawProductosOptions() ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="block"></div>
-                                                    <div class="breadcrumb is-right">
-                                                        <div class="control ">
-                                                            <button href="#" type="submit" method="POST" class="button is-link ">Añadir</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="column is-5"></div>
-                                            </div>
-                                        </div>
-                                        <div class="column is-5 card"></div>
-                                        <div class="column is-1"></div>
+                    <!-- <div class=""> -->
+                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                    <!-- FORMULARIO -->
+                    <form action="" method="POST">
+                    <div class="card">
+
+                        <div class="columns">
+                            
+                       
+                            <!-- <div class="column is-1"></div> -->
+                            
+                            <div class="column is-2"></div>
+                            <div class="column is-8 paddingNewPedido">
+                                    <!-- <div class="column is-7 margenPedido1"> -->
+                                    <label class="label marginNewPedido espaciadoNewPedido espaciadoNewPedido">Selecciona un cliente</label>
+                                   <!--  <div class="control"> -->
+                                        <div class="select centradoNewPedido">
+                                            <select required name="Cliente">
+                                                <?= $helios->drawClientesOptions() ?>
+                                            </select>
+                                        <!-- </div> -->
+                                        <!-- </div> -->
+                                        </select>
                                     </div>
-                                </div>
+
+                                        <button href="#" type="submit" method="POST" class="button is-link  ">Crear pedido</button>
+                                        </div>
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                                <div class="column is-2"></div>
+                                </form>
                             </div>
-                            <div class="column is-1"></div>
-                    </div>
-                    </form>
+                        
+                   
                     <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                 </div>
+                <!-- Columnas vacías para dar margen a la derecha -->
+                <div class="column is-2"></div>
             </div>
-
-            <!-- Columnas vacías para dar margen a la derecha -->
-            <div class="column is-2"></div>
+            </div>
         </div>
+</div>
         </div>
         <!-- FIN DE LA MAIN SECTION -->
     </main>
