@@ -95,12 +95,12 @@ $helios = new HeliosCorp();
                                                 <div class="column is-7 margenPedido1">
                                                 <label class="label">ID</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="id" value="<?=/* $_POST["ID_Pedido"] */ 1 ?>" readonly>
+                                    <input class="input" type="text" placeholder="Text input" required name="id" value="<?=$_GET["ID_Pedido"]?>" readonly>
                                 </div>
 
                                 <label class="label">Cliente</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="Empresa" value="<?=/*$_POST["ID"]*/ "Lacasitos"?>" readonly>
+                                    <input class="input" type="text" placeholder="Text input" required name="Empresa" value="<?=$_GET["ID_Cliente"]?>" readonly>
                                 </div>
                                 
                                 <div class="block"></div>
@@ -135,8 +135,8 @@ $helios = new HeliosCorp();
                                         </div>
                                         <div class="column is-5 card">
                                         <div class="content">
-                                        <?=$helios->getPedidosProducto(101)?>
-                                        <?=$helios->getImporteTotal(101)?>
+                                        <?=$helios->getPedidosProducto($_GET["ID_Pedido"])?>
+                                        <?=$helios->getImporteTotal($_GET["ID_Pedido"])?>
 
 
                                         </div>

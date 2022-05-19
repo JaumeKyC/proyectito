@@ -303,12 +303,12 @@ class HeliosCorp extends Connection
         }
     }
     
-    public function getInsertDetalle(){
+    public function getInsertDetalle($idPe,$idPo,$cant,$precioU){ //REVISAR
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("INSERT INTO detallepedido VALUES ID_Pedido, ID_Producto, Cantidad, PrecioUnidad");
+            $stmt = $this->bbdd->prepare("INSERT INTO detallepedido VALUES $idPe, $idPo, $cant, $precioU WHERE $idPe != ID_Pedido");
             $stmt->execute();
-
+            return $stmt->fetch(PDO::FETCH_ASSOC);
             
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
