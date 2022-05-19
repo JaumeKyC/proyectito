@@ -136,7 +136,42 @@ $helios = new HeliosCorp();
         </div>
 
         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+        <div class="block" id="detallitos">
+            <!-- Dividimos en columnas -->
+            <div id="pop-up">
+                <div class="columns">
+                    <!-- Columnas vacías para dar margen a la izquierda -->
 
+                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                    <div class="column is-12 ">
+                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+
+                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+
+                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                        <!-- FORMULARIO -->
+                        <div class="">
+                            <table id="infoProducto" class=" table has-text-centered is-bordered is-stripped is-narrow">
+                                <!-- Aquí JS creará la tabla de info -->
+                            </table>
+                        </div>
+                        <div class="block"></div>
+                        <div class="columns">
+                            <div class="control column is-9"></div>
+                            <div class="control column is-2">
+                                <button id="cancelar-pop-up-info" type="button" class="button is-link is-light ">Salir</button>
+                            </div>
+                            <div class="control column is-1"></div>
+                        </div>
+                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+
+                    </div>
+
+                    <!-- Columnas vacías para dar margen a la derecha -->
+
+                </div>
+            </div>
+        </div>
 
         <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>

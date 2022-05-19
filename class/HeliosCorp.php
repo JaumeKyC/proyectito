@@ -116,17 +116,7 @@ class HeliosCorp extends Connection
         return new Clientes(null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
-    public function drawClienteInfo($id) //Crea la tabla de información del cliente
-    {
-        $cliente = $this->getCliente($id);
-        $output = "";
-        $output .= "<thead><tr><th colspan='8'>Detalles de " . $cliente->getNombre() . "</th></tr></thead>";
-        $output .= "<tbody><tr><th colspan='2'>Nombre del Contacto</th><th colspan='2'>Apellido del Conctacto</th><th colspan='2'>Teléfono</th><th colspan='2'>Email</th></tr>";
-        $output .= "<tr><td colspan='2'>" . $cliente->getNombreContacto() . "</td><td colspan='2'>" . $cliente->getApellidoContacto() . "</td><td colspan='2'>" . $cliente->getTelefono() . "</td><td colspan='2'>" . $cliente->getEmail() . "</td></tr>";
-        $output .= "<tr><th colspan='2''>Calle</th><th>Número</th><th>Ciudad</th><th>Comunidad</th><th>País</th><th>Código Postal</th></tr>";
-        $output .= "<tr><td colspan='2'>" . $cliente->getDireccionCalle() . "</td><td>" . $cliente->getDireccionNumero() . "</td><td>" . $cliente->getCiudad() . "</td><td>" . $cliente->getComunidad() . "</td><td>" . $cliente->getPais() . "</td><td>" . $cliente->getCodPostal() . "</td></tr></tbody>";
-        return $output;
-    }
+  
 
     public function deleteClientes($id) //Elimina el cliente
     {
@@ -328,6 +318,19 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
+    public function getProducto($id) //Devuelve la info de un solo cliente al pasarle el ID
+    {
+        try {
+            $stmtClient = $this->bbdd->prepare("SELECT * FROM productos WHERE id = :id");
+            $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
+            if ($stmtClient->execute() && $stmtClient->rowCount() > 0) {
+                return $stmtClient->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la consulta: ' . $e->getMessage();
+        }
+        return new Productos(null, null, null, null, null, null, null);
+    }
 
     public function drawProductosList($admin) //Crea la tabla a partir del array de objetos productos
     {
@@ -349,9 +352,9 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $productos->getCantidadStock() . "</td>";
             $output .= "<td>" . $productos->getPrecioVenta() . "</td>";
             $output .= "<td>" . $productos->getPrecioProveedor() . "</td>";
-            $output .= "<td> <a href='info.php?id=" . $productos->getIdProducto() . "'><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a class=" . $disabled . " href='edit.php?id=" . $productos->getIdProducto() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=" . $disabled . " href='deleteProductos.php?id=" . $productos->getIdProducto() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-producto-info' id=" . $productos->getIdProducto() . "><img src='../img/info.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-producto-edit " . $disabled . "' id=" . $productos->getIdProducto() . "><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-producto-delete " . $disabled . "' id=" . $productos->getIdProducto() . "><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
