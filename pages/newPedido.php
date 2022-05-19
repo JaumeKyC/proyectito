@@ -85,7 +85,7 @@ $helios = new HeliosCorp();
                     <div class="">
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
-                        <form action="" method="POST">
+                        <form action="insertdetalleP.php" method="POST">
                             <div class="columns">
                                 <!-- <div class="column is-1"></div> -->
                                 <div class="column is-11 card ">
@@ -95,19 +95,19 @@ $helios = new HeliosCorp();
                                                 <div class="column is-7 margenPedido1">
                                                 <label class="label">ID</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="id" value="<?=$_GET["ID_Pedido"]?>" readonly>
+                                    <input class="input" type="text" placeholder="Text input" required name="idpedido" value="<?=$_GET["idpedido"]?>" readonly>
                                 </div>
 
                                 <label class="label">Cliente</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="Empresa" value="<?=$_GET["ID_Cliente"]?>" readonly>
+                                    <input class="input" type="text" placeholder="Text input" required name="idcliente" value="<?=$_GET["idcliente"]?>" readonly>
                                 </div>
                                 
                                 <div class="block"></div>
                                 <label class="label">Producto</label>
                                 <div class="control">
                                     <div class="select">
-                                        <select required name="Producto">
+                                        <select required name="producto">
                                             <?= $helios->drawProductosOptions() ?>
                                         </select>
                                     </div>
@@ -115,7 +115,7 @@ $helios = new HeliosCorp();
                                 <div class="block"></div>
                                 <label class="label">Cantidad</label>
                                 <div class="control">
-                                    <input class="input" type="number" placeholder="Text input" required name="id" value="">
+                                    <input class="input" type="number" placeholder="Text input" required name="cantidad" value="">
                                 </div>
                                 <div class="block"></div>
 
@@ -135,8 +135,8 @@ $helios = new HeliosCorp();
                                         </div>
                                         <div class="column is-5 card">
                                         <div class="content">
-                                        <?=$helios->getPedidosProducto($_GET["ID_Pedido"])?>
-                                        <?=$helios->getImporteTotal($_GET["ID_Pedido"])?>
+                                        <?=$helios->getPedidosProducto($_GET["idpedido"])?>
+                                        <?=$helios->getImporteTotal($_GET["idpedido"])?>
 
 
                                         </div>

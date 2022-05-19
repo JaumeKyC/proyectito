@@ -303,12 +303,27 @@ class HeliosCorp extends Connection
         }
     }
     
-    public function getInsertDetalle($idPe,$idPo,$cant,$precioU){ //REVISAR
+    public function getInsertDetalle($post){ //REVISAR
         try {
-            $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("INSERT INTO detallepedido VALUES $idPe, $idPo, $cant, $precioU WHERE $idPe != ID_Pedido");
-            $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            $idP = $post["producto"];
+            $stmt = $this->bbdd->query("SELECT PrecioVenta AS precioVenta FROM productos WHERE ID_Producto = $idP");
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC)["precioVenta"]; //Resultado tiene precio unidad.
+            $idpedido = $post["idpedido"];
+            $idproducto = $post["producto"];
+            $cantidad = $post["cantidad"];
+            $preciounidad = $resultado;
+            
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO detallepedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
+            $stmtInsert->bindParam(':idpedido', $idpedido, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':producto', $idproducto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':cantidad', $cantidad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':precioventa', $preciounidad, PDO::PARAM_STR);
+            
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
             
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
