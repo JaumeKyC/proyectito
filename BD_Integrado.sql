@@ -138,7 +138,7 @@ ID_Pedido integer NOT NULL,
 ID_Producto varchar(15) NOT NULL,
 Cantidad integer NOT NULL,
 PrecioUnidad numeric(15,2) NOT NULL,
-PRIMARY KEY (ID_Pedido,ID_Producto),
+#PRIMARY KEY (ID_Pedido,ID_Producto),
 CONSTRAINT productosPedido_fk FOREIGN KEY (ID_Pedido) REFERENCES pedidos (ID_Pedido),
 CONSTRAINT productosPedido_fk2 FOREIGN KEY (ID_Producto) REFERENCES productos (ID_Producto)
 

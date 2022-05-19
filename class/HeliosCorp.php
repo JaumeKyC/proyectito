@@ -245,7 +245,6 @@ class HeliosCorp extends Connection
         }
     }
 
-
     //NEW PEDIDO
     public function getStock($id_producto) //Devuelve el stock de un producto al pasarle el ID
     {
@@ -390,8 +389,6 @@ class HeliosCorp extends Connection
         }
     }
 
-
-
     //PRODUCTOS
     public function getAllProductos() //Devuelve un array de objetos con todos los productos
     {
@@ -483,10 +480,7 @@ class HeliosCorp extends Connection
         return $numero;
     }
 
-
-
     /* FILTRADO */
-
 
     private function setCurrentFilter()
     {

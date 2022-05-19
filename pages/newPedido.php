@@ -1,8 +1,10 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ../index.php?error=Insert User and Password");
+}
 require_once 'autoloader.php';
-$helios = new HeliosCorp(); 
+$helios = new HeliosCorp();
 
 ?>
 
@@ -42,7 +44,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -82,71 +84,67 @@ $helios = new HeliosCorp();
                     <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
 
                     <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <div class="">
+
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
                         <form action="insertdetalleP.php" method="POST">
-                            <div class="columns">
-                                <!-- <div class="column is-1"></div> -->
-                                <div class="column is-11 card ">
+
+                            <!-- <div class="column is-1"></div> -->
+
+                            <div class="columns card">
+                                <div class="column is-5">
                                     <div class="columns">
-                                        <div class="column is-7">
-                                            <div class="columns">
-                                                <div class="column is-7 margenPedido1">
-                                                <label class="label">ID</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="idpedido" value="<?=$_GET["idpedido"]?>" readonly>
-                                </div>
+                                        <div class="column is-9 ">
+                                            <label class="label">ID</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="Text input" required name="idpedido" value="<?= $_GET["idpedido"] ?>" readonly>
+                                            </div>
 
-                                <label class="label">Cliente</label>
-                                <div class="control">
-                                    <input class="input" type="text" placeholder="Text input" required name="idcliente" value="<?=$_GET["idcliente"]?>" readonly>
-                                </div>
-                                
-                                <div class="block"></div>
-                                <label class="label">Producto</label>
-                                <div class="control">
-                                    <div class="select">
-                                        <select required name="producto">
-                                            <?= $helios->drawProductosOptions() ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="block"></div>
-                                <label class="label">Cantidad</label>
-                                <div class="control">
-                                    <input class="input" type="number" placeholder="Text input" required name="cantidad" value="">
-                                </div>
-                                <div class="block"></div>
+                                            <label class="label">Cliente</label>
+                                            <div class="control">
+                                                <input class="input" type="text" placeholder="Text input" required name="idcliente" value="<?= $_GET["idcliente"] ?>" readonly>
+                                            </div>
 
-                                <div class="field is-grouped">
-                                    
-                                    <div class="control">
-                                        <button href="#" type="submit" method="POST" class="button is-link">Agregar</button>
-                                    </div>
-                                    
-                                    <div class="control">
-                                        <button href="./clientes.php" type="button" class="button is-link is-light">Cancelar</button>
-                                    </div>
-                                </div>
+                                            <div class="block"></div>
+                                            <label class="label">Producto</label>
+                                            <div class="control">
+                                                <div class="select">
+                                                    <select required name="producto">
+                                                        <?= $helios->drawProductosOptions() ?>
+                                                    </select>
                                                 </div>
-                                                <div class="column is-5"></div>
+                                            </div>
+                                            <div class="block"></div>
+                                            <label class="label">Cantidad</label>
+                                            <div class="control">
+                                                <input class="input" type="number" placeholder="Text input" required name="cantidad" value="">
+                                            </div>
+                                            <div class="block"></div>
+
+                                            <div class="field is-grouped">
+
+                                                <div class="control">
+                                                    <button href="#" type="submit" method="POST" class="button is-link">Agregar</button>
+                                                </div>
+
+                                                <div class="control">
+                                                    <button href="./clientes.php" type="button" class="button is-link is-light">Cancelar</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="column is-5 card">
-                                        <div class="content">
-                                        <?=$helios->getPedidosProducto($_GET["idpedido"])?>
-                                        <?=$helios->getImporteTotal($_GET["idpedido"])?>
-
-
-                                        </div>
-                                        </div>
-                                        <div class="column is-1"></div>
+                                        <div class="column is-3"></div>
                                     </div>
                                 </div>
+                                <div class="column is-7 card ">
+                                    <div class="content is-justify-content-end">
+                                        <?= $helios->getPedidosProducto($_GET["idpedido"]) ?>
+                                        <?= $helios->getImporteTotal($_GET["idpedido"]) ?>
+                                    </div>
+                                </div>
+                                <div class="column is-1"></div>
                             </div>
+
                             <div class="column is-1"></div>
-                    </div>
                     </form>
                     <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                 </div>
