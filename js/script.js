@@ -144,7 +144,8 @@ function clienteDeleteAction(id) {
 
     document.getElementById("borraditos").style.display = "grid";
     let formulario = document.getElementById("deleteClientes");
-        formulario.action = 'deleteClientes.php?id='+id+'';
+    formulario.action = "";
+    formulario.action = 'deleteClientes.php?id=' + id + '';
 
 
 
