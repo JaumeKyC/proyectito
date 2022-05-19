@@ -7,6 +7,7 @@ function main() {
     clientInfo();
     clientDelete();
     productosInfo();
+    newProductForm()
 
 }
 function pressedButton() {
@@ -149,6 +150,16 @@ function clienteDeleteAction(id) {
     formulario.action = 'deleteClientes.php?id=' + id + '';
 }
 
+function newProductForm() {
+    document.getElementById("pop-up-cliente").addEventListener("click", function () {
+        document.getElementById("productitos").style.display = "grid";
+
+    });}
+
+
+
+
+
 function productosInfo() {
     let infoButtons2 = document.getElementsByClassName("pop-up-producto-info");
     console.log(infoButtons2);
@@ -162,7 +173,7 @@ function productosInfoAction(id) {
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(this.responseText); // 2 - Lo que se devuelva, lo convertimos en objeto Json
             /* console.log(data); */
-            drawClientInfo(data); // 3 - Y se lo pasamos a drawDetail
+            drawProductoInfo(data); // 3 - Y se lo pasamos a drawDetail
         }
     });
     xhttp.open("GET", "infoProducto.php?id=" + id, true); // 1 - Llama a detail.php pasándole por GET el id

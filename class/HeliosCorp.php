@@ -293,6 +293,37 @@ class HeliosCorp extends Connection
     }
 
     //PRODUCTOS
+    public function newClient($data)
+    {
+        try {
+            $idProducto = $data["idProducto"];
+            $nombre = $data["nombre"];
+            $proveedor = $data["proveedor"];
+            $descripcion = $data["descripcion"];
+            $cantidadStock = $data["cantidadStock"];
+            $precioVenta = $data["precioVenta"];
+            $precioProveedor = $data["precioProveedor"];
+            
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO productos VALUES (:idProducto,:nombre,:proveedor,:descripcion,:cantidadStock,:precioVenta,:precioProveedor)");
+            $stmtInsert->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':proveedor', $proveedor, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':cantidadStock', $cantidadStock, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':precioVenta', $precioVenta, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':precioProveedor', $precioProveedor, PDO::PARAM_STR);
+            
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
+        }
+    }
+    
+    
+    
+    
     public function getAllProductos() //Devuelve un array de objetos con todos los productos
     {
         try {
