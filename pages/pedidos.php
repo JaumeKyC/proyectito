@@ -159,7 +159,7 @@ $helios = new HeliosCorp();
                 <!-- </div> -->
             </a>
             <span>
-                <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
+                <a href="./crearPedido.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
             </span>
 
     </footer>

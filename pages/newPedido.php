@@ -86,40 +86,71 @@ $helios = new HeliosCorp();
                 <h1 class="h1NewPedido">CREAR NUEVO CLIENTE</h1>
                     <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
                     <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <!-- <div class=""> -->
+
                     <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                     <!-- FORMULARIO -->
-                    <form action="" method="POST">
-                    <div class="card">
+                    <form action="insertdetalleP.php" method="POST">
 
-                        <div class="columns">
-                            
-                       
-                            <!-- <div class="column is-1"></div> -->
-                            
-                            <div class="column is-2"></div>
-                            <div class="column is-8 paddingNewPedido">
-                                    <!-- <div class="column is-7 margenPedido1"> -->
-                                    <label class="label marginNewPedido espaciadoNewPedido espaciadoNewPedido">Selecciona un cliente</label>
-                                   <!--  <div class="control"> -->
-                                        <div class="select centradoNewPedido">
-                                            <select required name="Cliente">
-                                                <?= $helios->drawClientesOptions() ?>
-                                            </select>
-                                        <!-- </div> -->
-                                        <!-- </div> -->
-                                        </select>
-                                    </div>
+                        <!-- <div class="column is-1"></div> -->
 
-                                        <button href="#" type="submit" method="POST" class="button is-link  ">Crear pedido</button>
+                        <div class="columns card">
+                            <div class="column is-5">
+                                <div class="columns">
+                                    <div class="column is-9 ">
+                                        <label class="label">ID</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="idpedido" value="<?= $_GET["idpedido"] ?>" readonly>
                                         </div>
-                                    <!-- </div> -->
-                                <!-- </div> -->
-                                <div class="column is-2"></div>
-                                </form>
+
+                                        <label class="label">Cliente</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="idcliente" value="<?= $_GET["idcliente"] ?>" readonly>
+                                        </div>
+
+                                        <div class="block"></div>
+                                        <label class="label">Producto</label>
+                                        <div class="control">
+                                            <div class="select">
+                                                <select required name="producto">
+                                                    <?= $helios->drawProductosOptions() ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="block"></div>
+                                        <label class="label">Cantidad</label>
+                                        <div class="control">
+                                            <input class="input" type="number" placeholder="Text input" required name="cantidad" value="">
+                                        </div>
+                                        <div class="block"></div>
+
+                                        <div class="field is-grouped">
+
+                                            <div class="control">
+                                                <button href="#" type="submit" method="POST" class="button is-link is-light">Agregar</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="column is-3"></div>
+                                </div>
                             </div>
-                        
-                   
+                            <div class="column is-7 card ">
+                                <div class="content is-justify-content-end">
+                                    <?= $helios->getPedidosProducto($_GET["idpedido"]) ?>
+                                </div>
+                                <div class="content is-justify-content-end is-pulled-left">
+                                    <?= $helios->getImporteTotal($_GET["idpedido"]) ?>
+                                </div>
+
+                                <div class="controlis-pulled-right">
+                                    <button href="./pedidos.php" type="button" class="button is-medium is-link is-link is-pulled-right">ACEPTAR</button>
+                                </div>
+                            </div>
+                            <div class="column is-1"></div>
+                        </div>
+
+                        <div class="column is-1"></div>
+                    </form>
                     <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                 </div>
                 <!-- Columnas vacías para dar margen a la derecha -->
@@ -127,19 +158,17 @@ $helios = new HeliosCorp();
             </div>
             </div>
         </div>
-</div>
-        </div>
         <!-- FIN DE LA MAIN SECTION -->
     </main>
     <!-- FOOTER -->
-    <footer class="">
+    <footer class="footer2">
         <div class="container logo-nav-container">
-            <a href="./clientes.php">
-                <div class="icon-text navbar-item">
-                    <span class="icon is-large">
-                        <img src="../img/flecha-hacia-atras.png" alt="">
-                    </span>
-                </div>
+            <a href="./pedidos.php">
+                <!-- <div class="icon-text navbar-item"> -->
+                <span class="icon is-large">
+                    <img class="flechaAtras" src="../img/flecha-hacia-atras.png" alt="">
+                </span>
+                <!-- </div> -->
             </a>
         </div>
     </footer>
