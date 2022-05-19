@@ -404,7 +404,7 @@ if (count($_POST) > 1) {
                         <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
                         <!-- FORMULARIO -->
                         <form action="" id="deleteClientes" method="POST">
-                            <div class="block">Estás apunto de borrar el cliente.</div>
+                            <div class="block">Estás a punto de borrar el cliente.</div>
                             <div class="columns">
                                 <div class="column is-1"></div>
                                 <div class="column is-10">
