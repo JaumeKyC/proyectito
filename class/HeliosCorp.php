@@ -359,7 +359,7 @@ class HeliosCorp extends Connection
             $output = "";
             $importe = $stmt->fetch();
             $this->bbdd->commit();
-            $output .= "<p> TOTAL: " .$importe[0]." € </p> <br>";
+            $output .= "<p> TOTAL: " .$importe[0]." € </p>";
             return $output;
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
