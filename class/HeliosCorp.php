@@ -182,7 +182,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos WHERE ID_Cliente LIKE '%" . $this->filter . "%' ORDER BY Fecha_Pedido DESC");
+            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos WHERE ID_Cliente LIKE '%" . $this->filter . "%' ORDER BY ID_Pedido DESC");
             $stmt->execute();
             $pedidos = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -337,8 +337,6 @@ class HeliosCorp extends Connection
         }
     }
 
-    
-
     public function getImporteTotal($id){
         try {
             $this->bbdd->beginTransaction();
@@ -353,6 +351,31 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
         }
     }
+
+    public function createPedido($post){
+        try {
+            $id_Pedido = $post["ID_Pedido"];
+            $id_Ciente = $post["ID_Cliente"];
+            $fecha_Entrega = null;
+            $estado = "Pendiente";
+            $importe = 0;
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO pedidos VALUES (:id_Pedido,:id_Ciente,curdate(),(curdate() + interval 7 DAY),:fecha_Entrega,:estado,:importe)");
+            $stmtInsert->bindParam(':id_Pedido', $id_Pedido, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':id_Ciente', $id_Ciente, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':fecha_Entrega', $fecha_Entrega, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':estado', $estado, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':importe', $importe, PDO::PARAM_STR);
+
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
+        }
+    }
+
+
 
     //PRODUCTOS
     public function getAllProductos() //Devuelve un array de objetos con todos los productos

@@ -73,68 +73,48 @@ $helios = new HeliosCorp();
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        <div class="block">
-            <!-- Dividimos en columnas -->
 
-            <div class="columns">
-                <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-2"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8">
-                
+        <!-- Dividimos en columnas -->
 
-                <h1 class="h1NewPedido">CREAR NUEVO CLIENTE</h1>
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <!-- <div class=""> -->
-                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                    <!-- FORMULARIO -->
-                    <form action="" method="POST">
-                    <div class="card">
-
-                        <div class="columns">
-                            
-                       
-                            <!-- <div class="column is-1"></div> -->
-                            
-                            <div class="column is-2"></div>
-                            <div class="column is-8 paddingNewPedido">
-                                    <!-- <div class="column is-7 margenPedido1"> -->
-                                    <label class="label marginNewPedido espaciadoNewPedido espaciadoNewPedido">Selecciona un cliente</label>
-                                   <!--  <div class="control"> -->
-                                        <div class="select centradoNewPedido">
-                                            <select required name="Cliente">
-                                                <?= $helios->drawClientesOptions() ?>
-                                            </select>
-                                        <!-- </div> -->
-                                        <!-- </div> -->
-                                        </select>
-                                    </div>
-
-                                        <button href="#" type="submit" method="POST" class="button is-link  ">Crear pedido</button>
-                                        </div>
-                                    <!-- </div> -->
-                                <!-- </div> -->
-                                <div class="column is-2"></div>
-                                </form>
+        <div class="columns">
+            <!-- Columnas vacías para dar margen a la izquierda -->
+            <div class="column is-2"></div>
+            <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+            <div class="column is-8 ">
+                <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                <div class="columns has-text-centered">
+                    <div class="column is-2"></div>
+                    <div class="tile is-vertical is-8 tile box">
+                        <form action="createPedido.php" method="POST">
+                            <label class="label ">Selecciona un cliente:</label>
+                            <div class="select is-grouped ">
+                                <select required name="ID_Cliente" class="has-text-centered">
+                                    <?= $helios->drawClientesOptions() ?>
+                                </select>
                             </div>
-                        
-                   
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                            <div class="block"></div>
+                            <div class="control">
+                            <label class="label ">ID del Pedido:</label> 
+                                <input style="width:50%" class="input has-text-centered" type="text" placeholder="" required name="ID_Pedido" value="<?=$helios->maxIDPedido() ?>" readonly>
+                            </div>
+                            <div class="block"></div>
+                            <button href="#" type="submit" method="POST" class="button is-link  ">Crear pedido</button>
+                        </form>
+
+                    </div>
+                    <div class="column is-2"></div>
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-2"></div>
             </div>
-            </div>
+            <div class="column is-2"></div>
         </div>
-</div>
-        </div>
+        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+        <!-- Columnas vacías para dar margen a la derecha -->
         <!-- FIN DE LA MAIN SECTION -->
     </main>
     <!-- FOOTER -->
     <footer class="">
         <div class="container logo-nav-container">
-            <a href="./clientes.php">
+            <a href="./pedidos.php">
                 <div class="icon-text navbar-item">
                     <span class="icon is-large">
                         <img src="../img/flecha-hacia-atras.png" alt="">
