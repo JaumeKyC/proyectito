@@ -143,7 +143,7 @@ $helios = new HeliosCorp();
                                 </div>
 
                                 <div class="controlis-pulled-right">
-                                    <button href="./pedidos.php" type="button" class="button is-medium is-link is-link is-pulled-right">ACEPTAR</button>
+                                    <a href="./pedidos.php" type="button" class="button is-link is-medium is-pulled-right">ACEPTAR</a>
                                 </div>
                             </div>
                             <div class="column is-1"></div>
@@ -163,7 +163,7 @@ $helios = new HeliosCorp();
     <!-- FOOTER -->
     <footer class="footer2">
         <div class="container logo-nav-container">
-            <a href="./pedidos.php">
+            <a href="./crearPedido.php">
                 <!-- <div class="icon-text navbar-item"> -->
                 <span class="icon is-large">
                     <img class="flechaAtras" src="../img/flecha-hacia-atras.png" alt="">
