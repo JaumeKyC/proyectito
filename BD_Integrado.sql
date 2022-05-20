@@ -107,7 +107,7 @@ INSERT INTO pedidos VALUES
 (124,23,'2022-05-20','2022-05-21',null ,'Pendiente',1200);
 
 CREATE TABLE productos (
-ID_Producto varchar(15) NOT NULL PRIMARY KEY,
+ID_Producto integer(15) NOT NULL PRIMARY KEY,
 Nombre varchar(70) NOT NULL,
 Proveedor varchar(50) DEFAULT NULL,
 Descripción varchar(1000),
@@ -135,7 +135,7 @@ INSERT INTO productos VALUES
     
 CREATE TABLE detallePedido(
 ID_Pedido integer NOT NULL,
-ID_Producto varchar(15) NOT NULL,
+ID_Producto integer(15) NOT NULL,
 Cantidad integer NOT NULL,
 PrecioUnidad numeric(15,2) NOT NULL,
 #PRIMARY KEY (ID_Pedido,ID_Producto),
