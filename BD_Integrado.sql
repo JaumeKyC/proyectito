@@ -186,7 +186,7 @@ DROP TRIGGER IF EXISTS AI_update_importe_pedido;
 use integrado;
 
 DELIMITER $$
-CREATE TRIGGER AI_update_importe_pedido AFTER INSERT ON detallepedido FOR EACH ROW
+CREATE TRIGGER AI_update_importe_pedido AFTER INSERT ON detallePedido FOR EACH ROW
 BEGIN
 UPDATE pedidos SET Importe=Importe+(new.PrecioUnidad*new.Cantidad) WHERE ID_Pedido=new.ID_Pedido;
 END$$
