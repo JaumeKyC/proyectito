@@ -353,25 +353,6 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function getImporteUnitario($id){
-        try {
-            $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT PrecioVenta FROM productos WHERE ID_Producto = $id");
-            $stmt->execute();
-            $output = "";
-           
-            while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                
-                $output .= "<p>".$detalleP['PrecioVenta']."</p> <br>";
-              
-            }
-            $this->bbdd->commit();
-            return $output;
-        } catch (PDOException $exception) {
-            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
-        }
-    }
-
     public function getImporteTotal($id){
         try {
             $this->bbdd->beginTransaction();
