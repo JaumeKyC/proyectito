@@ -233,7 +233,7 @@ class HeliosCorp extends Connection
         return $output;
     }
 
-    public function deletePedidos($id) //Elimina el cliente
+    public function deletePedidos($id)
     {
         try {
             $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedidos = :id");
