@@ -314,7 +314,7 @@ class HeliosCorp extends Connection
             $preciounidad = $resultado;
             
 
-            $stmtInsert = $this->bbdd->prepare("INSERT INTO detallepedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO detallePedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
             $stmtInsert->bindParam(':idpedido', $idpedido, PDO::PARAM_INT);
             $stmtInsert->bindParam(':producto', $idproducto, PDO::PARAM_STR);
             $stmtInsert->bindParam(':cantidad', $cantidad, PDO::PARAM_STR);
@@ -334,7 +334,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad FROM detallepedido INNER JOIN productos ON detallepedido.ID_Producto = productos.ID_Producto WHERE detallepedido.ID_Pedido = $id");
+            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad FROM detallePedido INNER JOIN productos ON detallePedido.ID_Producto = productos.ID_Producto WHERE detallePedido.ID_Pedido = $id");
             $stmt->execute();
             $output = "";
             $output .= "<ul>";
@@ -357,12 +357,12 @@ class HeliosCorp extends Connection
             $stmt = $this->bbdd->prepare("SELECT PrecioVenta FROM productos WHERE ID_producto = $id");
             $stmt->execute();
             $output = "";
-           /* 
+           
             while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 
                 $output .= "<p>".$detalleP['PrecioVenta']."</pi> <br>";
               
-            } */
+            }
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
         }
