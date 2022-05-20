@@ -146,7 +146,7 @@ td{
 }
 
 /* AJAX */
-#clientitos, #detallitos, #editaditos, #borraditos{
+#clientitos, #detallitos, #editaditos, #borraditos, #productitos{
     display:none; 
     place-items: center;
     padding:0% 5%;

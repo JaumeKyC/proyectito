@@ -1,6 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ../index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ../index.php?error=Insert User and Password");
+}
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
 
@@ -19,7 +21,7 @@ $helios = new HeliosCorp();
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="../css/general-style.css">
-    <script src="../js/script.js"></script>
+    <script src="../js/scriptProductos.js"></script>
     <title>Helios Corp.</title>
 </head>
 
@@ -41,7 +43,7 @@ $helios = new HeliosCorp();
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -118,8 +120,8 @@ $helios = new HeliosCorp();
                                 <tfoot>
                                 </tfoot>
                                 <tbody>
-                                    <?php        
-                                        echo $helios->drawProductosList($_SESSION["isAdmin"]);          
+                                    <?php
+                                    echo $helios->drawProductosList($_SESSION["isAdmin"]);
                                     ?>
                                 </tbody>
                             </table>
@@ -136,6 +138,118 @@ $helios = new HeliosCorp();
         </div>
 
         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+        <div class="columns" id="productitos">
+            <div class="column is-1"></div>
+            <!-- Dividimos en columnas -->
+            <div class="is-10" id="pop-up">
+                <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                <!-- FORMULARIO -->
+                <form action="newProducto.php" id="insertForm" method="POST">
+                    <div class="columns">
+
+                        <div class="column is-6">
+                            <label class="label">ID Producto</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" required name="idProducto" value="">
+                            </div>
+
+                            <label class="label">Nombre</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" required name="nombre">
+                            </div>
+
+                            <label class="label">Proveedor</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" required name="proveedor">
+                            </div>
+
+                            <label class="label">CantidadStock</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" required name="cantidadStock">
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <label class="label">PrecioVenta</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" required name="precioVenta">
+                            </div>
+
+                            <label class="label">PrecioProveedor</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" required name="precioProveedor">
+                            </div>
+                            <label class="label">Descripcion</label>
+                            <div class="control ">
+                                <textarea class="textarea" type="text" placeholder="Description" required name="descripcion"></textarea>
+                            </div>
+                           <div class="block"></div> 
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                </div>
+                                <div class="control">
+                                    <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="column is-1"></div>
+        </div>
+
+        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+        </div>
+        </div>
+
+        <!-- Columnas vacías para dar margen a la derecha -->
+
+        </div>
+        </div>
+        </div>
+
+        <div class="block" id="borraditos">
+            <!-- Dividimos en columnas -->
+            <div id="pop-up">
+                <div class="columns">
+                    <!-- Columnas vacías para dar margen a la izquierda -->
+
+                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                    <div class="column is-12 ">
+                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+
+                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+
+                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                        <!-- FORMULARIO -->
+                        <form action="" id="deleteProducto" method="POST">
+                            <div class="block">Estás a punto de borrar el cliente.</div>
+                            <div class="columns">
+                                <div class="column is-1"></div>
+                                <div class="column is-10">
+
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                        </div>
+                                        <div class="control">
+                                            <button id="cancelar-pop-up-delete" type="button" class="button is-link is-light">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-1"></div>
+                            </div>
+                        </form>
+                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                    </div>
+                </div>
+                <!-- Columnas vacías para dar margen a la derecha -->
+            </div>
+        </div>
+        </div>
+
         <div class="block" id="detallitos">
             <!-- Dividimos en columnas -->
             <div id="pop-up">
@@ -185,14 +299,14 @@ $helios = new HeliosCorp();
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
                 <!-- <div class="icon-text navbar-item"> -->
-                    <span class="icon is-large">
-                        <img src="../img/flecha-hacia-atras.png" alt="">
-                    </span>
+                <span class="icon is-large">
+                    <img src="../img/flecha-hacia-atras.png" alt="">
+                </span>
 
-               <!--  </div> -->
+                <!--  </div> -->
             </a>
             <span>
-                <a href="./nuevoCliente.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
+                <input id="pop-up-producto" class="button is-link is-right" type="button" value="Nuevo"></a>
             </span>
 
     </footer>
