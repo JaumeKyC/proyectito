@@ -1,8 +1,12 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User and Password");}
-
+if (!isset($_SESSION["user"])) {
+    header("Location: ../index.php?error=Insert User and Password");
+}
+require_once 'autoloader.php';
+$helios = new HeliosCorp();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,7 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
     <link rel="icon" href="img/logoico.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +29,7 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
     <!-- HEADER -->
     <header class="">
         <div class="container logo-nav-container">
-            <a href="../index.php">
+            <a href="../indexMenu.php">
                 <!-- LOGO -->
                 <img class="main_logo" src="../img/logo5.png" alt="main_logo">
             </a>
@@ -39,7 +43,7 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
                                 <span class="icon is-large">
                                     <img src="../img/usuario.png" alt="">
                                 </span>
-                                <span>Usuario</span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -69,44 +73,62 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
         <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        <div class="block">
-            <!-- Dividimos en columnas -->
-            <div class="columns">
-                <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-2"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
 
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                    <div class="block">
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+        <!-- Dividimos en columnas -->
+
+        <div class="columns">
+            <!-- Columnas vacías para dar margen a la izquierda -->
+            <div class="column is-2"></div>
+            <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+            <div class="column is-8 ">
+                <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                <div class="columns has-text-centered">
+                    <div class="column is-2"></div>
+                    <div class="tile is-vertical is-8 tile box">
+                        <form action="createPedido.php" method="POST">
+                            <label class="label ">Selecciona un cliente:</label>
+                            <div class="select is-grouped ">
+                                <select required name="ID_Cliente" class="has-text-centered">
+                                    <?= $helios->drawClientesOptions() ?>
+                                </select>
+                            </div>
+                            <div class="block"></div>
+                            <div class="control">
+                            <label class="label ">ID del Pedido:</label> 
+                                <input style="width:50%" class="input has-text-centered" type="text" placeholder="" required name="ID_Pedido" value="<?=$helios->maxIDPedido() ?>" readonly>
+                            </div>
+                            <div class="block"></div>
+                            <button href="#" type="submit" method="POST" class="button is-link  ">Crear pedido</button>
+                        </form>
 
                     </div>
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
+                    <div class="column is-2"></div>
                 </div>
-
-                <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-2"></div>
             </div>
+            <div class="column is-2"></div>
         </div>
-
+        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+        <!-- Columnas vacías para dar margen a la derecha -->
         <!-- FIN DE LA MAIN SECTION -->
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="container logo-nav-container">
-                <a href="#">
-                    <div class="icon-text navbar-item">
-                        <span class="icon is-large">
-                            <img src="../img/flecha-hacia-atras.png" alt="" class="flechaAtras">
-                        </span>
-                    </div>
-                </a>
-            </div>
-        </footer>
-        <!-- FIN DEL FOOTER -->
+    </main>
+    <!-- FOOTER -->
+    <footer class="">
+        <div class="container logo-nav-container">
+            <a href="./pedidos.php">
+                <div class="icon-text navbar-item">
+                    <span class="icon is-large">
+                        <img src="../img/flecha-hacia-atras.png" alt="">
+                    </span>
+                </div>
+            </a>
+        </div>
+    </footer>
+    <!-- FIN DEL FOOTER -->
 </body>
+<?php
+if (count($_POST) > 0) {
+    var_dump($_POST);
+}
+?>
 
 </html>

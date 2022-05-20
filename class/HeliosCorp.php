@@ -130,7 +130,8 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function editClient($data){
+    public function editClient($data)
+    {
         try {
             $id = $data["id"];
             $nombre = $data["nombre"];
@@ -171,7 +172,7 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos WHERE ID_Cliente LIKE '%" . $this->filter . "%' ORDER BY Fecha_Pedido DESC");
+            $stmt = $this->bbdd->prepare("SELECT * FROM pedidos WHERE ID_Cliente LIKE '%" . $this->filter . "%' ORDER BY ID_Pedido DESC");
             $stmt->execute();
             $pedidos = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -222,7 +223,7 @@ class HeliosCorp extends Connection
         return $output;
     }
 
-    public function deletePedidos($id) //Elimina el cliente
+    public function deletePedidos($id)
     {
         try {
             $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedidos = :id");
@@ -233,7 +234,6 @@ class HeliosCorp extends Connection
             echo 'Falló la consulta: ' . $e->getMessage();
         }
     }
-
 
     //NEW PEDIDO
     public function getStock($id_producto) //Devuelve el stock de un producto al pasarle el ID
@@ -289,6 +289,95 @@ class HeliosCorp extends Connection
             return $output;
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
+        }
+    }
+    
+    public function getInsertDetalle($post){ //REVISAR
+        try {
+        
+            $idP = $post["producto"];
+            $stmt = $this->bbdd->query("SELECT PrecioVenta AS precioVenta FROM productos WHERE ID_Producto = $idP");
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC)["precioVenta"]; //Resultado tiene precio unidad.
+            $idpedido = $post["idpedido"];
+            $idproducto = $post["producto"];
+            $cantidad = $post["cantidad"];
+            $preciounidad = $resultado;
+            
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO detallePedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
+            $stmtInsert->bindParam(':idpedido', $idpedido, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':producto', $idproducto, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':cantidad', $cantidad, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':precioventa', $preciounidad, PDO::PARAM_STR);
+            
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+            
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+
+    }
+
+    public function getPedidosProducto($id) //Te devuelve los productos de un pedido
+    {
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad, PrecioUnidad FROM detallePedido INNER JOIN productos ON detallePedido.ID_Producto = productos.ID_Producto WHERE detallePedido.ID_Pedido = $id");
+            $stmt->execute();
+            $output = "";
+            $output .= "<ul>";
+            while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                
+                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre']."<br>";
+                $output .= $detalleP['PrecioUnidad']*$detalleP['Cantidad'] ." € </li> ";
+                $output .="<br>";
+              
+            }
+            $output .= "</ul>";
+            $this->bbdd->commit();
+            return $output;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+    }
+
+    public function getImporteTotal($id){
+        try {
+            $this->bbdd->beginTransaction();
+            $stmt = $this->bbdd->prepare("SELECT Importe FROM pedidos WHERE ID_Pedido = $id");
+            $stmt->execute();
+            $output = "";
+            $importe = $stmt->fetch();
+            $this->bbdd->commit();
+            $output .= "<p> TOTAL: " .$importe[0]." € </p>";
+            return $output;
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+    }
+
+    public function createPedido($post){
+        try {
+            $id_Pedido = $post["ID_Pedido"];
+            $id_Ciente = $post["ID_Cliente"];
+            $fecha_Entrega = null;
+            $estado = "Pendiente";
+            $importe = 0;
+
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO pedidos VALUES (:id_Pedido,:id_Ciente,curdate(),(curdate() + interval 7 DAY),:fecha_Entrega,:estado,:importe)");
+            $stmtInsert->bindParam(':id_Pedido', $id_Pedido, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':id_Ciente', $id_Ciente, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':fecha_Entrega', $fecha_Entrega, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':estado', $estado, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':importe', $importe, PDO::PARAM_STR);
+
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
 
@@ -416,15 +505,27 @@ class HeliosCorp extends Connection
             $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdCliente"];
             $this->bbdd->commit();
         } catch (PDOException $exception) {
-            echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
-        } return $numero;
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+        return $numero;
     }
 
-
-
+    public function maxIDPedido()
+    {
+        try {
+            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+            $this->bbdd->beginTransaction();
+            $sqlMaxNum = "SELECT max(ID_pedido)+1 AS maxIdPedido FROM pedidos";
+            $resultado = $this->bbdd->query($sqlMaxNum);
+            $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdPedido"];
+            $this->bbdd->commit();
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+        return $numero;
+    }
 
     /* FILTRADO */
-
 
     private function setCurrentFilter()
     {
