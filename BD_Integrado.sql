@@ -180,3 +180,14 @@ Insert into login values
 ("paco", "paco", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "3", 0),
 ("pepe", "pepe", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "4", 0)
 ;
+
+#Trigger para actualizar el importe cuando se añada un producto
+DROP TRIGGER IF EXISTS AI_update_importe_pedido;
+use integrado;
+
+DELIMITER $$
+CREATE TRIGGER AI_update_importe_pedido AFTER INSERT ON detallepedido FOR EACH ROW
+BEGIN
+UPDATE pedidos SET Importe=Importe+(new.PrecioUnidad*new.Cantidad) WHERE ID_Pedido=new.ID_Pedido;
+END$$
+DELIMITER ;
