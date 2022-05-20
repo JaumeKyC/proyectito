@@ -66,27 +66,29 @@ function drawPedidoInfo(data) {
     let clientData = document.getElementById("infoPedido");
     clientData.innerHTML = "";
     console.log(data);
-    for (let i = 0; i < data.length; i++) {
-        for (field in data[i]) {
-            console.log(field);
-
-
-        }
+    let row = document.createElement("tr");
+    for (field in data[0]){
+        console.log(field);
+        let th = document.createElement("th");
+        th.innerHTML = field.charAt(0).toUpperCase() + field.slice(1);
+        row.appendChild(th);
+        clientData.appendChild(row);
     }
+
     for (let i = 0; i < data.length; i++) {
+        let row = document.createElement("tr");
         for (field in data[i]) {
-            let row = document.createElement("tr");
-            let th = document.createElement("th");
-            th.innerHTML = field.charAt(0).toUpperCase() + field.slice(1);
+/*             let th = document.createElement("th");
+            th.innerHTML = field.charAt(0).toUpperCase() + field.slice(1); */
             let td = document.createElement("td");
             td.innerHTML = data[i][field];
 
-            row.appendChild(th);
+            /* row.appendChild(th); */
             row.appendChild(td);
             clientData.appendChild(row);
-        }
+        } 
+} 
 
-    }
 
 }
 
