@@ -137,9 +137,11 @@ $helios = new HeliosCorp();
                             <div class="column is-7 card ">
                                 <div class="content is-justify-content-end">
                                     <?= $helios->getPedidosProducto($_GET["idpedido"]) ?>
+                                    
                                 </div>
                                 <div class="content is-justify-content-end is-pulled-left">
                                     <?= $helios->getImporteTotal($_GET["idpedido"]) ?>
+                                    
                                 </div>
 
                                 <div class="controlis-pulled-right">

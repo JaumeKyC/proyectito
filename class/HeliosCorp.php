@@ -334,13 +334,15 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad FROM detallePedido INNER JOIN productos ON detallePedido.ID_Producto = productos.ID_Producto WHERE detallePedido.ID_Pedido = $id");
+            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad, PrecioUnidad FROM detallePedido INNER JOIN productos ON detallePedido.ID_Producto = productos.ID_Producto WHERE detallePedido.ID_Pedido = $id");
             $stmt->execute();
             $output = "";
             $output .= "<ul>";
             while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 
-                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre'] . "</li> <br>";
+                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre']."<br>";
+                $output .= $detalleP['PrecioUnidad']*$detalleP['Cantidad'] ." € </li> ";
+                $output .="<br>";
               
             }
             $output .= "</ul>";
@@ -354,15 +356,17 @@ class HeliosCorp extends Connection
     public function getImporteUnitario($id){
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT PrecioVenta FROM productos WHERE ID_producto = $id");
+            $stmt = $this->bbdd->prepare("SELECT PrecioVenta FROM productos WHERE ID_Producto = $id");
             $stmt->execute();
             $output = "";
            
             while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 
-                $output .= "<p>".$detalleP['PrecioVenta']."</pi> <br>";
+                $output .= "<p>".$detalleP['PrecioVenta']."</p> <br>";
               
             }
+            $this->bbdd->commit();
+            return $output;
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
         }
