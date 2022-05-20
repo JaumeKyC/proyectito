@@ -182,7 +182,7 @@ $helios = new HeliosCorp();
                             <div class="control ">
                                 <textarea class="textarea" type="text" placeholder="Description" required name="descripcion"></textarea>
                             </div>
-                           <div class="block"></div> 
+                            <div class="block"></div>
                             <div class="field is-grouped">
                                 <div class="control">
                                     <button type="submit" method="POST" class="button is-link">Aceptar</button>
@@ -198,16 +198,6 @@ $helios = new HeliosCorp();
                 </form>
             </div>
             <div class="column is-1"></div>
-        </div>
-
-        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-        </div>
-        </div>
-
-        <!-- Columnas vacías para dar margen a la derecha -->
-
-        </div>
-        </div>
         </div>
 
         <div class="block" id="borraditos">
