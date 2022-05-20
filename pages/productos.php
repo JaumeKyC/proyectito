@@ -138,79 +138,7 @@ $helios = new HeliosCorp();
         </div>
 
         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-        <div class="columns" id="productitos">
-            <div class="column is-1"></div>
-            <!-- Dividimos en columnas -->
-            <div class="is-10" id="pop-up">
-                <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                <!-- FORMULARIO -->
-                <form action="newProducto.php" id="insertForm" method="POST">
-                    <div class="columns">
-
-                        <div class="column is-6">
-                            <label class="label">ID Producto</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input" required name="idProducto" value="">
-                            </div>
-
-                            <label class="label">Nombre</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input" required name="nombre">
-                            </div>
-
-                            <label class="label">Proveedor</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input" required name="proveedor">
-                            </div>
-
-                            <label class="label">CantidadStock</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input" required name="cantidadStock">
-                            </div>
-                        </div>
-                        <div class="column is-6">
-                            <label class="label">PrecioVenta</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input" required name="precioVenta">
-                            </div>
-
-                            <label class="label">PrecioProveedor</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input" required name="precioProveedor">
-                            </div>
-                            <label class="label">Descripcion</label>
-                            <div class="control ">
-                                <textarea class="textarea" type="text" placeholder="Description" required name="descripcion"></textarea>
-                            </div>
-                           <div class="block"></div> 
-                            <div class="field is-grouped">
-                                <div class="control">
-                                    <button type="submit" method="POST" class="button is-link">Aceptar</button>
-                                </div>
-                                <div class="control">
-                                    <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <div class="column is-1"></div>
-        </div>
-
-        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-        </div>
-        </div>
-
-        <!-- Columnas vacías para dar margen a la derecha -->
-
-        </div>
-        </div>
-        </div>
-
-        <div class="block" id="borraditos">
+        <div class="block" id="productitos">
             <!-- Dividimos en columnas -->
             <div id="pop-up">
                 <div class="columns">
@@ -221,33 +149,77 @@ $helios = new HeliosCorp();
                         <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
 
                         <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+                        <div class="">
+                            <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                            <!-- FORMULARIO -->
+                            <form action="newProducto.php" id="insertForm" method="POST">
+                                <div class="columns">
+                                    <div class="column is-1"></div>
 
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                        <!-- FORMULARIO -->
-                        <form action="" id="deleteProducto" method="POST">
-                            <div class="block">Estás a punto de borrar el cliente.</div>
-                            <div class="columns">
-                                <div class="column is-1"></div>
-                                <div class="column is-10">
+                                    <div class="column is-5">
 
-                                    <div class="field is-grouped">
+                                        <label class="label">ID Producto</label>
                                         <div class="control">
-                                            <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                            <input class="input" type="text" placeholder="Text input" required name="id" value="<?= $helios->maxIDCliente() ?>" readonly>
                                         </div>
+
+                                        <label class="label">Nombre</label>
                                         <div class="control">
-                                            <button id="cancelar-pop-up-delete" type="button" class="button is-link is-light">Cancelar</button>
+                                            <input class="input" type="text" placeholder="Text input" required name="nombre">
+                                        </div>
+
+                                        <label class="label"></label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="nombreContacto">
+                                        </div>
+
+                                        <label class="label">Proveedor</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="apellidoContacto">
+                                        </div>
+
+                                        <label class="label">Descripcion</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="telefono">
+                                        </div>
+
+                                        <label class="label">Cantidad Stock</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="direccionCalle">
                                         </div>
                                     </div>
+                                    <div class="column is-5">
+                                        <label class="label">Precio de Venta</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="direccionNumero">
+                                        </div>
+
+                                        <label class="label">Precio de Proveedor</label>
+                                        <div class="control">
+                                            <input class="input" type="text" placeholder="Text input" required name="ciudad">
+                                        </div>
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                            </div>
+                                            <div class="control">
+                                                <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="column is-1 "></div>
                                 </div>
-                                <div class="column is-1"></div>
-                            </div>
-                        </form>
-                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                            </form>
+                            <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                        </div>
                     </div>
+
+                    <!-- Columnas vacías para dar margen a la derecha -->
+
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
             </div>
-        </div>
         </div>
 
         <div class="block" id="detallitos">
