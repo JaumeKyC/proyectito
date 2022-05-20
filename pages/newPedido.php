@@ -83,7 +83,7 @@ $helios = new HeliosCorp();
                 <div class="column is-8">
                 
 
-                <h1 class="h1NewPedido">CREAR NUEVO CLIENTE</h1>
+            
                     <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
                     <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
 
