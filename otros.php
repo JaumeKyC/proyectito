@@ -14,7 +14,6 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="css/general-style.css">
-    <script src="./js/script.js"></script>
     <title>Helios Corp.</title>
 </head>
 
@@ -78,7 +77,7 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
                             </a>
                         </div>
                         <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="./pages/pedidos.php"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
+                            <a href="#" download="BOE-A-2021-9764.pdf"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
                                 <div class="titulo-centrado">Convenio</div>
                             </a>
                         </div>
