@@ -225,9 +225,9 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getFechaEntrega() . "</td>";
             $output .= "<td>" . $pedidos->getEstado() . "</td>";
             $output .= "<td>" . $pedidos->getImporte() . "</td>";
-            $output .= "<td> <a href='info.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/info.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-pedidos-info' id=" . $pedidos->getIdPedido() . "><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a class=" . $disabled . " href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=" . $disabled . " href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-cliente-delete " . $disabled . "' id=" . $pedidos->getIdPedido() . "><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -236,10 +236,22 @@ class HeliosCorp extends Connection
     public function deletePedidos($id)
     {
         try {
-            $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedidos = :id");
+            $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedido = :id");
             $stmtDelete->bindParam(':id', $id, PDO::PARAM_STR);
             $stmtDelete->execute();
             return $stmtDelete->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la consulta: ' . $e->getMessage();
+        }
+    }
+
+    public function getDetailPedido($id){
+        try {
+            $stmtClient = $this->bbdd->prepare("SELECT * FROM detallePedido WHERE ID_Pedido = :id");
+            $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
+            if ($stmtClient->execute() && $stmtClient->rowCount() > 0) {
+                return $stmtClient->fetchAll(PDO::FETCH_ASSOC);
+            }
         } catch (Exception | PDOException $e) {
             echo 'Falló la consulta: ' . $e->getMessage();
         }
@@ -314,7 +326,7 @@ class HeliosCorp extends Connection
             $preciounidad = $resultado;
             
 
-            $stmtInsert = $this->bbdd->prepare("INSERT INTO detallepedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
+            $stmtInsert = $this->bbdd->prepare("INSERT INTO detallePedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
             $stmtInsert->bindParam(':idpedido', $idpedido, PDO::PARAM_INT);
             $stmtInsert->bindParam(':producto', $idproducto, PDO::PARAM_STR);
             $stmtInsert->bindParam(':cantidad', $cantidad, PDO::PARAM_STR);
@@ -334,35 +346,20 @@ class HeliosCorp extends Connection
     {
         try {
             $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad FROM detallepedido INNER JOIN productos ON detallepedido.ID_Producto = productos.ID_Producto WHERE detallepedido.ID_Pedido = $id");
+            $stmt = $this->bbdd->prepare("SELECT Nombre, Cantidad, PrecioUnidad FROM detallePedido INNER JOIN productos ON detallePedido.ID_Producto = productos.ID_Producto WHERE detallePedido.ID_Pedido = $id");
             $stmt->execute();
             $output = "";
             $output .= "<ul>";
             while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 
-                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre'] . "</li> <br>";
+                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre']."<br>";
+                $output .= $detalleP['PrecioUnidad']*$detalleP['Cantidad'] ." € </li> ";
+                $output .="<br>";
               
             }
             $output .= "</ul>";
             $this->bbdd->commit();
             return $output;
-        } catch (PDOException $exception) {
-            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
-        }
-    }
-
-    public function getImporteUnitario($id){
-        try {
-            $this->bbdd->beginTransaction();
-            $stmt = $this->bbdd->prepare("SELECT PrecioVenta FROM productos WHERE ID_producto = $id");
-            $stmt->execute();
-            $output = "";
-           /* 
-            while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                
-                $output .= "<p>".$detalleP['PrecioVenta']."</pi> <br>";
-              
-            } */
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
         }
@@ -487,7 +484,7 @@ class HeliosCorp extends Connection
         try {
             //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
             $this->bbdd->beginTransaction();
-            $sqlMaxNum = "SELECT max(ID_pedido)+1 AS maxIdPedido FROM pedidos";
+            $sqlMaxNum = "SELECT max(ID_Pedido)+1 AS maxIdPedido FROM pedidos";
             $resultado = $this->bbdd->query($sqlMaxNum);
             $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdPedido"];
             $this->bbdd->commit();

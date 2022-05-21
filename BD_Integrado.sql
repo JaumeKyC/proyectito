@@ -81,33 +81,33 @@ CONSTRAINT pedidosCliente_fk FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID)
 );
 
 INSERT INTO pedidos VALUES 
-(101,4,'2021-01-17','2021-01-19','2021-01-19','Entregado',1200),
-(102,12,'2021-04-14','2021-04-16','2021-04-15','Entregado',1200),
-(103,33,'2021-06-20','2021-06-23','2021-01-23','Entregado',1200),
-(104,14,'2021-06-21','2021-01-23','2021-01-23','Entregado',1200),
-(105,8,'2021-08-02','2021-08-04','2021-08-04','Entregado',1200),
-(106,3,'2021-09-08','2021-09-11','2021-09-11','Entregado',1200),
-(107,2,'2021-11-14','2021-11-16','2021-11-15','Entregado',1200),
-(108,5,'2022-01-26','2022-01-28','2022-01-28','Entregado',1200),
-(109,4,'2021-01-17','2021-01-19','2021-01-19','Entregado',1200),
-(110,50,'2022-05-16','2022-05-19',null ,'Pendiente',1200),
-(111,50,'2022-05-16','2022-05-19',null ,'Pendiente',1200),
-(112,12,'2021-04-14','2021-04-16','2021-04-15','Entregado',1200),
-(113,33,'2021-06-20','2021-06-23','2021-01-22','Entregado',1200),
-(114,14,'2021-06-21','2021-01-23','2021-03-25','Entregado',1200),
-(115,8,'2021-02-02','2021-08-04','2021-06-04','Entregado',1200),
-(116,3,'2021-02-08','2021-09-11','2021-09-11','Entregado',1200),
-(117,2,'2021-11-14','2021-11-16','2021-11-15','Entregado',1200),
-(118,5,'2022-01-26','2022-01-28','2022-02-28','Entregado',1200),
-(119,12,'2022-05-12','2022-05-14',null ,'En Reparto',1200),
-(120,6,'2022-05-13','2022-05-15',null ,'En Reparto',1200),
-(121,19,'2022-05-13','2022-05-16',null ,'En Reparto',1200),
-(122,44,'2022-05-16','2022-05-18',null ,'Pendiente',1200),
-(123,50,'2022-05-16','2022-05-19',null ,'Pendiente',1200),
-(124,23,'2022-05-20','2022-05-21',null ,'Pendiente',1200);
+(101,4,'2021-01-17','2021-01-19','2021-01-19','Entregado',119),
+(102,12,'2021-04-14','2021-04-16','2021-04-15','Entregado',4450),
+(103,33,'2021-06-20','2021-06-23','2021-01-23','Entregado',58),
+(104,14,'2021-06-21','2021-01-23','2021-01-23','Entregado',385),
+(105,8,'2021-08-02','2021-08-04','2021-08-04','Entregado',55),
+(106,3,'2021-09-08','2021-09-11','2021-09-11','Entregado',515.92),
+(107,2,'2021-11-14','2021-11-16','2021-11-15','Entregado',108),
+(108,5,'2022-01-26','2022-01-28','2022-01-28','Entregado',2091),
+(109,4,'2022-01-17','2022-01-19','2022-01-19','Entregado',2250),
+(110,50,'2022-03-16','2022-03-19','2022-03-19' ,'Entregado',936),
+(111,50,'2022-03-16','2022-03-20','2022-03-21' ,'Entregado',1600),
+(112,12,'2022-04-02','2022-04-05','2022-04-05','Entregado',18),
+(113,33,'2022-04-04','2022-04-08','2022-04-09','Entregado',495),
+(114,14,'2022-04-05','2022-04-08','2022-04-08','Entregado',890),
+(115,8,'2022-04-10','2022-08-14','2022-04-14','Entregado',257.96),
+(116,3,'2022-05-08','2022-05-11','2022-05-11','Entregado',29),
+(117,2,'2022-05-10','2022-05-16',null,'En reparto',23),
+(118,5,'2022-05-11','2022-05-17',null,'En reparto',890),
+(119,12,'2022-05-12','2022-05-18',null ,'En Reparto',55),
+(120,6,'2022-05-13','2022-05-18',null ,'En Reparto',14),
+(121,19,'2022-05-17','2022-05-23',null ,'En Reparto',8),
+(122,44,'2022-05-19','2022-05-24',null ,'Pendiente',320),
+(123,50,'2022-05-20','2022-05-25',null ,'Pendiente',150),
+(124,23,'2022-05-20','2022-05-26',null ,'Pendiente',550);
 
 CREATE TABLE productos (
-ID_Producto varchar(15) NOT NULL PRIMARY KEY,
+ID_Producto integer(15) NOT NULL PRIMARY KEY,
 Nombre varchar(70) NOT NULL,
 Proveedor varchar(50) DEFAULT NULL,
 Descripción varchar(1000),
@@ -135,7 +135,7 @@ INSERT INTO productos VALUES
     
 CREATE TABLE detallePedido(
 ID_Pedido integer NOT NULL,
-ID_Producto varchar(15) NOT NULL,
+ID_Producto integer(15) NOT NULL,
 Cantidad integer NOT NULL,
 PrecioUnidad numeric(15,2) NOT NULL,
 #PRIMARY KEY (ID_Pedido,ID_Producto),
@@ -143,6 +143,7 @@ CONSTRAINT productosPedido_fk FOREIGN KEY (ID_Pedido) REFERENCES pedidos (ID_Ped
 CONSTRAINT productosPedido_fk2 FOREIGN KEY (ID_Producto) REFERENCES productos (ID_Producto)
 
 );
+
 
 INSERT INTO detallePedido VALUES 
 ('101','8','2','18'),
@@ -156,15 +157,25 @@ INSERT INTO detallePedido VALUES
 ('107','8','6','18'),
 ('108','13','3','550'),
 ('108','9','7','63'),
- ('109','10','9','250'),
+('109','10','9','250'),
 ('110','10','1','250'),
 ('110','6','2','23'),
 ('110','15','2','320'),
 ('111','15','5','320'),
 ('112','8','1','18'),
-('113','4','4','1.29'),
-('113','11','2','55'),
-('114','7','3','55');
+('113','7','7','55'),
+('113','15','2','55'),
+('114','14','1','890'),
+('115','1','1','257.96'),
+('116','3','1','29'),
+('117','6','1','23'),
+('118','14','1','890'),
+('119','7','1','55'),
+('120','2','1','14'),
+('121','12','1','8'),
+('122','15','1','320'),
+('123','5','100','1.50'),
+('124','13','1','550');
 
 
 CREATE TABLE login(
@@ -180,3 +191,14 @@ Insert into login values
 ("paco", "paco", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "3", 0),
 ("pepe", "pepe", "$2a$12$3ENZwORq9dAnrX5qpA4EpeGnJhBNUuSkr3AIMmRK7dWaMEJ9S.sz2", "4", 0)
 ;
+
+#Trigger para actualizar el importe cuando se añada un producto
+DROP TRIGGER IF EXISTS AI_update_importe_pedido;
+use integrado;
+
+DELIMITER $$
+CREATE TRIGGER AI_update_importe_pedido AFTER INSERT ON detallePedido FOR EACH ROW
+BEGIN
+UPDATE pedidos SET Importe=Importe+(new.PrecioUnidad*new.Cantidad) WHERE ID_Pedido=new.ID_Pedido;
+END$$
+DELIMITER ;

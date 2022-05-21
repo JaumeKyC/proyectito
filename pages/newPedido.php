@@ -5,7 +5,6 @@ if (!isset($_SESSION["user"])) {
 }
 require_once 'autoloader.php';
 $helios = new HeliosCorp();
-
 ?>
 
 <!DOCTYPE html>
@@ -75,13 +74,16 @@ $helios = new HeliosCorp();
         <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
             <!-- Dividimos en columnas -->
+
             <div class="columns">
                 <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-2"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+                <div class="column is-8">
+                
 
+            
+                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
                     <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
 
                     <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
@@ -134,13 +136,15 @@ $helios = new HeliosCorp();
                             <div class="column is-7 card ">
                                 <div class="content is-justify-content-end">
                                     <?= $helios->getPedidosProducto($_GET["idpedido"]) ?>
+                                    
                                 </div>
                                 <div class="content is-justify-content-end is-pulled-left">
                                     <?= $helios->getImporteTotal($_GET["idpedido"]) ?>
+                                    
                                 </div>
 
                                 <div class="controlis-pulled-right">
-                                    <a href="./pedidos.php" type="button" class="button is-medium is-link is-link is-pulled-right">ACEPTAR</a>
+                                    <a href="./pedidos.php" type="button" class="button is-link is-medium is-pulled-right">ACEPTAR</a>
                                 </div>
                             </div>
                             <div class="column is-1"></div>
@@ -150,6 +154,9 @@ $helios = new HeliosCorp();
                     </form>
                     <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                 </div>
+                <!-- Columnas vacías para dar margen a la derecha -->
+                <div class="column is-2"></div>
+            </div>
             </div>
         </div>
         <!-- FIN DE LA MAIN SECTION -->
@@ -157,7 +164,7 @@ $helios = new HeliosCorp();
     <!-- FOOTER -->
     <footer class="footer2">
         <div class="container logo-nav-container">
-            <a href="./pedidos.php">
+            <a href="./crearPedido.php">
                 <!-- <div class="icon-text navbar-item"> -->
                 <span class="icon is-large">
                     <img class="flechaAtras" src="../img/flecha-hacia-atras.png" alt="">
