@@ -6,6 +6,7 @@ function main() {
     clientEdit();
     clientInfo();
     clientDelete();
+    
 
 }
 function pressedButton() {
@@ -146,9 +147,6 @@ function clienteDeleteAction(id) {
     let formulario = document.getElementById("deleteClientes");
     formulario.action = "";
     formulario.action = 'deleteClientes.php?id=' + id + '';
-
-
-
 }
 
 

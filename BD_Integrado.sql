@@ -195,10 +195,31 @@ Insert into login values
 #Trigger para actualizar el importe cuando se añada un producto
 DROP TRIGGER IF EXISTS AI_update_importe_pedido;
 use integrado;
-
 DELIMITER $$
 CREATE TRIGGER AI_update_importe_pedido AFTER INSERT ON detallePedido FOR EACH ROW
 BEGIN
 UPDATE pedidos SET Importe=Importe+(new.PrecioUnidad*new.Cantidad) WHERE ID_Pedido=new.ID_Pedido;
+END$$
+DELIMITER ;
+
+#Trigger para evitar que se añadan más cantidad de productos de los que hay en stock
+DROP TRIGGER IF EXISTS BI_StockControl_trigger;
+DELIMITER $$
+Create trigger BI_StockControl_trigger BEFORE INSERT ON detallePedido FOR EACH ROW
+BEGIN
+DECLARE stock1 INT;
+SET stock1 = (SELECT CantidadEnStock FROM productos WHERE ID_Producto = NEW.ID_Producto);
+IF NEW.Cantidad > stock1 THEN
+SET NEW.Cantidad = stock1;
+END IF;
+END$$
+DELIMITER ;
+
+#Trigger que actualiza el stock, restando los que se añaden al pedido del stock total
+DROP TRIGGER IF EXISTS AI_StockControl_trigger;
+DELIMITER $$
+Create trigger AI_StockControl_trigger BEFORE INSERT ON detallePedido FOR EACH ROW
+BEGIN
+UPDATE productos SET CantidadEnStock=(CantidadEnStock-new.Cantidad) WHERE ID_Producto=new.ID_Producto;
 END$$
 DELIMITER ;
