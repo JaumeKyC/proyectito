@@ -439,7 +439,7 @@ class HeliosCorp extends Connection
     public function getProducto($id) //Devuelve la info de un solo cliente al pasarle el ID
     {
         try {
-            $stmtClient = $this->bbdd->prepare("SELECT * FROM productos WHERE id = :id");
+            $stmtClient = $this->bbdd->prepare("SELECT * FROM productos WHERE ID_Producto = :id");
             $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
             if ($stmtClient->execute() && $stmtClient->rowCount() > 0) {
                 return $stmtClient->fetch(PDO::FETCH_ASSOC);
@@ -449,11 +449,11 @@ class HeliosCorp extends Connection
         }
         return new Productos(null, null, null, null, null, null, null);
     }
-    public function deleteProductos($idProducto) //Elimina el cliente
+    public function deleteProductos($id) //Elimina el producto
     {
         try {
-            $stmtDelete = $this->bbdd->prepare("DELETE FROM productos WHERE idProductos = :id");
-            $stmtDelete->bindParam(':id', $idProducto, PDO::PARAM_STR);
+            $stmtDelete = $this->bbdd->prepare("DELETE FROM productos WHERE ID_Producto = :id");
+            $stmtDelete->bindParam(':id', $id, PDO::PARAM_STR);
             $stmtDelete->execute();
             return $stmtDelete->rowCount();
         } catch (Exception | PDOException $e) {
@@ -488,6 +488,34 @@ class HeliosCorp extends Connection
         }
         return $output;
     }
+    public function editProducto($data)
+    {try {
+        $idProducto = $data["idProducto"];
+        $nombre = $data["nombre"];
+        $proveedor = $data["proveedor"];
+        $descripcion= $data["descripcion"];
+        $cantidadStock = $data["cantidadStock"];
+        $precioVenta = $data["precioVenta"];
+        $precioProveedor = $data["precioProveedor"];
+      
+
+        $stmtInsert = $this->bbdd->prepare("UPDATE productos  Set Nombre=:nombre, Proveedor=:proveedor, Descripción=:descripcion, CantidadEnStock=:cantidadEnStock, PrecioVenta=:precioVenta, PrecioProveedor=:precioProveedor where ID_Producto =:id");
+        $stmtInsert->bindParam(':id', $idProducto, PDO::PARAM_INT);
+        $stmtInsert->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmtInsert->bindParam(':proveedor', $proveedor, PDO::PARAM_STR);
+        $stmtInsert->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmtInsert->bindParam(':cantidadEnStock', $cantidadStock, PDO::PARAM_STR);
+        $stmtInsert->bindParam(':precioVenta', $precioVenta, PDO::PARAM_STR);
+        $stmtInsert->bindParam(':precioProveedor', $precioProveedor, PDO::PARAM_STR);
+
+
+        $stmtInsert->execute();
+        return $stmtInsert->rowCount();
+    } catch (Exception | PDOException $e) {
+        echo 'Falló la inserción: ' . $e->getMessage();
+    }}
+
+
 
     //EXTRA
     public function alert($msg)
@@ -524,6 +552,21 @@ class HeliosCorp extends Connection
         }
         return $numero;
     }
+    public function maxIDProducto()
+    {
+        try {
+            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+            $this->bbdd->beginTransaction();
+            $sqlMaxNum = "SELECT max(ID_Producto)+1 AS maxIdProducto FROM productos";
+            $resultado = $this->bbdd->query($sqlMaxNum);
+            $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdProducto"];
+            $this->bbdd->commit();
+        } catch (PDOException $exception) {
+            echo "<br> Se ha producido una excepción:" . $exception->getMessage();
+        }
+        return $numero;
+    }
+
 
     /* FILTRADO */
 

@@ -5,7 +5,7 @@ require_once 'autoloader.php';
 $helios = new HeliosCorp();
 
 if (count($_GET) > 0) {
-    /* echo $_GET["id"]; */
-    $helios->deleteProductos($_GET["id"]);
+/* echo $_GET["id"];  */ 
+ $helios->deleteProductos($_GET["id"]);
 }
-header('Location: producto.php');
+header('Location: productos.php');
