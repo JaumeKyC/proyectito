@@ -236,7 +236,7 @@ $helios = new HeliosCorp();
                                     <button type="submit" method="POST" class="button is-link">Aceptar</button>
                                 </div>
                                 <div class="control">
-                                    <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                    <button id="cancelar2-pop-up" type="button" class="button is-link is-light">Cancelar</button>
                                 </div>
                             </div>
 

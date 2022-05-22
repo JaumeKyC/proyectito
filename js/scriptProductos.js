@@ -20,7 +20,7 @@ function newClientForm() {
     document.getElementById("cancelar-pop-up-info").addEventListener("click", function () {
         document.getElementById("detallitos").style.display = "none";
     });
-    document.getElementById("cancelar-pop-up").addEventListener("click", function () {
+    document.getElementById("cancelar2-pop-up").addEventListener("click", function () {
         document.getElementById("editaditos").style.display = "none";
     });
 }
