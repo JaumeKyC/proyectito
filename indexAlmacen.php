@@ -49,7 +49,7 @@ if (!isset($_SESSION["user"])) {
             </div>
             <div class="column is-1"></div>
         </div>
-        <div class="block"></div>
+      
     </main>
     <footer class="footer">
         <div class="container logo-nav-container">

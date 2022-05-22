@@ -25,9 +25,9 @@ $helios = new HeliosCorp();
 </head>
 
 <body class="">
-  
-    <?php include('header.php')?>
-  
+    <!-- HEADER -->
+    <?php include('headerPages.php')?>
+    <!-- FIN DEL HEADER -->
 
     <main>
        

@@ -138,8 +138,6 @@ $helios = new HeliosCorp();
                 <div class="column is-1"></div>
             </div>
         </div>
-
-        <div class="block"></div>
     </main>
 
     <footer class="footer2">
