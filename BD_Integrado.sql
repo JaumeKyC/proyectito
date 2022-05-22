@@ -205,7 +205,7 @@ DELIMITER ;
 #Trigger para evitar que se añadan más cantidad de productos de los que hay en stock
 DROP TRIGGER IF EXISTS BI_StockControl_trigger;
 DELIMITER $$
-Create trigger BI_StockControl_trigger BEFORE INSERT ON detallepedido FOR EACH ROW
+Create trigger BI_StockControl_trigger BEFORE INSERT ON detallePedido FOR EACH ROW
 BEGIN
 DECLARE stock1 INT;
 SET stock1 = (SELECT CantidadEnStock FROM productos WHERE ID_Producto = NEW.ID_Producto);
@@ -218,7 +218,7 @@ DELIMITER ;
 #Trigger que actualiza el stock, restando los que se añaden al pedido del stock total
 DROP TRIGGER IF EXISTS AI_StockControl_trigger;
 DELIMITER $$
-Create trigger AI_StockControl_trigger BEFORE INSERT ON detallepedido FOR EACH ROW
+Create trigger AI_StockControl_trigger BEFORE INSERT ON detallePedido FOR EACH ROW
 BEGIN
 UPDATE productos SET CantidadEnStock=(CantidadEnStock-new.Cantidad) WHERE ID_Producto=new.ID_Producto;
 END$$
