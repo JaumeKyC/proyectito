@@ -51,7 +51,7 @@ $helios = new HeliosCorp();
                                 <span>Mensajes</span>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="../index.php">
                             <div class="icon-text navbar-item">
                                 <span class="icon is-large">
                                     <img src="../img/cerrar.png" alt="">
