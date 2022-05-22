@@ -1,5 +1,5 @@
 <?php
-
+//Diego
 class Productos
 {
     protected $idProducto;

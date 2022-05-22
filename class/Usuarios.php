@@ -1,5 +1,5 @@
 <?php
-
+//Diego
 class Usuarios{
     protected $nombre;
     protected $usuario;

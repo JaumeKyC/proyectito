@@ -1,3 +1,4 @@
+//Diego, Alejandro y Lenin
 document.addEventListener("DOMContentLoaded", main);
 
 function main() {

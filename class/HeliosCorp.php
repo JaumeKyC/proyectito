@@ -10,6 +10,7 @@ class HeliosCorp extends Connection
     }
 
     //CLIENTES
+    //Alejandro
     public function newClient($data)
     {
         try {
@@ -46,6 +47,7 @@ class HeliosCorp extends Connection
             echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
+    //Jaume
     public function getAllClientes()
     {
         try {
@@ -76,7 +78,7 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
-
+    //Lenin
     public function drawClientesList($admin)
     {
         $clientes = $this->getAllClientes();
@@ -101,7 +103,7 @@ class HeliosCorp extends Connection
         }
         return $output;
     }
-
+    //Diego
     public function getCliente($id)
     {
         try {
@@ -117,7 +119,7 @@ class HeliosCorp extends Connection
     }
 
   
-
+    //Diego
     public function deleteClientes($id) 
     {
         try {
@@ -129,7 +131,7 @@ class HeliosCorp extends Connection
             echo 'Falló la consulta: ' . $e->getMessage();
         }
     }
-
+    //Diego
     public function editClient($data)
     {
         try {
@@ -167,7 +169,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    //PEDIDOS
+    //PEDIDOS Lenin
     public function getAllPedidos()
     {
         try {
@@ -304,12 +306,12 @@ class HeliosCorp extends Connection
         }
     }
     
-    public function getInsertDetalle($post){ //REVISAR
+    public function getInsertDetalle($post){ 
         try {
         
             $idP = $post["producto"];
             $stmt = $this->bbdd->query("SELECT PrecioVenta AS precioVenta FROM productos WHERE ID_Producto = $idP");
-            $resultado = $stmt->fetch(PDO::FETCH_ASSOC)["precioVenta"]; //Resultado tiene precio unidad.
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC)["precioVenta"];
             $idpedido = $post["idpedido"];
             $idproducto = $post["producto"];
             $cantidad = $post["cantidad"];
@@ -393,7 +395,9 @@ class HeliosCorp extends Connection
         }
     }
 
-    //PRODUCTOS
+    //PRODUCTOS Alejandro
+
+    
     public function newProducto($data)
  
     {
@@ -423,6 +427,7 @@ class HeliosCorp extends Connection
             echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
+   
     public function getAllProductos()
     {
         try {
@@ -448,6 +453,7 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
+    
     public function getProducto($id)
     {
         try {
@@ -461,6 +467,7 @@ class HeliosCorp extends Connection
         }
         return new Productos(null, null, null, null, null, null, null);
     }
+    
     public function deleteProductos($id)
     {
         try {
@@ -472,7 +479,7 @@ class HeliosCorp extends Connection
             echo 'Falló la consulta: ' . $e->getMessage();
         }
     }
-
+    
     public function drawProductosList($admin)
     {
 
@@ -500,6 +507,7 @@ class HeliosCorp extends Connection
         }
         return $output;
     }
+    
     public function editProducto($data)
     {try {
         $idProducto = $data["idProducto"];
@@ -529,12 +537,9 @@ class HeliosCorp extends Connection
 
 
 
-    //EXTRA
-    public function alert($msg)
-    {
-        echo "<script type='text/javascript'>alert('$msg');</script>";
-    }
+    //EXTRA Jaume
 
+    
     public function maxIDCliente()
     {
         try {
@@ -549,7 +554,7 @@ class HeliosCorp extends Connection
         }
         return $numero;
     }
-
+   
     public function maxIDPedido()
     {
         try {
@@ -564,6 +569,7 @@ class HeliosCorp extends Connection
         }
         return $numero;
     }
+    
     public function maxIDProducto()
     {
         try {
@@ -580,8 +586,8 @@ class HeliosCorp extends Connection
     }
 
 
-    /* FILTRADO */
-
+    /* FILTRADO Jaume */
+    
     private function setCurrentFilter()
     {
         if (session_status() !== PHP_SESSION_ACTIVE) session_start();

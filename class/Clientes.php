@@ -1,5 +1,5 @@
 <?php
-
+//Diego
 class Clientes
 {
     protected $id;

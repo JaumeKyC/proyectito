@@ -1,5 +1,5 @@
 <?php
-
+//Diego
 class Connection{
     protected $bbdd;
     protected function connect()

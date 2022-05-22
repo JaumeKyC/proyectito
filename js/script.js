@@ -9,6 +9,7 @@ function main() {
     
 
 }
+//Lenin
 function pressedButton() {
     let img = document.getElementsByClassName("img-button");
     let title = document.getElementsByClassName("titulo-centrado");
@@ -29,7 +30,7 @@ function pressedButton() {
 
     }
 };
-
+//Alejandro
 function newClientForm() {
     document.getElementById("pop-up-cliente").addEventListener("click", function () {
         document.getElementById("clientitos").style.display = "grid";
@@ -49,7 +50,7 @@ function newClientForm() {
         document.getElementById("borraditos").style.display = "none";
     });
 }
-
+//Lenin
 function clientInfo() {
     let infoButtons = document.getElementsByClassName("pop-up-cliente-info");
     for (let index = 0; index < infoButtons.length; index++) {
@@ -59,7 +60,7 @@ function clientInfo() {
         });
     }
 }
-
+//Lenin
 function drawClientInfo(data) {
     document.getElementById("detallitos").style.display = "grid";
     let clientData = document.getElementById("infoCliente");
@@ -78,7 +79,7 @@ function drawClientInfo(data) {
     }
 
 }
-
+//Lenin
 function clienteInfoAction(id) {
     
     const xhttp = new XMLHttpRequest();
@@ -92,6 +93,7 @@ function clienteInfoAction(id) {
     xhttp.open("GET", "infoClient.php?id=" + id, true);
     xhttp.send();
 }
+//Lenin y Jaume
 function clientEdit() {
     let editButtons = document.getElementsByClassName("pop-up-cliente-edit");
     for (let index = 0; index < editButtons.length; index++) {
@@ -103,7 +105,7 @@ function clientEdit() {
         });
     }
 }
-
+//Lenin y Jaume
 function clienteEditAction(id) {
    
     const xhttp = new XMLHttpRequest();
@@ -117,7 +119,7 @@ function clienteEditAction(id) {
     xhttp.open("GET", "infoClient.php?id=" + id, true);
     xhttp.send();
 }
-
+//Lenin y Jaume
 function drawClientEdit(data) {
     document.getElementById("editaditos").style.display = "grid";
     let clientData = document.getElementsByClassName("input2");
@@ -127,6 +129,7 @@ function drawClientEdit(data) {
         index++;
     }
 }
+//Lenin
 function clientDelete() {
     let deleteButtons = document.getElementsByClassName("pop-up-cliente-delete");
     for (let index = 0; index < deleteButtons.length; index++) {
@@ -137,6 +140,7 @@ function clientDelete() {
         });
     }
 }
+//Lenin
 function clienteDeleteAction(id) {
     document.getElementById("borraditos").style.display = "grid";
     let formulario = document.getElementById("deleteClientes");

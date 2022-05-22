@@ -1,3 +1,6 @@
+
+//Lenin y Jaume
+
 document.addEventListener("DOMContentLoaded", main);
 
 function main() {
@@ -5,6 +8,7 @@ function main() {
     hideGrid();
     pedidosInfo();
 }
+
 function hideGrid() {
     document.getElementById("cancelar-pop-up-delete").addEventListener("click", function () {
         document.getElementById("borraditos").style.display = "none";
