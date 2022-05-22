@@ -1,3 +1,4 @@
+<?php require_once "autoloader.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
