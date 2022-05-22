@@ -21,7 +21,7 @@ $helios = new HeliosCorp();
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="../css/general-style.css">
-    <script src="../js/script.js"></script>
+    <script src="../js/scriptPedidos.js"></script>
     <title>Helios Corp.</title>
 </head>
 
@@ -126,42 +126,91 @@ $helios = new HeliosCorp();
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                     <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                    <div class="block" id="detallitos">
+                        <!-- Dividimos en columnas -->
+                        <div id="pop-up">
+                            <div class="columns">
+                                <div class="column is-12 ">
+                                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+                                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+                                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                                    <!-- FORMULARIO -->
+                                    <div class="">
+                                        <table id="infoPedido" class=" table has-text-centered is-bordered is-stripped is-narrow">
+                                            <!-- Aquí JS creará la tabla de info -->
+                                        </table>
+                                    </div>
+                                    <div class="block"></div>
+                                    <div class="columns">
+                                        <div class="control column is-9"></div>
+                                        <div class="control column is-2">
+                                            <button id="cancelar-pop-up-info" type="button" class="button is-link is-light ">Salir</button>
+                                        </div>
+                                        <div class="control column is-1"></div>
+                                    </div>
+                                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block" id="borraditos">
+                        <!-- Dividimos en columnas -->
+                        <div id="pop-up">
+                            <div class="columns">
+                                <!-- Columnas vacías para dar margen a la izquierda -->
+                                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+                                <div class="column is-12 ">
+                                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
+                                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
+                                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                                    <!-- FORMULARIO -->
+                                    <form action="" id="deletePedidos" method="POST">
+                                        <div class="block">Estás a punto de borrar el pedido.</div>
+                                        <div class="columns">
+                                            <div class="column is-1"></div>
+                                            <div class="column is-10">
 
+                                                <div class="field is-grouped">
+                                                    <div class="control">
+                                                        <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                                    </div>
+                                                    <div class="control">
+                                                        <button id="cancelar-pop-up-delete" type="button" class="button is-link is-light">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column is-1"></div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <!-- Columnas vacías para dar margen a la derecha -->
+                        </div>
+                    </div>
                 </div>
-
                 <!-- Columnas vacías para dar margen a la derecha -->
                 <div class="column is-1"></div>
             </div>
         </div>
-
         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
-
         <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>
     </main>
     <!-- FIN DE LA MAIN SECTION -->
-
     <!-- FOOTER -->
     <footer class="footer2">
-
-
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
-                <!-- <div class="icon-text navbar-item"> -->
                 <span class="icon is-large">
                     <img src="../img/flecha-hacia-atras.png" alt="">
                 </span>
-
-                <!-- </div> -->
             </a>
             <span>
                 <a href="./crearPedido.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
             </span>
-
     </footer>
     <!-- FIN DEL FOOTER -->
 </body>

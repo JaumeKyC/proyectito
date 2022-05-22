@@ -14,7 +14,6 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="css/general-style.css">
-    <script src="./js/script.js"></script>
     <title>Helios Corp.</title>
 </head>
 
@@ -64,26 +63,22 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
 
     <!-- MAIN SECTION -->
     <main>
+    <div class="block"></div>
         <!-- Dividimos en columnas -->
         <div class=" margen1 columns is-mobile">
                 <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-1"></div>
+                <div class="column is-2"></div>
                 <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-10 ">
+                <div class="column is-8 ">
                     <div class="columns">
-                        
-                        <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="./pages/clientes.php"> <img class="img-button" src="img/menu/fichaje2.jpg" alt="">
-                                <div class="titulo-centrado ">Fichaje</div>
-                            </a>
-                        </div>
-                        <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="./pages/pedidos.php"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
+                  
+                        <div class="column is-6 has-text-centered titulo-imagen">
+                            <a href="BOE-A-2021-9764.pdf" download="GrandesAlmacenes"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
                                 <div class="titulo-centrado">Convenio</div>
                             </a>
                         </div>
-                        <div class="column is-4 has-text-centered titulo-imagen">
-                            <a href="./pages/productos.php"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
+                        <div class="column is-6 has-text-centered titulo-imagen">
+                            <a href="./pages/noticias.php"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
                                 <div class="titulo-centrado">Noticias</div>
                             </a>
                         </div>
@@ -91,7 +86,7 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
                     </div>
                 </div>
                 <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-1"></div>
+                <div class="column is-2"></div>
             </div>
         <!-- FOOTER -->
         <footer class="footer">

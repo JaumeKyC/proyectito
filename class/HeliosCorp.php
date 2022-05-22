@@ -215,9 +215,9 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getFechaEntrega() . "</td>";
             $output .= "<td>" . $pedidos->getEstado() . "</td>";
             $output .= "<td>" . $pedidos->getImporte() . "</td>";
-            $output .= "<td> <a href='info.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/info.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-pedidos-info' id=" . $pedidos->getIdPedido() . "><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a class=" . $disabled . " href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
-            $output .= "<td> <a class=" . $disabled . " href='deletePedidos.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/borrar.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-cliente-delete " . $disabled . "' id=" . $pedidos->getIdPedido() . "><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
         return $output;
@@ -226,10 +226,22 @@ class HeliosCorp extends Connection
     public function deletePedidos($id)
     {
         try {
-            $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedidos = :id");
+            $stmtDelete = $this->bbdd->prepare("DELETE FROM pedidos WHERE ID_Pedido = :id");
             $stmtDelete->bindParam(':id', $id, PDO::PARAM_STR);
             $stmtDelete->execute();
             return $stmtDelete->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la consulta: ' . $e->getMessage();
+        }
+    }
+
+    public function getDetailPedido($id){
+        try {
+            $stmtClient = $this->bbdd->prepare("SELECT * FROM detallePedido WHERE ID_Pedido = :id");
+            $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
+            if ($stmtClient->execute() && $stmtClient->rowCount() > 0) {
+                return $stmtClient->fetchAll(PDO::FETCH_ASSOC);
+            }
         } catch (Exception | PDOException $e) {
             echo 'Falló la consulta: ' . $e->getMessage();
         }
@@ -543,7 +555,7 @@ class HeliosCorp extends Connection
         try {
             //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
             $this->bbdd->beginTransaction();
-            $sqlMaxNum = "SELECT max(ID_pedido)+1 AS maxIdPedido FROM pedidos";
+            $sqlMaxNum = "SELECT max(ID_Pedido)+1 AS maxIdPedido FROM pedidos";
             $resultado = $this->bbdd->query($sqlMaxNum);
             $numero = $resultado->fetch(PDO::FETCH_ASSOC)["maxIdPedido"];
             $this->bbdd->commit();

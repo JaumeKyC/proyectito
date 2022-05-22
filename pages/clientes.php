@@ -427,7 +427,6 @@ if (count($_POST) > 1) {
                 <!-- Columnas vacías para dar margen a la derecha -->
             </div>
         </div>
-        </div>
 
         <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>
