@@ -25,34 +25,15 @@ $helios = new HeliosCorp();
 </head>
 
 <body class="">
-    <!-- HEADER -->
-    <?php include('headerPages.php')?>
-    <!-- FIN DEL HEADER -->
 
+    <?php include('headerPages.php') ?>
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
-            <!-- Dividimos en columnas -->
-
             <div class="columns">
-                <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-2"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                 <div class="column is-8">
-                
-
-            
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-
-                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                    <!-- FORMULARIO -->
                     <form action="insertdetalleP.php" method="POST">
-
-                        <!-- <div class="column is-1"></div> -->
-
                         <div class="columns card">
                             <div class="column is-5">
                                 <div class="columns">
@@ -61,12 +42,10 @@ $helios = new HeliosCorp();
                                         <div class="control">
                                             <input class="input" type="text" placeholder="Text input" required name="idpedido" value="<?= $_GET["idpedido"] ?>" readonly>
                                         </div>
-
                                         <label class="label">Cliente</label>
                                         <div class="control">
                                             <input class="input" type="text" placeholder="Text input" required name="idcliente" value="<?= $_GET["idcliente"] ?>" readonly>
                                         </div>
-
                                         <div class="block"></div>
                                         <label class="label">Producto</label>
                                         <div class="control">
@@ -82,13 +61,10 @@ $helios = new HeliosCorp();
                                             <input class="input" type="number" placeholder="Text input" required name="cantidad" value="">
                                         </div>
                                         <div class="block"></div>
-
                                         <div class="field is-grouped">
-
                                             <div class="control">
                                                 <button href="#" type="submit" method="POST" class="button is-link is-light">Agregar</button>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="column is-3"></div>
@@ -97,44 +73,33 @@ $helios = new HeliosCorp();
                             <div class="column is-7 card ">
                                 <div class="content is-justify-content-end">
                                     <?= $helios->getPedidosProducto($_GET["idpedido"]) ?>
-                                    
                                 </div>
                                 <div class="content is-justify-content-end is-pulled-left">
                                     <?= $helios->getImporteTotal($_GET["idpedido"]) ?>
-                                    
                                 </div>
-
                                 <div class="controlis-pulled-right">
                                     <a href="./pedidos.php" type="button" class="button is-link is-medium is-pulled-right">ACEPTAR</a>
                                 </div>
                             </div>
                             <div class="column is-1"></div>
                         </div>
-
                         <div class="column is-1"></div>
                     </form>
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
                 <div class="column is-2"></div>
             </div>
-            </div>
         </div>
-        <!-- FIN DE LA MAIN SECTION -->
+        </div>
     </main>
-    <!-- FOOTER -->
     <footer class="footer2">
         <div class="container logo-nav-container">
             <a href="./crearPedido.php">
-                <!-- <div class="icon-text navbar-item"> -->
                 <span class="icon is-large">
                     <img class="flechaAtras" src="../img/flecha-hacia-atras.png" alt="">
                 </span>
-                <!-- </div> -->
             </a>
         </div>
     </footer>
-    <!-- FIN DEL FOOTER -->
 </body>
 <?php
 if (count($_POST) > 0) {

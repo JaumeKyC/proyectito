@@ -25,23 +25,21 @@ $helios = new HeliosCorp();
 </head>
 
 <body class="">
-    <!-- HEADER -->
+  
     <?php include('header.php')?>
-    <!-- FIN DEL HEADER -->
+  
 
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
+       
         <div class="block"></div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-
-        <!-- Dividimos en columnas -->
+        
 
         <div class="columns">
-            <!-- Columnas vacías para dar margen a la izquierda -->
+          
             <div class="column is-2"></div>
-            <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+           
             <div class="column is-8 ">
-                <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+             
                 <div class="columns has-text-centered">
                     <div class="column is-2"></div>
                     <div class="tile is-vertical is-8 tile box">
@@ -67,11 +65,9 @@ $helios = new HeliosCorp();
             </div>
             <div class="column is-2"></div>
         </div>
-        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-        <!-- Columnas vacías para dar margen a la derecha -->
-        <!-- FIN DE LA MAIN SECTION -->
+      
     </main>
-    <!-- FOOTER -->
+    
     <footer class="">
         <div class="container logo-nav-container">
             <a href="./pedidos.php">
@@ -83,12 +79,10 @@ $helios = new HeliosCorp();
             </a>
         </div>
     </footer>
-    <!-- FIN DEL FOOTER -->
 </body>
 <?php
 if (count($_POST) > 0) {
     var_dump($_POST);
 }
 ?>
-
 </html>

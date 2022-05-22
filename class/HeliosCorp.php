@@ -46,7 +46,7 @@ class HeliosCorp extends Connection
             echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
-    public function getAllClientes() //Devuelve un array de objetos con todos los clientes
+    public function getAllClientes()
     {
         try {
             $this->bbdd->beginTransaction();
@@ -77,7 +77,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawClientesList($admin) //Crea la tabla a partir del array de objetos clientes
+    public function drawClientesList($admin)
     {
         $clientes = $this->getAllClientes();
         $output = "";
@@ -102,7 +102,7 @@ class HeliosCorp extends Connection
         return $output;
     }
 
-    public function getCliente($id) //Devuelve la info de un solo cliente al pasarle el ID
+    public function getCliente($id)
     {
         try {
             $stmtClient = $this->bbdd->prepare("SELECT * FROM clientes WHERE id = :id");
@@ -118,7 +118,7 @@ class HeliosCorp extends Connection
 
   
 
-    public function deleteClientes($id) //Elimina el cliente
+    public function deleteClientes($id) 
     {
         try {
             $stmtDelete = $this->bbdd->prepare("DELETE FROM clientes WHERE id = :id");
@@ -168,7 +168,7 @@ class HeliosCorp extends Connection
     }
 
     //PEDIDOS
-    public function getAllPedidos() //Devuelve un array de objetos con todos los pedidos
+    public function getAllPedidos()
     {
         try {
             $this->bbdd->beginTransaction();
@@ -194,7 +194,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawPedidosList($admin) //Crea la tabla a partir del array de objetos pedido
+    public function drawPedidosList($admin) 
     {
 
         $pedidos = $this->getAllPedidos();
@@ -248,7 +248,7 @@ class HeliosCorp extends Connection
     }
 
     //NEW PEDIDO
-    public function getStock($id_producto) //Devuelve el stock de un producto al pasarle el ID
+    public function getStock($id_producto) 
     {
         try {
             $this->bbdd->beginTransaction();
@@ -262,11 +262,11 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawCantidadOptions() //Crea el desplegable con la cantidad leyendo la base de datos
+    public function drawCantidadOptions() 
     {
     }
 
-    public function drawProductosOptions() //Crea el desplegable con los productos de la base de datos
+    public function drawProductosOptions() 
     {
         try {
             $this->bbdd->beginTransaction();
@@ -285,7 +285,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawClientesOptions() //Crea el desplegable con los clientes de la base de datos
+    public function drawClientesOptions()
     {
         try {
             $this->bbdd->beginTransaction();
@@ -332,7 +332,7 @@ class HeliosCorp extends Connection
 
     }
 
-    public function getPedidosProducto($id) //Te devuelve los productos de un pedido
+    public function getPedidosProducto($id)
     {
         try {
             $this->bbdd->beginTransaction();
@@ -423,7 +423,7 @@ class HeliosCorp extends Connection
             echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
-    public function getAllProductos() //Devuelve un array de objetos con todos los productos
+    public function getAllProductos()
     {
         try {
             $this->bbdd->beginTransaction();
@@ -448,7 +448,7 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
-    public function getProducto($id) //Devuelve la info de un solo cliente al pasarle el ID
+    public function getProducto($id)
     {
         try {
             $stmtClient = $this->bbdd->prepare("SELECT * FROM productos WHERE ID_Producto = :id");
@@ -461,7 +461,7 @@ class HeliosCorp extends Connection
         }
         return new Productos(null, null, null, null, null, null, null);
     }
-    public function deleteProductos($id) //Elimina el producto
+    public function deleteProductos($id)
     {
         try {
             $stmtDelete = $this->bbdd->prepare("DELETE FROM productos WHERE ID_Producto = :id");
@@ -473,7 +473,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawProductosList($admin) //Crea la tabla a partir del array de objetos productos
+    public function drawProductosList($admin)
     {
 
         $productos = $this->getAllProductos();
@@ -538,7 +538,7 @@ class HeliosCorp extends Connection
     public function maxIDCliente()
     {
         try {
-            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+           
             $this->bbdd->beginTransaction();
             $sqlMaxNum = "SELECT max(ID)+1 AS maxIdCliente FROM clientes";
             $resultado = $this->bbdd->query($sqlMaxNum);
@@ -553,7 +553,7 @@ class HeliosCorp extends Connection
     public function maxIDPedido()
     {
         try {
-            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+            
             $this->bbdd->beginTransaction();
             $sqlMaxNum = "SELECT max(ID_Pedido)+1 AS maxIdPedido FROM pedidos";
             $resultado = $this->bbdd->query($sqlMaxNum);
@@ -567,7 +567,7 @@ class HeliosCorp extends Connection
     public function maxIDProducto()
     {
         try {
-            //Crea un "punto de restauración" al que volver si todas las acciones no se completan correctamente.
+            
             $this->bbdd->beginTransaction();
             $sqlMaxNum = "SELECT max(ID_Producto)+1 AS maxIdProducto FROM productos";
             $resultado = $this->bbdd->query($sqlMaxNum);

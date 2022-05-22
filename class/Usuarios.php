@@ -17,41 +17,31 @@ class Usuarios{
     }
 
 
-    /**
-     * Get the value of nombre
-     */ 
+
     public function getNombre()
     {
         return $this->nombre;
     }
 
-    /**
-     * Get the value of usuario
-     */ 
+
     public function getUsuario()
     {
         return $this->usuario;
     }
 
-    /**
-     * Get the value of contraseña
-     */ 
+
     public function getContraseña()
     {
         return $this->contraseña;
     }
 
-    /**
-     * Get the value of id
-     */ 
+
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Get the value of isAdmin
-     */ 
+
     public function getIsAdmin()
     {
         return $this->isAdmin;

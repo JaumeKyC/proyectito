@@ -28,26 +28,26 @@ function newClientForm() {
 function productosInfo() {
     let infoButtons = document.getElementsByClassName("pop-up-producto-info");
     for (let index = 0; index < infoButtons.length; index++) {
-        /* infoButtons[index].href=clienteInfoAction(id); */
+      
         infoButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); //Quitamos comportamiento por defecto
-            /* alert(infoButtons[index].id); */
+            e.preventDefault(); 
+            
             productosInfoAction(infoButtons[index].id);
         });
     }
 }
 
 function productosInfoAction(id) {
-    /* console.log(id); */
+   
     const xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange", function () {
         if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse(this.responseText); // 2 - Lo que se devuelva, lo convertimos en objeto Json
-            /* console.log(data); */
-            drawProductoInfo(data); // 3 - Y se lo pasamos a drawDetail
+            let data = JSON.parse(this.responseText); 
+            
+            drawProductoInfo(data); 
         }
     });
-    xhttp.open("GET", "infoProducto.php?id=" + id, true); // 1 - Llama a detail.php pasándole por GET el id
+    xhttp.open("GET", "infoProducto.php?id=" + id, true);
     xhttp.send();
 }
 
@@ -72,10 +72,10 @@ function drawProductoInfo(data) {
 function productoDelete() {
     let deleteButtons = document.getElementsByClassName("pop-up-producto-delete");
     for (let index = 0; index < deleteButtons.length; index++) {
-        /* infoButtons[index].href=clienteInfoAction(id); */
+       
         deleteButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); //Quitamos comportamiento por defecto
-            /* alert(infoButtons[index].id); */
+            e.preventDefault(); 
+           
             productoDeleteAction(deleteButtons[index].id);
         });
     }
@@ -91,7 +91,7 @@ function productoDeleteAction(id) {
 function productoEdit() {
     let editButtons = document.getElementsByClassName("pop-up-producto-edit");
     for (let index = 0; index < editButtons.length; index++) {
-  /*       console.log(editButtons[index]); */
+
         
         editButtons[index].addEventListener("click", function (e) {
             e.preventDefault();
@@ -102,16 +102,16 @@ function productoEdit() {
 }
 
 function productoEditAction(id) {
-  /*   console.log(id); */
+
     const xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange", function () {
         if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse(this.responseText); // 2 - Lo que se devuelva, lo convertimos en objeto Json
-            /* console.log(data); */
-            drawProductoEdit(data); // 3 - Y se lo pasamos a drawDetail
+            let data = JSON.parse(this.responseText); 
+            
+            drawProductoEdit(data); 
         }
     });
-    xhttp.open("GET", "infoProducto.php?id=" + id, true); // 1 - Llama a detail.php pasándole por GET el id
+    xhttp.open("GET", "infoProducto.php?id=" + id, true);
     xhttp.send();
 }
 

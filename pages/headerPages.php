@@ -2,16 +2,14 @@
 require_once "autoloader.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 <header class="">
         <div class="container logo-nav-container">
             <a href="../indexMenu.php">
-                <!-- LOGO -->
+               
                 <img class="main_logo" src="../img/logo5.png" alt="main_logo">
             </a>
-            <!-- BARRA DE NAVEGACIÓN -->
-            <!-- Falta añadir los enlaces en el href -->
+           
             <div class="navbar">
                 <div class="navbar-end">
                     <div class="navbar-item">

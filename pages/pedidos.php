@@ -26,12 +26,8 @@ $helios = new HeliosCorp();
 </head>
 
 <body class="">
-    <!-- HEADER -->
-    <?php include('headerPages.php')?>
-    <!-- FIN DEL HEADER -->
-
+    <?php include('headerPages.php') ?>
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="columns espaciadoSearcher">
             <div class="column is-8"></div>
             <div class="column is-2">
@@ -50,22 +46,15 @@ $helios = new HeliosCorp();
             </form>
             <div class="column is-1"></div>
         </div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
-            <!-- Dividimos en columnas -->
             <div class="columns is-mobile">
-                <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-1"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                 <div class="column is-10 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
                     <div class="block">
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+
                         <div class="table-container">
                             <table class="datatable table is-hoverable is-centered table is-fullwidth">
-                                <!-- class="table is-striped is-narrow is-hoverable has-text-centered is-centered" -->
+
                                 <thead>
                                     <tr>
                                         <th class="">ID Pedido</th>
@@ -88,19 +77,16 @@ $helios = new HeliosCorp();
                             </table>
                         </div>
                     </div>
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+
                     <div class="block" id="detallitos">
-                        <!-- Dividimos en columnas -->
+
                         <div id="pop-up">
                             <div class="columns">
                                 <div class="column is-12 ">
-                                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-                                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                                    <!-- FORMULARIO -->
+
                                     <div class="">
                                         <table id="infoPedido" class=" table has-text-centered is-bordered is-stripped is-narrow">
-                                            <!-- Aquí JS creará la tabla de info -->
+
                                         </table>
                                     </div>
                                     <div class="block"></div>
@@ -111,22 +97,18 @@ $helios = new HeliosCorp();
                                         </div>
                                         <div class="control column is-1"></div>
                                     </div>
-                                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="block" id="borraditos">
-                        <!-- Dividimos en columnas -->
+
                         <div id="pop-up">
                             <div class="columns">
-                                <!-- Columnas vacías para dar margen a la izquierda -->
-                                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+
                                 <div class="column is-12 ">
-                                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-                                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-                                    <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                                    <!-- FORMULARIO -->
+
                                     <form action="" id="deletePedidos" method="POST">
                                         <div class="block">Estás a punto de borrar el pedido.</div>
                                         <div class="columns">
@@ -148,20 +130,18 @@ $helios = new HeliosCorp();
 
                                 </div>
                             </div>
-                            <!-- Columnas vacías para dar margen a la derecha -->
+
                         </div>
                     </div>
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
+
                 <div class="column is-1"></div>
             </div>
         </div>
-        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-        <!-- Otro bloque para dar espacio con el Footer -->
+
         <div class="block"></div>
     </main>
-    <!-- FIN DE LA MAIN SECTION -->
-    <!-- FOOTER -->
+
     <footer class="footer2">
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
@@ -173,7 +153,6 @@ $helios = new HeliosCorp();
                 <a href="./crearPedido.php"><input class="button is-link is-right" type="button" value="Nuevo"></a>
             </span>
     </footer>
-    <!-- FIN DEL FOOTER -->
 </body>
 
 </html>

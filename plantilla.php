@@ -1,6 +1,8 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ./index.php?error=Insert User and Password");
+}
 
 ?>
 <!DOCTYPE html>
@@ -22,15 +24,11 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
 </head>
 
 <body class="">
-    <!-- HEADER -->
     <header class="">
         <div class="container logo-nav-container">
             <a href="../index.php">
-                <!-- LOGO -->
                 <img class="main_logo" src="../img/logo5.png" alt="main_logo">
             </a>
-            <!-- BARRA DE NAVEGACIÓN -->
-            <!-- Falta añadir los enlaces en el href -->
             <div class="navbar">
                 <div class="navbar-end">
                     <div class="navbar-item">
@@ -63,38 +61,18 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
             </div>
         </div>
     </header>
-    <!-- FIN DEL HEADER -->
-
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
         <div class="block">
-            <!-- Dividimos en columnas -->
             <div class="columns">
-                <!-- Columnas vacías para dar margen a la izquierda -->
                 <div class="column is-2"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                 <div class="column is-8 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
                     <div class="block">
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-
                     </div>
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
                 </div>
-
-                <!-- Columnas vacías para dar margen a la derecha -->
                 <div class="column is-2"></div>
             </div>
         </div>
-
-        <!-- FIN DE LA MAIN SECTION -->
-
-        <!-- FOOTER -->
         <footer class="footer">
             <div class="container logo-nav-container">
                 <a href="#">
@@ -106,7 +84,6 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
                 </a>
             </div>
         </footer>
-        <!-- FIN DEL FOOTER -->
 </body>
 
 </html>

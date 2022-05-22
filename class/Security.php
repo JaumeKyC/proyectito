@@ -14,9 +14,6 @@ class Security extends Connection
         try {
             $sql = $this->bbdd->prepare("SELECT * FROM login WHERE user='" . $post["user"] . "'");
             $sql->execute();
-            //$sql->debugDumpParams();
-            //var_dump($sql->fetch(PDO::FETCH_ASSOC));
-            //die(password_verify($post["password"], $user["password"]).$sql->rowCount());
             $user = $sql->fetch(PDO::FETCH_ASSOC);
             return ($sql->rowCount() > 0 && (password_verify($post["password"], $user["password"])))? $user : null ;
         } catch (Exception | PDOException $e) {

@@ -23,57 +23,43 @@ class Productos
 
     
 
-    /**
-     * Get the value of idProducto
-     */ 
+
     public function getIdProducto()
     {
         return $this->idProducto;
     }
 
-    /**
-     * Get the value of nombre
-     */ 
+
     public function getNombre()
     {
         return $this->nombre;
     }
 
-    /**
-     * Get the value of proveedor
-     */ 
+
     public function getProveedor()
     {
         return $this->proveedor;
     }
 
-    /**
-     * Get the value of descripcion
-     */ 
+ 
     public function getDescripcion()
     {
         return $this->descripcion;
     }
 
-    /**
-     * Get the value of cantidadStock
-     */ 
+ 
     public function getCantidadStock()
     {
         return $this->cantidadStock;
     }
 
-    /**
-     * Get the value of precioVenta
-     */ 
+ 
     public function getPrecioVenta()
     {
         return $this->precioVenta;
     }
 
-    /**
-     * Get the value of precioProveedor
-     */ 
+
     public function getPrecioProveedor()
     {
         return $this->precioProveedor;

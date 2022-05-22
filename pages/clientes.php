@@ -28,12 +28,9 @@ if (count($_POST) > 1) {
 </head>
 
 <body class="">
-    <!-- HEADER -->
     <?php include('headerPages.php')?>
-    <!-- FIN DEL HEADER -->
-
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
+        
         <div class="columns espaciadoSearcher ">
             <div class="column is-8"></div>
             <div class="column is-2">
@@ -53,22 +50,20 @@ if (count($_POST) > 1) {
             </form>
             <div class="column is-1"></div>
         </div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
+       
         <div class="block">
-            <!-- Dividimos en columnas -->
+           
             <div class="columns is-mobile">
-                <!-- Columnas vacías para dar margen a la izquierda -->
+                
                 <div class="column is-1"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+               
                 <div class="column is-10 ">
-                    <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
 
-                    <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
                     <div class="block">
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
+                      
                         <div class="table-container">
                             <table class="datatable table is-hoverable is-centered table is-fullwidth">
-                                <!-- class="table is-striped is-narrow is-hoverable has-text-centered is-centered" -->
+                                
                                 <thead>
                                     <tr>
                                         <th class="">ID</th>
@@ -88,32 +83,16 @@ if (count($_POST) > 1) {
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-                    <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
                 </div>
-
-                <!-- Columnas vacías para dar margen a la derecha -->
                 <div class="column is-1"></div>
             </div>
         </div>
-
-        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
         <div class="block" id="clientitos">
-            <!-- Dividimos en columnas -->
             <div id="pop-up">
                 <div class="columns">
-                    <!-- Columnas vacías para dar margen a la izquierda -->
-
-                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                     <div class="column is-12 ">
-                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-
-                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
                         <div class="">
-                            <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                            <!-- FORMULARIO -->
                             <form action="new.php" id="insertForm" method="POST">
                                 <div class="columns">
                                     <div class="column is-1"></div>
@@ -182,7 +161,6 @@ if (count($_POST) > 1) {
                                                 <input class="input" type="email" placeholder="Email input" required value="" name="email">
                                             </div>
                                         </div>
-
                                         <div class="field is-grouped">
                                             <div class="control">
                                                 <button type="submit" method="POST" class="button is-link">Aceptar</button>
@@ -191,38 +169,22 @@ if (count($_POST) > 1) {
                                                 <button id="cancelar-pop-up" type="button" class="button is-link is-light">Cancelar</button>
                                             </div>
                                         </div>
-
                                     </div>
-
                                     <div class="column is-1 "></div>
                                 </div>
                             </form>
-                            <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
+                            
                         </div>
                     </div>
-
-                    <!-- Columnas vacías para dar margen a la derecha -->
-
                 </div>
             </div>
         </div>
         <div class="block" id="detallitos">
-            <!-- Dividimos en columnas -->
             <div id="pop-up">
                 <div class="columns">
-                    <!-- Columnas vacías para dar margen a la izquierda -->
-
-                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                     <div class="column is-12 ">
-                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-
-                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                        <!-- FORMULARIO -->
                         <div class="">
-                            <table id="infoCliente" class=" table has-text-centered is-bordered is-stripped is-narrow">
-                                <!-- Aquí JS creará la tabla de info -->
+                            <table id="infoCliente" class=" table has-text-centered is-bordered is-stripped is-narrow">  
                             </table>
                         </div>
                         <div class="block"></div>
@@ -233,35 +195,19 @@ if (count($_POST) > 1) {
                             </div>
                             <div class="control column is-1"></div>
                         </div>
-                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
-
                     </div>
-
-                    <!-- Columnas vacías para dar margen a la derecha -->
-
                 </div>
             </div>
         </div>
         <div class="block" id="editaditos">
-            <!-- Dividimos en columnas -->
             <div id="pop-up">
                 <div class="columns">
-                    <!-- Columnas vacías para dar margen a la izquierda -->
-
-                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                     <div class="column is-12 ">
-                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-
-                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
                         <div class="">
-                            <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                            <!-- FORMULARIO -->
                             <form action="editClient.php" id="insertForm" method="POST">
                                 <div class="columns">
                                     <div class="column is-1"></div>
-
                                     <div class="column is-5">
-
                                         <label class="label">ID</label>
                                         <div class="control">
                                             <input class="input input2" type="text" placeholder="Text input" required name="id" value="" readonly>
@@ -291,7 +237,6 @@ if (count($_POST) > 1) {
                                         <div class="control">
                                             <input class="input input2" type="text" placeholder="Text input" required name="telefono" value="">
                                         </div>
-
                                     </div>
                                     <div class="column is-5">
                                         <label class="label">Calle</label>
@@ -324,9 +269,6 @@ if (count($_POST) > 1) {
                                                 <input class="input input2" type="text" placeholder="Text input" required name="codPostal" value="">
                                             </div>
                                         </div>
-
-
-
                                         <div class="field is-grouped">
                                             <div class="control">
                                                 <button type="submit" method="POST" class="button is-link">Aceptar</button>
@@ -335,41 +277,24 @@ if (count($_POST) > 1) {
                                                 <button id="cancelar2-pop-up" type="button" class="button is-link is-light">Cancelar</button>
                                             </div>
                                         </div>
-
                                     </div>
-
                                     <div class="column is-1 "></div>
                                 </div>
                             </form>
-                            <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                         </div>
                     </div>
-
-                    <!-- Columnas vacías para dar margen a la derecha -->
-
                 </div>
             </div>
         </div>
         <div class="block" id="borraditos">
-            <!-- Dividimos en columnas -->
             <div id="pop-up">
                 <div class="columns">
-                    <!-- Columnas vacías para dar margen a la izquierda -->
-
-                    <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                     <div class="column is-12 ">
-                        <!-- AQUÍ EMPIEZA EL CONTENIDO DE LA PÁGINA -->
-
-                        <!-- DENTRO DEL SIGUIENTE DIV.BLOCK VA EL CONTENIDO DE LA PÁGINA-->
-
-                        <!-- ¡¡¡¡CONTENIDO AQUÍ!!!! -->
-                        <!-- FORMULARIO -->
                         <form action="" id="deleteClientes" method="POST">
                             <div class="block">Estás a punto de borrar el cliente.</div>
                             <div class="columns">
                                 <div class="column is-1"></div>
                                 <div class="column is-10">
-
                                     <div class="field is-grouped">
                                         <div class="control">
                                             <button type="submit" method="POST" class="button is-link">Aceptar</button>
@@ -382,38 +307,24 @@ if (count($_POST) > 1) {
                                 <div class="column is-1"></div>
                             </div>
                         </form>
-                        <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
                     </div>
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
+            
             </div>
         </div>
-
-        <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>
     </main>
-    <!-- FIN DE LA MAIN SECTION -->
-
-    <!-- FOOTER -->
     <footer class="footer2">
-
-
         <div class="container logo-nav-container">
             <a href="../indexAlmacen.php">
-                <!-- <div class="icon-text navbar-item"> -->
                 <span class="icon is-large">
                     <img src="../img/flecha-hacia-atras.png" alt="">
                 </span>
-
-                <!-- </div> -->
             </a>
             <span>
                 <input id="pop-up-cliente" class="button is-link is-right" type="button" value="Nuevo">
-
             </span>
-
     </footer>
-    <!-- FIN DEL FOOTER -->
 </body>
 
 </html>

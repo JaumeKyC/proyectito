@@ -1,6 +1,8 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User and Password");}
+if (!isset($_SESSION["user"])) {
+    header("Location: ./index.php?error=Insert User and Password");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,50 +20,36 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
 </head>
 
 <body class="">
-    <!-- HEADER -->
-    <?php include('header.php')?>
-    <!-- FIN DEL HEADER -->
-
-    <!-- MAIN SECTION -->
+    <?php include('header.php') ?>
     <main>
-    <div class="block"></div>
-        <!-- Dividimos en columnas -->
+        <div class="block"></div>
         <div class=" margen1 columns is-mobile">
-                <!-- Columnas vacías para dar margen a la izquierda -->
-                <div class="column is-2"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
-                <div class="column is-8 ">
-                    <div class="columns">
-                  
-                        <div class="column is-6 has-text-centered titulo-imagen">
-                            <a href="BOE-A-2021-9764.pdf" download="GrandesAlmacenes"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
-                                <div class="titulo-centrado">Convenio</div>
-                            </a>
-                        </div>
-                        <div class="column is-6 has-text-centered titulo-imagen">
-                            <a href="./pages/noticias.php"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
-                                <div class="titulo-centrado">Noticias</div>
-                            </a>
-                        </div>
-                       
+            <div class="column is-2"></div>
+            <div class="column is-8 ">
+                <div class="columns">
+                    <div class="column is-6 has-text-centered titulo-imagen">
+                        <a href="BOE-A-2021-9764.pdf" download="GrandesAlmacenes"> <img class="img-button" src="img/menu/convenio2.jpg" alt="">
+                            <div class="titulo-centrado">Convenio</div>
+                        </a>
+                    </div>
+                    <div class="column is-6 has-text-centered titulo-imagen">
+                        <a href="./pages/noticias.php"> <img class="img-button" src="img/menu/noticias2.jpg" alt="">
+                            <div class="titulo-centrado">Noticias</div>
+                        </a>
                     </div>
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
-                <div class="column is-2"></div>
             </div>
-        <!-- FOOTER -->
+            <div class="column is-2"></div>
+        </div>
         <footer class="footer">
             <div class="container logo-nav-container">
                 <a href="indexMenu.php">
-                    <!-- <div class="icon-text navbar-item"> -->
-                        <span class="icon is-large">
-                            <img src="img/flecha-hacia-atras.png" alt="" class="flechaAtras">
-                        </span>
-                    <!-- </div> -->
+                    <span class="icon is-large">
+                        <img src="img/flecha-hacia-atras.png" alt="" class="flechaAtras">
+                    </span>
                 </a>
             </div>
         </footer>
-        <!-- FIN DEL FOOTER -->
 </body>
 
 </html>

@@ -53,10 +53,8 @@ function newClientForm() {
 function clientInfo() {
     let infoButtons = document.getElementsByClassName("pop-up-cliente-info");
     for (let index = 0; index < infoButtons.length; index++) {
-        /* infoButtons[index].href=clienteInfoAction(id); */
         infoButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); //Quitamos comportamiento por defecto
-            /* alert(infoButtons[index].id); */
+            e.preventDefault(); 
             clienteInfoAction(infoButtons[index].id);
         });
     }
@@ -82,22 +80,22 @@ function drawClientInfo(data) {
 }
 
 function clienteInfoAction(id) {
-    /* console.log(id); */
+    
     const xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange", function () {
         if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse(this.responseText); // 2 - Lo que se devuelva, lo convertimos en objeto Json
-            /* console.log(data); */
-            drawClientInfo(data); // 3 - Y se lo pasamos a drawDetail
+            let data = JSON.parse(this.responseText); 
+          
+            drawClientInfo(data); 
         }
     });
-    xhttp.open("GET", "infoClient.php?id=" + id, true); // 1 - Llama a detail.php pasándole por GET el id
+    xhttp.open("GET", "infoClient.php?id=" + id, true);
     xhttp.send();
 }
 function clientEdit() {
     let editButtons = document.getElementsByClassName("pop-up-cliente-edit");
     for (let index = 0; index < editButtons.length; index++) {
-        /* console.log(editButtons[index]); */
+       
         editButtons[index].addEventListener("click", function (e) {
             e.preventDefault();
             clienteEditAction(editButtons[index].id);
@@ -107,16 +105,16 @@ function clientEdit() {
 }
 
 function clienteEditAction(id) {
-    /* console.log(id); */
+   
     const xhttp = new XMLHttpRequest();
     xhttp.addEventListener("readystatechange", function () {
         if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse(this.responseText); // 2 - Lo que se devuelva, lo convertimos en objeto Json
-            /* console.log(data); */
-            drawClientEdit(data); // 3 - Y se lo pasamos a drawDetail
+            let data = JSON.parse(this.responseText); 
+            
+            drawClientEdit(data);
         }
     });
-    xhttp.open("GET", "infoClient.php?id=" + id, true); // 1 - Llama a detail.php pasándole por GET el id
+    xhttp.open("GET", "infoClient.php?id=" + id, true);
     xhttp.send();
 }
 
@@ -129,20 +127,17 @@ function drawClientEdit(data) {
         index++;
     }
 }
-
 function clientDelete() {
     let deleteButtons = document.getElementsByClassName("pop-up-cliente-delete");
     for (let index = 0; index < deleteButtons.length; index++) {
-        /* infoButtons[index].href=clienteInfoAction(id); */
+       
         deleteButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); //Quitamos comportamiento por defecto
-            /* alert(infoButtons[index].id); */
+            e.preventDefault(); 
             clienteDeleteAction(deleteButtons[index].id);
         });
     }
 }
 function clienteDeleteAction(id) {
-
     document.getElementById("borraditos").style.display = "grid";
     let formulario = document.getElementById("deleteClientes");
     formulario.action = "";

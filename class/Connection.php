@@ -23,7 +23,6 @@ class Connection{
     }
     protected function disconnect()
     {
-        //cierra la conexión
         $this->bbdd = null;
         
     }

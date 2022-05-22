@@ -1,8 +1,9 @@
 <?php require_once "pages/autoloader.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/logoico.ico">
@@ -11,15 +12,13 @@
     <link rel="stylesheet" href="css/general-style.css">
     <title>Helios Corp.</title>
 </head>
+
 <body>
-<header class="">
+    <header class="">
         <div class="container logo-nav-container">
             <a href="/indexMenu.php">
-                <!-- LOGO -->
                 <img class="main_logo" src="img/logo5.png" alt="main_logo">
             </a>
-            <!-- BARRA DE NAVEGACIÓN -->
-            <!-- Falta añadir los enlaces en el href -->
             <div class="navbar">
                 <div class="navbar-end">
                     <div class="navbar-item">
@@ -28,7 +27,7 @@
                                 <span class="icon is-large">
                                     <img src="img/usuario.png" alt="">
                                 </span>
-                                <span class="user"><?= ucfirst($_SESSION["user"])?></span>
+                                <span class="user"><?= ucfirst($_SESSION["user"]) ?></span>
                             </div>
                         </a>
                         <a href="#">
@@ -53,4 +52,5 @@
         </div>
     </header>
 </body>
+
 </html>

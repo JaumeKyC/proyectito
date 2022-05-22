@@ -16,11 +16,8 @@
 
 <body>
     <div class="margenlogin columns is-mobile">
-        <!-- Agregar style="margin top:70px" -->
-
-        <!-- Columnas vacías para dar margen a la izquierda -->
         <div class="column is-4"></div>
-        <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
+
         <div class="column is-4 has-text-centered">
             <figure class="image ">
                 <img src="img/logo5.png">
@@ -31,8 +28,8 @@
 
                     <form method="post" action="./pages/login1.php">
                         <h1>¡Bienvenido/a!</h1>
-                        <?php if(isset($_GET['error'])){ ?>
-                                <p class="error" style="color:red"> <?php echo $_GET['error']; ?> </p>
+                        <?php if (isset($_GET['error'])) { ?>
+                            <p class="error" style="color:red"> <?php echo $_GET['error']; ?> </p>
                         <?php } ?>
                         <div class="field ">
                             <label class="label has-text-right ">Usuario</label>
@@ -48,17 +45,12 @@
                         </div>
                         <button class="button is-link is-rounded  has-button-right" type="submit">Validar</button>
                     </form>
-
                 </div>
                 <div class="column is-2"></div>
             </div>
-
-
         </div>
         <div class="column is-4"></div>
     </div>
-    <!-- Columnas vacías para dar margen a la derecha -->
-
     </div>
 </body>
 

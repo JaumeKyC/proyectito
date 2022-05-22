@@ -7,7 +7,6 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,22 +18,11 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
 </head>
 
 <body class="">
-    <!-- HEADER -->
    <?php include('header.php')?>
-    <!-- FIN DEL HEADER -->
-
-    <!-- MAIN SECTION -->
     <main>
-        <!-- Block para dar espacio con el header, uno vacío primero para que haya un espacio con el segundo -->
         <div class="block"></div>
-        <!-- PRIMER BLOQUE PARA 3 BOTONES PRINCIPALES -->
-        
-            <!-- Dividimos en columnas -->
-            <div class="margen1 columns is-mobile"> <!-- Agregar style="margin top:70px" -->
-                
-                <!-- Columnas vacías para dar margen a la izquierda -->
+            <div class="margen1 columns is-mobile"> 
                 <div class="column is-1"></div>
-                <!-- Columnas que será donde vaya el contenido de la página en cuestión -->
                 <div class="column is-10">
                     <div class="columns">
                         
@@ -53,35 +41,22 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
                                 <div class="titulo-centrado">Otros</div>
                             </a>
                         </div>
-                        
                     </div>
                 </div>
-                <!-- Columnas vacías para dar margen a la derecha -->
             <div class="column is-1"></div>
             </div>
-
-            <!-- SEGUNDO BLOQUE PARA OTROS 3 BOTONES PRINCIPALES -->
-
-            
-        <!-- </div> -->
-        <!-- Otro bloque para dar espacio con el Footer -->
         <div class="block"></div>
     </main>
-    <!-- FIN DE LA MAIN SECTION -->
-
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container logo-nav-container">
             <a href="./pages/logout.php">
-                <!-- <div class="icon-text navbar-item"> -->
+               
                     <span class="icon is-large">
                         <img src="img/logout.png" alt="" class="logout">
                     </span>
-                <!-- </div> -->
             </a>
        </div>
     </footer>
-    <!-- FIN DEL FOOTER -->
 </body>
 
 </html>
