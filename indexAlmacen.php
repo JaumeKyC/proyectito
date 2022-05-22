@@ -61,7 +61,6 @@ if(!isset($_SESSION["user"])){header("Location: ./index.php?error=Insert User an
             </div>
         <!-- </div> -->
         <!-- Otro bloque para dar espacio con el Footer -->
-        <div class="block"></div>
     </main>
     <!-- FIN DE LA MAIN SECTION -->
 

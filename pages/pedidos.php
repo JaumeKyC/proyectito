@@ -158,7 +158,6 @@ $helios = new HeliosCorp();
         </div>
         <!-- FIN DEL CONTENIDO DE LA PÁGINA -->
         <!-- Otro bloque para dar espacio con el Footer -->
-        <div class="block"></div>
     </main>
     <!-- FIN DE LA MAIN SECTION -->
     <!-- FOOTER -->
