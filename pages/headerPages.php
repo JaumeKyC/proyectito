@@ -14,7 +14,7 @@
 <body>
 <header class="">
         <div class="container logo-nav-container">
-            <a href="indexMenu.php">
+            <a href="../indexMenu.php">
                 <!-- LOGO -->
                 <img class="main_logo" src="../img/logo5.png" alt="main_logo">
             </a>
@@ -39,7 +39,7 @@
                                 <span>Mensajes</span>
                             </div>
                         </a>
-                        <a href="./pages/logout.php">
+                        <a href="logout.php">
                             <div class="icon-text navbar-item">
                                 <span class="icon is-large">
                                     <img src="../img/cerrar.png" alt="">
