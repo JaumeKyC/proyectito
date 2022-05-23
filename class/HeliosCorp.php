@@ -216,7 +216,7 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getFechaEsperada() . "</td>";
             $output .= "<td>" . $pedidos->getFechaEntrega() . "</td>";
             $output .= "<td>" . $pedidos->getEstado() . "</td>";
-            $output .= "<td>" . $pedidos->getImporte() . "</td>";
+            $output .= "<td>" . $pedidos->getImporte() . "€</td>";
             $output .= "<td> <a class='pop-up-pedidos-info' id=" . $pedidos->getIdPedido() . "><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a class='pop-up-pedidos-edit " . $disabled . "' id=" . $pedidos->getIdPedido() . "><img src='../img/write.png' width='25'></a> </td>";
             $output .= "<td> <a class='pop-up-cliente-delete " . $disabled . "' id=" . $pedidos->getIdPedido() . "><img src='../img/borrar.png' width='25'></a> </td>";
@@ -520,8 +520,8 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $productos->getNombre() . "</td>";
             $output .= "<td>" . $productos->getProveedor() . "</td>";
             $output .= "<td>" . $productos->getCantidadStock() . "</td>";
-            $output .= "<td>" . $productos->getPrecioVenta() . "</td>";
-            $output .= "<td>" . $productos->getPrecioProveedor() . "</td>";
+            $output .= "<td>" . $productos->getPrecioVenta() . "€</td>";
+            $output .= "<td>" . $productos->getPrecioProveedor() . "€</td>";
             $output .= "<td> <a class='pop-up-producto-info' id=" . $productos->getIdProducto() . "><img src='../img/info.png' width='25'></a> </td>";
             $output .= "<td> <a class='pop-up-producto-edit " . $disabled . "' id=" . $productos->getIdProducto() . "><img src='../img/write.png' width='25'></a> </td>";
             $output .= "<td> <a class='pop-up-producto-delete " . $disabled . "' id=" . $productos->getIdProducto() . "><img src='../img/borrar.png' width='25'></a> </td>";
