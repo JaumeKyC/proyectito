@@ -403,7 +403,7 @@ class HeliosCorp extends Connection
             $fechaEntrega = $data["fechaEntrega"];
             $estado = $data["estado"];
             if($fechaEntrega == ""){$fechaEntrega=null;}
-           /*  if($estado == "Entregado" && $fechaEntrega == null){$fechaEntrega = date('d-m-Y');} */
+            if($estado == "Entregado" && $fechaEntrega == null){$fechaEntrega = date('Y-m-d');}
 
             $stmtInsert = $this->bbdd->prepare("UPDATE pedidos  Set Fecha_Entrega=:fechaEntrega, Estado=:estado WHERE ID_Pedido=:id");
             $stmtInsert->bindParam(':id', $id, PDO::PARAM_INT);
