@@ -7,6 +7,7 @@ function main() {
     pedidosDelete();
     hideGrid();
     pedidosInfo();
+    clientEdit();
 }
 
 function hideGrid() {
@@ -16,15 +17,18 @@ function hideGrid() {
     document.getElementById("cancelar-pop-up-info").addEventListener("click", function () {
         document.getElementById("detallitos").style.display = "none";
     });
+    document.getElementById("cancelar2-pop-up").addEventListener("click", function () {
+        document.getElementById("editaditos").style.display = "none";
+    });
 }
 
 function pedidosDelete() {
     let deleteButtons = document.getElementsByClassName("pop-up-cliente-delete");
     for (let index = 0; index < deleteButtons.length; index++) {
-        
+
         deleteButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); 
-            
+            e.preventDefault();
+
             pedidosDeleteAction(deleteButtons[index].id);
         });
     }
@@ -41,10 +45,10 @@ function pedidosDeleteAction(id) {
 function pedidosInfo() {
     let infoButtons = document.getElementsByClassName("pop-up-pedidos-info");
     for (let index = 0; index < infoButtons.length; index++) {
-       
+
         infoButtons[index].addEventListener("click", function (e) {
-            e.preventDefault(); 
-          
+            e.preventDefault();
+
             pedidosInfoAction(infoButtons[index].id);
         });
     }
@@ -55,11 +59,11 @@ function pedidosInfoAction(id) {
     xhttp.addEventListener("readystatechange", function () {
         if (this.readyState == 4 && this.status == 200) {
             let data = JSON.parse(this.responseText);
-            
-            drawPedidoInfo(data); 
+
+            drawPedidoInfo(data);
         }
     });
-    xhttp.open("GET", "infoProductos.php?id=" + id, true); 
+    xhttp.open("GET", "infoProductos.php?id=" + id, true);
     xhttp.send();
 }
 
@@ -70,7 +74,7 @@ function drawPedidoInfo(data) {
     clientData.innerHTML = "";
     console.log(data);
     let row = document.createElement("tr");
-    for (field in data[0]){
+    for (field in data[0]) {
         console.log(field);
         let th = document.createElement("th");
         th.innerHTML = field.charAt(0).toUpperCase() + field.slice(1);
@@ -85,10 +89,38 @@ function drawPedidoInfo(data) {
             td.innerHTML = data[i][field];
             row.appendChild(td);
             clientData.appendChild(row);
-        } 
-} 
+        }
+    }
 
+}
 
+function clientEdit() {
+    let editButtons = document.getElementsByClassName("pop-up-pedidos-edit");
+    for (let index = 0; index < editButtons.length; index++) {
+       
+        editButtons[index].addEventListener("click", function (e) {
+            document.getElementById("editaditos").style.display = "grid";
+            document.getElementById("id").value = editButtons[index].id;
+
+            e.preventDefault();
+            clienteEditAction(editButtons[index].id);
+
+        });
+    }
+}
+//Lenin y Jaume
+function clienteEditAction(id) {
+   
+    const xhttp = new XMLHttpRequest();
+    xhttp.addEventListener("readystatechange", function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let data = JSON.parse(this.responseText); 
+            
+            drawClientEdit(data);
+        }
+    });
+    xhttp.open("GET", "editPedido.php?id=" + id, true);
+    xhttp.send();
 }
 
 

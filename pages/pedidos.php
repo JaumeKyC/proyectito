@@ -135,6 +135,54 @@ $helios = new HeliosCorp();
 
                         </div>
                     </div>
+                    <div class="columns" id="editaditos">
+                        <div class="column is-1"></div>
+
+                        <div class="is-10" id="pop-up">
+
+                            <form action="editPedido.php" id="insertForm" method="POST">
+                                <div class="columns">
+
+                                    <div class="column is-6">
+                                    <label class="label">ID Pedido</label>
+                                    <div class="control">
+                                            <input class="input" id="id" type="text" placeholder="Text input" required name="id" value="" readonly>
+                                        </div>
+                                        <label class="label">Fecha Entrega</label>
+                                        <div class="control">
+                                            <input class="input" type="date" placeholder="Text input"  name="fechaEntrega" value=null>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-6">
+                                        <label class="label">Estado</label>
+                                        <div class="control">
+                                            <div class="select">
+                                                <select  name="estado">
+                                                    <option value="Pendiente">Pendiente</option>
+                                                    <option value="En reparto">En reparto</option>
+                                                    <option value="Entregado">Entregado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="block"></div>
+                                        <div class="field is-grouped">
+                                            <div class="control">
+                                                <button type="submit" method="POST" class="button is-link">Aceptar</button>
+                                            </div>
+                                            <div class="control">
+                                                <button id="cancelar2-pop-up" type="button" class="button is-link is-light">Cancelar</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="column is-1"></div>
+                    </div>
                 </div>
 
                 <div class="column is-1"></div>

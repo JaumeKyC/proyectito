@@ -118,9 +118,9 @@ class HeliosCorp extends Connection
         return new Clientes(null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
-  
+
     //Diego
-    public function deleteClientes($id) 
+    public function deleteClientes($id)
     {
         try {
             $stmtDelete = $this->bbdd->prepare("DELETE FROM clientes WHERE id = :id");
@@ -196,7 +196,7 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawPedidosList($admin) 
+    public function drawPedidosList($admin)
     {
 
         $pedidos = $this->getAllPedidos();
@@ -218,7 +218,7 @@ class HeliosCorp extends Connection
             $output .= "<td>" . $pedidos->getEstado() . "</td>";
             $output .= "<td>" . $pedidos->getImporte() . "</td>";
             $output .= "<td> <a class='pop-up-pedidos-info' id=" . $pedidos->getIdPedido() . "><img src='../img/info.png' width='25'></a> </td>";
-            $output .= "<td> <a class=" . $disabled . " href='edit.php?id=" . $pedidos->getIdPedido() . "'><img src='../img/write.png' width='25'></a> </td>";
+            $output .= "<td> <a class='pop-up-pedidos-edit " . $disabled . "' id=" . $pedidos->getIdPedido() . "><img src='../img/write.png' width='25'></a> </td>";
             $output .= "<td> <a class='pop-up-cliente-delete " . $disabled . "' id=" . $pedidos->getIdPedido() . "><img src='../img/borrar.png' width='25'></a> </td>";
             $output .= "</tr>";
         }
@@ -237,7 +237,8 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function getDetailPedido($id){
+    public function getDetailPedido($id)
+    {
         try {
             $stmtClient = $this->bbdd->prepare("SELECT * FROM detallePedido WHERE ID_Pedido = :id");
             $stmtClient->bindParam(':id', $id, PDO::PARAM_STR);
@@ -250,7 +251,7 @@ class HeliosCorp extends Connection
     }
 
     //NEW PEDIDO
-    public function getStock($id_producto) 
+    public function getStock($id_producto)
     {
         try {
             $this->bbdd->beginTransaction();
@@ -264,11 +265,11 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function drawCantidadOptions() 
+    public function drawCantidadOptions()
     {
     }
 
-    public function drawProductosOptions() 
+    public function drawProductosOptions()
     {
         try {
             $this->bbdd->beginTransaction();
@@ -305,10 +306,11 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
-    
-    public function getInsertDetalle($post){ 
+
+    public function getInsertDetalle($post)
+    {
         try {
-        
+
             $idP = $post["producto"];
             $stmt = $this->bbdd->query("SELECT PrecioVenta AS precioVenta FROM productos WHERE ID_Producto = $idP");
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC)["precioVenta"];
@@ -316,22 +318,20 @@ class HeliosCorp extends Connection
             $idproducto = $post["producto"];
             $cantidad = $post["cantidad"];
             $preciounidad = $resultado;
-            
+
 
             $stmtInsert = $this->bbdd->prepare("INSERT INTO detallePedido VALUES (:idpedido,:producto,:cantidad,:precioventa)");
             $stmtInsert->bindParam(':idpedido', $idpedido, PDO::PARAM_INT);
             $stmtInsert->bindParam(':producto', $idproducto, PDO::PARAM_STR);
             $stmtInsert->bindParam(':cantidad', $cantidad, PDO::PARAM_STR);
             $stmtInsert->bindParam(':precioventa', $preciounidad, PDO::PARAM_STR);
-            
+
 
             $stmtInsert->execute();
             return $stmtInsert->rowCount();
-            
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
         }
-
     }
 
     public function getPedidosProducto($id)
@@ -343,11 +343,10 @@ class HeliosCorp extends Connection
             $output = "";
             $output .= "<ul>";
             while ($detalleP = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                
-                $output .= "<li>" .$detalleP['Cantidad']."x ". $detalleP['Nombre']."<br>";
-                $output .= $detalleP['PrecioUnidad']*$detalleP['Cantidad'] ." € </li> ";
-                $output .="<br>";
-              
+
+                $output .= "<li>" . $detalleP['Cantidad'] . "x " . $detalleP['Nombre'] . "<br>";
+                $output .= $detalleP['PrecioUnidad'] * $detalleP['Cantidad'] . " € </li> ";
+                $output .= "<br>";
             }
             $output .= "</ul>";
             $this->bbdd->commit();
@@ -357,7 +356,8 @@ class HeliosCorp extends Connection
         }
     }
 
-    public function getImporteTotal($id){
+    public function getImporteTotal($id)
+    {
         try {
             $this->bbdd->beginTransaction();
             $stmt = $this->bbdd->prepare("SELECT Importe FROM pedidos WHERE ID_Pedido = $id");
@@ -365,14 +365,15 @@ class HeliosCorp extends Connection
             $output = "";
             $importe = $stmt->fetch();
             $this->bbdd->commit();
-            $output .= "<p> TOTAL: " .$importe[0]." € </p>";
+            $output .= "<p> TOTAL: " . $importe[0] . " € </p>";
             return $output;
         } catch (PDOException $exception) {
             echo "<br> Se ha producido una excepción:" . $exception->getMessage();
         }
     }
 
-    public function createPedido($post){
+    public function createPedido($post)
+    {
         try {
             $id_Pedido = $post["ID_Pedido"];
             $id_Ciente = $post["ID_Cliente"];
@@ -395,21 +396,42 @@ class HeliosCorp extends Connection
         }
     }
 
+    public function editPedidos($data)
+    {
+        try {
+            $id = $data["id"];
+            $fechaEntrega = $data["fechaEntrega"];
+            $estado = $data["estado"];
+            if($fechaEntrega == ""){$fechaEntrega=null;}
+           /*  if($estado == "Entregado" && $fechaEntrega == null){$fechaEntrega = date('d-m-Y');} */
+
+            $stmtInsert = $this->bbdd->prepare("UPDATE pedidos  Set Fecha_Entrega=:fechaEntrega, Estado=:estado WHERE ID_Pedido=:id");
+            $stmtInsert->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':fechaEntrega', $fechaEntrega, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':estado', $estado, PDO::PARAM_STR);
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
+        }
+    }
+
     //PRODUCTOS Alejandro
 
-    
+
     public function newProducto($data)
- 
+
     {
         try {
             $idProducto = $data["idProducto"];
             $nombre = $data["nombre"];
             $proveedor = $data["proveedor"];
-            $descripcion= $data["descripcion"];
+            $descripcion = $data["descripcion"];
             $cantidadStock = $data["cantidadStock"];
             $precioVenta = $data["precioVenta"];
             $precioProveedor = $data["precioProveedor"];
-          
+
 
             $stmtInsert = $this->bbdd->prepare("INSERT INTO productos VALUES (:idProducto,:nombre,:proveedor,:descripcion,:cantidadStock,:precioVenta,:precioProveedor)");
             $stmtInsert->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
@@ -427,7 +449,7 @@ class HeliosCorp extends Connection
             echo 'Falló la inserción: ' . $e->getMessage();
         }
     }
-   
+
     public function getAllProductos()
     {
         try {
@@ -453,7 +475,7 @@ class HeliosCorp extends Connection
             echo "<br> Se ha producido una ex excepción:" . $exception->getMessage();
         }
     }
-    
+
     public function getProducto($id)
     {
         try {
@@ -467,7 +489,7 @@ class HeliosCorp extends Connection
         }
         return new Productos(null, null, null, null, null, null, null);
     }
-    
+
     public function deleteProductos($id)
     {
         try {
@@ -479,7 +501,7 @@ class HeliosCorp extends Connection
             echo 'Falló la consulta: ' . $e->getMessage();
         }
     }
-    
+
     public function drawProductosList($admin)
     {
 
@@ -507,43 +529,45 @@ class HeliosCorp extends Connection
         }
         return $output;
     }
-    
+
     public function editProducto($data)
-    {try {
-        $idProducto = $data["idProducto"];
-        $nombre = $data["nombre"];
-        $proveedor = $data["proveedor"];
-        $descripcion= $data["descripcion"];
-        $cantidadStock = $data["cantidadStock"];
-        $precioVenta = $data["precioVenta"];
-        $precioProveedor = $data["precioProveedor"];
-      
-
-        $stmtInsert = $this->bbdd->prepare("UPDATE productos  Set Nombre=:nombre, Proveedor=:proveedor, Descripción=:descripcion, CantidadEnStock=:cantidadEnStock, PrecioVenta=:precioVenta, PrecioProveedor=:precioProveedor where ID_Producto =:id");
-        $stmtInsert->bindParam(':id', $idProducto, PDO::PARAM_INT);
-        $stmtInsert->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-        $stmtInsert->bindParam(':proveedor', $proveedor, PDO::PARAM_STR);
-        $stmtInsert->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
-        $stmtInsert->bindParam(':cantidadEnStock', $cantidadStock, PDO::PARAM_STR);
-        $stmtInsert->bindParam(':precioVenta', $precioVenta, PDO::PARAM_STR);
-        $stmtInsert->bindParam(':precioProveedor', $precioProveedor, PDO::PARAM_STR);
+    {
+        try {
+            $idProducto = $data["idProducto"];
+            $nombre = $data["nombre"];
+            $proveedor = $data["proveedor"];
+            $descripcion = $data["descripcion"];
+            $cantidadStock = $data["cantidadStock"];
+            $precioVenta = $data["precioVenta"];
+            $precioProveedor = $data["precioProveedor"];
 
 
-        $stmtInsert->execute();
-        return $stmtInsert->rowCount();
-    } catch (Exception | PDOException $e) {
-        echo 'Falló la inserción: ' . $e->getMessage();
-    }}
+            $stmtInsert = $this->bbdd->prepare("UPDATE productos  Set Nombre=:nombre, Proveedor=:proveedor, Descripción=:descripcion, CantidadEnStock=:cantidadEnStock, PrecioVenta=:precioVenta, PrecioProveedor=:precioProveedor where ID_Producto =:id");
+            $stmtInsert->bindParam(':id', $idProducto, PDO::PARAM_INT);
+            $stmtInsert->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':proveedor', $proveedor, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':cantidadEnStock', $cantidadStock, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':precioVenta', $precioVenta, PDO::PARAM_STR);
+            $stmtInsert->bindParam(':precioProveedor', $precioProveedor, PDO::PARAM_STR);
+
+
+            $stmtInsert->execute();
+            return $stmtInsert->rowCount();
+        } catch (Exception | PDOException $e) {
+            echo 'Falló la inserción: ' . $e->getMessage();
+        }
+    }
 
 
 
     //EXTRA Jaume
 
-    
+
     public function maxIDCliente()
     {
         try {
-           
+
             $this->bbdd->beginTransaction();
             $sqlMaxNum = "SELECT max(ID)+1 AS maxIdCliente FROM clientes";
             $resultado = $this->bbdd->query($sqlMaxNum);
@@ -554,11 +578,11 @@ class HeliosCorp extends Connection
         }
         return $numero;
     }
-   
+
     public function maxIDPedido()
     {
         try {
-            
+
             $this->bbdd->beginTransaction();
             $sqlMaxNum = "SELECT max(ID_Pedido)+1 AS maxIdPedido FROM pedidos";
             $resultado = $this->bbdd->query($sqlMaxNum);
@@ -569,11 +593,11 @@ class HeliosCorp extends Connection
         }
         return $numero;
     }
-    
+
     public function maxIDProducto()
     {
         try {
-            
+
             $this->bbdd->beginTransaction();
             $sqlMaxNum = "SELECT max(ID_Producto)+1 AS maxIdProducto FROM productos";
             $resultado = $this->bbdd->query($sqlMaxNum);
@@ -587,7 +611,7 @@ class HeliosCorp extends Connection
 
 
     /* FILTRADO Jaume */
-    
+
     private function setCurrentFilter()
     {
         if (session_status() !== PHP_SESSION_ACTIVE) session_start();
